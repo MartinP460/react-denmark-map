@@ -1,0 +1,4 @@
+.react-denmark-map-municipality:hover {
+  fill-opacity: 70%;
+  cursor: pointer;
+}
