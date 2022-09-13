@@ -60,10 +60,14 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
   const handleMouseMove: MouseEventHandler = (event) => {
     if (!props.showTooltip) return
 
+    const textLength = event.currentTarget.id.length * 11
+
+    const left = event.pageX + 20 + 120 > window.innerWidth ? event.pageX - textLength : event.pageX
+
     setTooltipStyle((prevState) => ({
       ...prevState,
-      top: event.pageY - 20,
-      left: event.pageX + 20
+      top: event.pageY - 35,
+      left: left + 20
     }))
   }
 
