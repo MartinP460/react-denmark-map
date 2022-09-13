@@ -10,11 +10,12 @@ export type Area = {
 
 export interface MapProps<Type extends Area> {
   width?: CSSProperties['width']
+  height?: CSSProperties['height']
   color?: string
   showTooltip?: boolean
   customTooltip?: (area: Type) => ReactNode
-  onClick?: (area: Type | null) => void
-  onHover?: (area: Type | null) => void
+  onClick?: (area: Type) => void
+  onHover?: (area: Type) => void
   customizeAreas?: (area: Type) => { className?: string; style?: CSSProperties } | undefined
 }
 
@@ -26,6 +27,7 @@ interface PrivateMapProps<Type extends Area> extends MapProps<Type> {
 
 const defaultProps = {
   width: 'auto',
+  height: 'auto',
   color: '#ccc',
   showTooltip: true
 }
@@ -135,7 +137,7 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
   const tooltip = props.customTooltip ? props.customTooltip : defaultTooltip
 
   return (
-    <figure id="react-denmark-map" style={{ width: props.width, margin: '0 auto' }}>
+    <figure id="react-denmark-map" style={{ textAlign: 'center' }}>
       <div id="react-denmark-map-tooltip-wrapper" style={tooltipStyle}>
         {hoveredArea && tooltip(hoveredArea)}
       </div>
@@ -147,7 +149,11 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
         xmlnsXlink="http://www.w3.org/1999/xlink"
         xmlSpace="preserve"
         style={{
+          width: props.width,
+          height: props.height,
           fill: props.color,
+          margin: '0 auto',
+          maxWidth: '1180px',
           fillRule: 'evenodd',
           clipRule: 'evenodd',
           strokeLinejoin: 'round',

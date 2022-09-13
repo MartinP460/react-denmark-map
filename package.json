@@ -1,5 +1,5 @@
 {
-  "name": "react-denmark-map",
+  "name": "@MartinP460/react-denmark-map",
   "version": "0.0.1",
   "description": "A customizable and interactive map of Denmark in different contexts for React.",
   "scripts": {
@@ -53,5 +53,8 @@
   "files": [
     "dist"
   ],
-  "types": "dist/index.d.ts"
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/MartinP460"
+  }
 }

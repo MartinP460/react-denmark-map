@@ -1,4 +1,5 @@
 import { fireEvent, render } from '@testing-library/react'
+// the municipalities component is used to test the generic map component
 import Municipalities from '../areas/municipalities/Municipalities'
 
 describe('Map', () => {
