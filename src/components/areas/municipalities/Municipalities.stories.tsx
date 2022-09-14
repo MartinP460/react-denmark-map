@@ -24,7 +24,7 @@ export const WithCustomizeMunicipalities = Template.bind({})
 WithCustomizeMunicipalities.args = {
   width: '700px',
   customizeAreas: (municipality) => {
-    const result = mockMunicipalityData.find((item) => item.id === municipality.da_id)
+    const result = mockMunicipalityData.find((item) => item.id === municipality.name)
 
     if (!result) return
 
@@ -50,7 +50,7 @@ export const WithCustomTooltip = Template.bind({})
 WithCustomTooltip.args = {
   width: '700px',
   customizeAreas: (municipality) => {
-    const result = mockMunicipalityData.find((item) => item.id === municipality.da_id)
+    const result = mockMunicipalityData.find((item) => item.id === municipality.name)
 
     if (!result) return
 
@@ -61,7 +61,7 @@ WithCustomTooltip.args = {
     }
   },
   customTooltip: (municipality) => {
-    const result = mockMunicipalityData.find((item) => item.id === municipality.da_id)
+    const result = mockMunicipalityData.find((item) => item.id === municipality.name)
 
     return (
       <div
@@ -73,7 +73,7 @@ WithCustomTooltip.args = {
           padding: '6px 12px'
         }}
       >
-        <p style={{ fontWeight: 'bold', margin: '0px' }}>{municipality.name}</p>
+        <p style={{ fontWeight: 'bold', margin: '0px' }}>{municipality.display_name}</p>
         <p style={{ margin: '2px 0 0' }}>Average: {result?.average ? result.average : 'N/A'}</p>
       </div>
     )

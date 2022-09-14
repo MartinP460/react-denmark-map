@@ -10,17 +10,18 @@ describe('Map', () => {
   it('should render with default props', () => {
     const { container } = render(<Municipalities />)
 
-    const parent = container.querySelector('figure')
     const svg = container.querySelector('svg')
 
-    expect(parent?.style.width).toBe('auto')
+    expect(svg?.style.width).toBe('auto')
+    expect(svg?.style.height).toBe('auto')
     expect(svg?.style.fill).toBe('#ccc')
   })
 
   it('should render with the given width', () => {
     const { container } = render(<Municipalities width="700px" />)
 
-    const width = container.querySelector('figure')?.style.width
+    // @ts-ignore
+    const width = container.querySelector('#react-denmark-map-svg')?.style.width
 
     expect(width).toBe('700px')
   })
@@ -61,7 +62,7 @@ describe('Map', () => {
   })
 
   it('should render the custom tooltip when hovering', () => {
-    const customTooltip = (municipality: any) => <div>{municipality.name}</div>
+    const customTooltip = (municipality: any) => <div>{municipality.display_name}</div>
 
     const { container } = render(<Municipalities customTooltip={customTooltip} />)
 
@@ -91,8 +92,10 @@ describe('Map', () => {
     expect(onClick).toHaveBeenCalledWith(
       expect.objectContaining({
         id: 'langeland',
-        da_id: 'langeland',
-        name: 'Langeland'
+        name: 'langeland',
+        en_name: 'langeland',
+        display_name: 'Langeland',
+        code: '482'
       })
     )
   })
@@ -111,8 +114,10 @@ describe('Map', () => {
     expect(onHover).toHaveBeenCalledWith(
       expect.objectContaining({
         id: 'langeland',
-        da_id: 'langeland',
-        name: 'Langeland'
+        name: 'langeland',
+        en_name: 'langeland',
+        display_name: 'Langeland',
+        code: '482'
       })
     )
   })

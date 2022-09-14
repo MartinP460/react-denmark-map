@@ -3,8 +3,9 @@ import '../../styles.css'
 
 export type Area = {
   id: string
-  da_id: string
   name: string
+  en_name: string
+  display_name: string
   d: string
 }
 
@@ -96,16 +97,17 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
   const getAreas = () => {
     const { areas, customizeAreas } = props
 
-    return areas.map((municipality) => {
-      const attributes = customizeAreas ? customizeAreas(municipality) : null
+    return areas.map((area) => {
+      const attributes = customizeAreas ? customizeAreas(area) : null
 
       return (
         <path
-          key={municipality.id}
-          id={municipality.id}
-          data-da_id={municipality.da_id}
-          data-name={municipality.name}
-          d={municipality.d}
+          key={area.id}
+          id={area.id}
+          data-name={area.name}
+          data-en_name={area.en_name}
+          data-display_name={area.display_name}
+          d={area.d}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           onMouseMove={handleMouseMove}
@@ -114,8 +116,8 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
           style={attributes?.style}
           className={
             attributes?.className
-              ? `react-denmark-map-municipality ${attributes.className}`
-              : 'react-denmark-map-municipality'
+              ? `react-denmark-map-area ${attributes.className}`
+              : 'react-denmark-map-area'
           }
         />
       )
@@ -133,7 +135,7 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
 
     return (
       <div id="react-denmark-map-tooltip" style={tooltipStyle}>
-        <p style={{ margin: '0px' }}>{area.name}</p>
+        <p style={{ margin: '0px' }}>{area.display_name}</p>
       </div>
     )
   }
