@@ -10,6 +10,8 @@ export type Area = {
 }
 
 export interface MapProps<Type extends Area> {
+  className?: string
+  style?: CSSProperties
   width?: CSSProperties['width']
   height?: CSSProperties['height']
   color?: string
@@ -29,6 +31,7 @@ interface PrivateMapProps<Type extends Area> extends MapProps<Type> {
 }
 
 const defaultProps = {
+  style: {},
   width: 'auto',
   height: 'auto',
   color: '#ccc',
@@ -152,7 +155,11 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
   const tooltip = props.customTooltip ? props.customTooltip : defaultTooltip
 
   return (
-    <figure id="react-denmark-map" style={{ textAlign: 'center' }}>
+    <figure
+      id="react-denmark-map"
+      className={props.className}
+      style={{ textAlign: 'center', ...props.style }}
+    >
       <div id="react-denmark-map-tooltip-wrapper" style={tooltipStyle}>
         {hoveredArea && tooltip(hoveredArea)}
       </div>

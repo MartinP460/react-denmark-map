@@ -21,6 +21,13 @@ Default.args = {
   onClick: undefined // for whatever reason, Storybook automatically applies the onClick prop
 }
 
+export const WithCustomStyle = Template.bind({})
+WithCustomStyle.args = {
+  width: '650px',
+  style: { backgroundColor: 'black', paddingTop: '20px', paddingBottom: '20px' },
+  color: 'white'
+}
+
 export const WithCustomizeMunicipalities = Template.bind({})
 WithCustomizeMunicipalities.args = {
   width: '700px',

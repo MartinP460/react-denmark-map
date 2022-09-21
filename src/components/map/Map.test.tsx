@@ -17,6 +17,23 @@ describe('Map', () => {
     expect(svg?.style.fill).toBe('#ccc')
   })
 
+  it('should render with the given className', () => {
+    const { container } = render(<Municipalities className="test" />)
+
+    const style = container.querySelector('#react-denmark-map')?.classList
+
+    expect(style).toContain('test')
+  })
+
+  it('should render with the given style', () => {
+    const { container } = render(<Municipalities style={{ backgroundColor: 'red' }} />)
+
+    // @ts-ignore
+    const style = container.querySelector('#react-denmark-map')?.style.backgroundColor
+
+    expect(style).toBe('red')
+  })
+
   it('should render with the given width', () => {
     const { container } = render(<Municipalities width="700px" />)
 
