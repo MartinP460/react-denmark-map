@@ -17,7 +17,8 @@ const Template: ComponentStory<typeof Municipalities> = (args) => <Municipalitie
 
 export const Default = Template.bind({})
 Default.args = {
-  width: '700px'
+  width: '700px',
+  onClick: undefined // for whatever reason, Storybook automatically applies the onClick prop
 }
 
 export const WithCustomizeMunicipalities = Template.bind({})
@@ -37,13 +38,8 @@ WithCustomizeMunicipalities.args = {
         style: { fill: 'red' }
       }
     }
-  }
-}
-
-export const WithoutTooltip = Template.bind({})
-WithoutTooltip.args = {
-  width: '700px',
-  showTooltip: false
+  },
+  onClick: undefined
 }
 
 export const WithCustomTooltip = Template.bind({})
@@ -77,5 +73,30 @@ WithCustomTooltip.args = {
         <p style={{ margin: '2px 0 0' }}>Average: {result?.average ? result.average : 'N/A'}</p>
       </div>
     )
-  }
+  },
+  onClick: undefined
+}
+
+export const WithoutTooltip = Template.bind({})
+WithoutTooltip.args = {
+  width: '700px',
+  showTooltip: false,
+  onClick: undefined
+}
+
+export const NonHoverable = Template.bind({})
+NonHoverable.args = {
+  width: '700px',
+  hoverable: false,
+  showTooltip: false,
+  onClick: undefined
+}
+
+export const NonHoverableClickable = Template.bind({})
+NonHoverableClickable.args = {
+  width: '700px',
+  hoverable: false,
+  clickable: true,
+  showTooltip: false,
+  onClick: undefined
 }

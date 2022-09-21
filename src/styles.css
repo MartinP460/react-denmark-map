@@ -1,4 +1,8 @@
-.react-denmark-map-area:hover {
+.react-denmark-map-hoverable:hover {
+  fill-opacity: 70%;
+}
+
+.react-denmark-map-clickable:hover {
   fill-opacity: 70%;
   cursor: pointer;
 }

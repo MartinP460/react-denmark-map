@@ -121,4 +121,34 @@ describe('Map', () => {
       })
     )
   })
+
+  it('should not apply the hoverable className when hoverable prop is false', () => {
+    const { container } = render(<Municipalities hoverable={false} />)
+
+    const municipality = container.querySelector('#langeland')
+    if (!municipality) throw new Error('Municipality not found')
+
+    expect(municipality.classList).not.toContain('react-denmark-map-hoverable')
+  })
+
+  it('should apply the clickable className when clickable prop is true', () => {
+    const { container } = render(<Municipalities clickable />)
+
+    const municipality = container.querySelector('#langeland')
+    if (!municipality) throw new Error('Municipality not found')
+
+    expect(municipality.classList).toContain('react-denmark-map-clickable')
+  })
+
+  it('should apply the clickable className when clickable prop is undefined and onClick is set', () => {
+    const onClick = jest.fn()
+
+    const { container } = render(<Municipalities onClick={onClick} />)
+
+    const municipality = container.querySelector('#langeland')
+
+    if (!municipality) throw new Error('Municipality not found')
+
+    expect(municipality.classList).toContain('react-denmark-map-clickable')
+  })
 })

@@ -14,6 +14,8 @@ export interface MapProps<Type extends Area> {
   height?: CSSProperties['height']
   color?: string
   showTooltip?: boolean
+  clickable?: boolean
+  hoverable?: boolean
   customTooltip?: (area: Type) => ReactNode
   onClick?: (area: Type) => void
   onHover?: (area: Type) => void
@@ -30,7 +32,8 @@ const defaultProps = {
   width: 'auto',
   height: 'auto',
   color: '#ccc',
-  showTooltip: true
+  showTooltip: true,
+  hoverable: true
 }
 
 export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
@@ -95,10 +98,20 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
   }
 
   const getAreas = () => {
-    const { areas, customizeAreas } = props
+    const { areas, clickable, hoverable, customizeAreas, onClick, onHover } = props
 
     return areas.map((area) => {
       const attributes = customizeAreas ? customizeAreas(area) : null
+
+      /* if the clickable prop is not explicitly set to false and the onCLick prop is set, 
+      we set the clickable prop to true */
+      const isClickable: boolean =
+        (typeof clickable === 'undefined' && onClick) || clickable === true ? true : false
+
+      const className = `
+        ${isClickable ? 'react-denmark-map-clickable ' : ''}
+        ${hoverable ? 'react-denmark-map-hoverable ' : ''}
+      `
 
       return (
         <path
@@ -111,14 +124,10 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           onMouseMove={handleMouseMove}
-          onClick={handleClick}
-          onMouseOver={handleHover}
+          onClick={onClick && handleClick}
+          onMouseOver={onHover && handleHover}
           style={attributes?.style}
-          className={
-            attributes?.className
-              ? `react-denmark-map-area ${attributes.className}`
-              : 'react-denmark-map-area'
-          }
+          className={attributes?.className ? `${className}${attributes.className}` : className}
         />
       )
     })
