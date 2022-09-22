@@ -99,11 +99,11 @@ NonHoverable.args = {
   onClick: undefined
 }
 
-export const NonHoverableClickable = Template.bind({})
-NonHoverableClickable.args = {
+export const Clickable = Template.bind({})
+Clickable.args = {
   width: '700px',
   hoverable: false,
   clickable: true,
   showTooltip: false,
-  onClick: undefined
+  onClick: () => null
 }

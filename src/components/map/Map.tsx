@@ -1,4 +1,5 @@
-import { useState, MouseEvent, CSSProperties, MouseEventHandler, ReactNode } from 'react'
+import { MouseEvent, CSSProperties, ReactNode, useRef } from 'react'
+import Tooltip from './Tooltip'
 import '../../styles.css'
 
 export type Area = {
@@ -30,7 +31,7 @@ interface PrivateMapProps<Type extends Area> extends MapProps<Type> {
   viewBoxHeight: string
 }
 
-const defaultProps = {
+const defaultProps: MapProps<Area> = {
   style: {},
   width: 'auto',
   height: 'auto',
@@ -40,13 +41,7 @@ const defaultProps = {
 }
 
 export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
-  const [hoveredArea, setHoveredArea] = useState<Type | null>(null)
-  const [tooltipStyle, setTooltipStyle] = useState<CSSProperties>({
-    position: 'absolute',
-    display: 'none',
-    top: 0,
-    left: 0
-  })
+  const tooltip = useRef<any>()
 
   const handleClick = (event: MouseEvent<SVGPathElement>) => {
     const { onClick } = props
@@ -62,42 +57,6 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
 
     const area = props.areas.find((area) => area.id === event.currentTarget.id)
     area && onHover(area)
-  }
-
-  const handleMouseMove: MouseEventHandler = (event) => {
-    if (!props.showTooltip) return
-
-    const textLength = event.currentTarget.id.length * 11
-
-    const left = event.pageX + 20 + 120 > window.innerWidth ? event.pageX - textLength : event.pageX
-
-    setTooltipStyle((prevState) => ({
-      ...prevState,
-      top: event.pageY - 35,
-      left: left + 20
-    }))
-  }
-
-  const handleMouseEnter = (event: MouseEvent<SVGPathElement>) => {
-    if (!props.showTooltip) return
-
-    const area = props.areas.find((area) => area.id === event.currentTarget.id)
-
-    setHoveredArea(area ? area : null)
-    setTooltipStyle((prevState) => ({
-      ...prevState,
-      display: 'block'
-    }))
-  }
-
-  const handleMouseLeave = () => {
-    if (!props.showTooltip) return
-
-    setHoveredArea(null)
-    setTooltipStyle((prevState) => ({
-      ...prevState,
-      display: 'none'
-    }))
   }
 
   const getAreas = () => {
@@ -124,9 +83,9 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
           data-en_name={area.en_name}
           data-display_name={area.display_name}
           d={area.d}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          onMouseMove={handleMouseMove}
+          onMouseEnter={(event) => tooltip.current.handleMouseEnter(event)}
+          onMouseLeave={(event) => tooltip.current.handleMouseLeave(event)}
+          onMouseMove={(event) => tooltip.current.handleMouseMove(event)}
           onClick={onClick && handleClick}
           onMouseOver={onHover && handleHover}
           style={attributes?.style}
@@ -136,33 +95,18 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
     })
   }
 
-  const defaultTooltip = (area: Area) => {
-    const tooltipStyle = {
-      fontWeight: '500',
-      background: 'white',
-      borderRadius: '4px',
-      boxShadow: '0 0 8px rgba(0, 0, 0, 0.2)',
-      padding: '6px 12px'
-    }
-
-    return (
-      <div id="react-denmark-map-tooltip" style={tooltipStyle}>
-        <p style={{ margin: '0px' }}>{area.display_name}</p>
-      </div>
-    )
-  }
-
-  const tooltip = props.customTooltip ? props.customTooltip : defaultTooltip
-
   return (
     <figure
       id="react-denmark-map"
       className={props.className}
       style={{ textAlign: 'center', ...props.style }}
     >
-      <div id="react-denmark-map-tooltip-wrapper" style={tooltipStyle}>
-        {hoveredArea && tooltip(hoveredArea)}
-      </div>
+      <Tooltip
+        show={typeof props.showTooltip === 'undefined' ? true : props.showTooltip}
+        areas={props.areas}
+        customTooltip={props.customTooltip as (area: Area) => ReactNode}
+        ref={tooltip}
+      />
       <svg
         id="react-denmark-map-svg"
         viewBox={`0 0 ${props.viewBoxWidth} ${props.viewBoxHeight}`}
