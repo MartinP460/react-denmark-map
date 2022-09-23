@@ -15,7 +15,8 @@ const Template: ComponentStory<typeof Islands> = (args) => <Islands {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  width: '700px'
+  width: '700px',
+  onClick: undefined
 }
 
 export const WithCustomizeIslands = Template.bind({})
@@ -27,5 +28,6 @@ WithCustomizeIslands.args = {
         style: { fill: 'green' }
       }
     }
-  }
+  },
+  onClick: undefined
 }
