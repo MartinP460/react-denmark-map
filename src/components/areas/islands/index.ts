@@ -1,2 +1,2 @@
 export { default } from './Islands'
-export { Island } from './data'
+export { IslandType } from './data'

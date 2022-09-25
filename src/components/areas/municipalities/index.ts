@@ -1,2 +1,2 @@
 export { default } from './Municipalities'
-export { Municipality } from './data'
+export { MunicipalityType } from './data'

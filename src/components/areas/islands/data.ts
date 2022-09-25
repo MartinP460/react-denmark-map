@@ -1,10 +1,13 @@
-import { Area } from '../../map/Map'
-
-export type Island = Area & {
+export type IslandType = {
+  id: string
+  name: string
+  en_name: string
+  display_name: string
+  d: string
   en_term: string
 }
 
-export const islands: Island[] = [
+export const islands: IslandType[] = [
   {
     id: 'fyn',
     name: 'fyn',

@@ -1,4 +1,4 @@
-export { default as Denmark, DenmarkFull } from './areas/denmark'
-export { default as Islands, Island } from './areas/islands'
-export { default as Municipalities, Municipality } from './areas/municipalities'
-export { default as Regions, Region } from './areas/regions'
+export { default as Denmark, DenmarkType } from './areas/denmark'
+export { default as Islands, IslandType } from './areas/islands'
+export { default as Municipalities, MunicipalityType } from './areas/municipalities'
+export { default as Regions, RegionType } from './areas/regions'

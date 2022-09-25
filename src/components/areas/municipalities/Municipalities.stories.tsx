@@ -1,12 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Municipalities from './Municipalities'
 
-type mockMunicipalityDataType = {
-  id: string
-  average: number
-}
-
-export const mockMunicipalityData: mockMunicipalityDataType[] = [
+const mockMunicipalityData: { id: string; average: number }[] = [
   {
     id: 'assens',
     average: 7.1
@@ -263,6 +258,5 @@ Clickable.args = {
   width: '700px',
   hoverable: false,
   clickable: true,
-  showTooltip: false,
-  onClick: () => null
+  showTooltip: false
 }

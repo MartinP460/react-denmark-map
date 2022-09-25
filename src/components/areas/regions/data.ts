@@ -1,10 +1,13 @@
-import { Area } from '../../map/Map'
-
-export type Region = Area & {
+export type RegionType = {
+  id: string
+  name: string
+  en_name: string
+  display_name: string
+  d: string
   code: string
 }
 
-export const regions: Region[] = [
+export const regions: RegionType[] = [
   {
     id: 'syddanmark',
     name: 'syddanmark',

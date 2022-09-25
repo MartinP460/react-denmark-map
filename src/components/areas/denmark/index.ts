@@ -1,2 +1,2 @@
 export { default } from './Denmark'
-export { DenmarkFull } from './data'
+export { DenmarkType } from './data'

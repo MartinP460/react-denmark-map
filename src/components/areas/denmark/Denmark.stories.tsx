@@ -16,6 +16,5 @@ const Template: ComponentStory<typeof Denmark> = (args) => <Denmark {...args} />
 export const Default = Template.bind({})
 Default.args = {
   width: '700px',
-  color: 'black',
   onClick: undefined
 }

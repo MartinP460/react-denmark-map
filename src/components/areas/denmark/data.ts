@@ -1,10 +1,13 @@
-import { Area } from '../../map/Map'
-
-export type DenmarkFull = Area & {
+export type DenmarkType = {
+  id: string
+  name: string
+  en_name: string
+  display_name: string
+  d: string
   en_term: string
 }
 
-export const full: DenmarkFull[] = [
+export const full: DenmarkType[] = [
   {
     id: 'danmark',
     name: 'danmark',

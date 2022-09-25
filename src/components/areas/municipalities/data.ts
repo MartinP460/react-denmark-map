@@ -1,10 +1,13 @@
-import { Area } from '../../map/Map'
-
-export type Municipality = Area & {
+export type MunicipalityType = {
+  id: string
+  name: string
+  en_name: string
+  display_name: string
+  d: string
   code: string
 }
 
-export const municipalities: Municipality[] = [
+export const municipalities: MunicipalityType[] = [
   {
     id: 'langeland',
     name: 'langeland',
