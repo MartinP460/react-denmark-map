@@ -15,7 +15,7 @@ export interface MapProps<Type extends Area> {
   style?: CSSProperties
   width?: CSSProperties['width']
   height?: CSSProperties['height']
-  color?: string
+  color?: CSSProperties['fill']
   showTooltip?: boolean
   clickable?: boolean
   hoverable?: boolean

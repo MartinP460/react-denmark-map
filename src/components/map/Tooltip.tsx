@@ -71,17 +71,9 @@ function Tooltip<Type extends Area>(
   }
 
   const defaultTooltip = (area: Area) => {
-    const tooltipStyle = {
-      fontWeight: '500',
-      background: 'white',
-      borderRadius: '4px',
-      boxShadow: '0 0 8px rgba(0, 0, 0, 0.2)',
-      padding: '6px 12px'
-    }
-
     return (
-      <div id="react-denmark-map-tooltip" style={tooltipStyle}>
-        <p style={{ margin: '0px' }}>{area.display_name}</p>
+      <div id="react-denmark-map-tooltip" className="react-denmark-map-tooltip">
+        <p>{area.display_name}</p>
       </div>
     )
   }

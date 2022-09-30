@@ -1,3 +1,17 @@
+.react-denmark-map-tooltip {
+  font-weight: 500;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: -3px 2px 26px -7px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -3px 2px 26px -7px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -3px 2px 26px -7px rgba(0, 0, 0, 0.75);
+  padding: 6px 12px;
+}
+
+.react-denmark-map-tooltip > p {
+  margin: 0;
+}
+
 .react-denmark-map-hoverable:hover {
   fill-opacity: 70%;
 }
