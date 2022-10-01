@@ -1,7 +1,7 @@
 {
-  "name": "@MartinP460/react-denmark-map",
-  "version": "0.1.2",
-  "description": "A customizable and interactive map of Denmark in different contexts for React.",
+  "name": "react-denmark-map",
+  "version": "0.1.3",
+  "description": "Customizable plug-and-play map of Denmark for visual presentation.",
   "scripts": {
     "test": "jest --watchAll",
     "rollup": "rollup -c",
@@ -9,7 +9,7 @@
     "build-storybook": "build-storybook"
   },
   "author": "Martin Polley",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.18.13",
     "@babel/preset-env": "^7.18.10",
@@ -53,8 +53,5 @@
   "files": [
     "dist"
   ],
-  "types": "dist/index.d.ts",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/MartinP460"
-  }
+  "types": "dist/index.d.ts"
 }
