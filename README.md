@@ -287,8 +287,8 @@ React Denmark Map exports several components, each being a map of Denmark with d
 | `className`      | The `className` applied directly to the top-most `<figure>` element.               | string                                                                        |         |
 | `style`          | The style object applied directly to the top-most `<figure>` element.              | CSSProperties<sup>1</sup>                                                     |         |
 | `color`          | The default color of each municipality.                                            | CSSProperties["fill"]                                                         | #ccc    |
-| `width`          | The width of the map.                                                              | CSSProperties["width"]                                                        | auto    |
-| `height`         | The height of the map.                                                             | CSSProperties["fill"]                                                         | auto    |
+| `width`          | The width of the map.                                                              | CSSProperties["width"]                                                        | 750px   |
+| `height`         | The height of the map.                                                             | CSSProperties["height"]                                                       | auto    |
 | `clickable`      | Whether the clickable styles should be applied to the `<path>` element (the area). | boolean                                                                       | false   |
 | `hoverable`      | Whether the hoverable styles should be applied to the `<path>` element (the area). | boolean                                                                       | true    |
 | `showTooltip`    | Whether the tooltip should be shown.                                               | boolean                                                                       | true    |

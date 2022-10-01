@@ -171,7 +171,6 @@ const Template: ComponentStory<typeof Municipalities> = (args) => <Municipalitie
 
 export const Default = Template.bind({})
 Default.args = {
-  width: '700px',
   onClick: undefined // for whatever reason, Storybook automatically applies the onClick prop
 }
 
@@ -184,7 +183,6 @@ WithCustomStyle.args = {
 
 export const WithCustomizeMunicipalities = Template.bind({})
 WithCustomizeMunicipalities.args = {
-  width: '700px',
   customizeAreas: (municipality) => {
     const result = mockMunicipalityData.find((item) => item.id === municipality.name)
 
@@ -205,7 +203,6 @@ WithCustomizeMunicipalities.args = {
 
 export const WithCustomTooltip = Template.bind({})
 WithCustomTooltip.args = {
-  width: '700px',
   customizeAreas: (municipality) => {
     const result = mockMunicipalityData.find((item) => item.id === municipality.name)
 
@@ -240,14 +237,12 @@ WithCustomTooltip.args = {
 
 export const WithoutTooltip = Template.bind({})
 WithoutTooltip.args = {
-  width: '700px',
   showTooltip: false,
   onClick: undefined
 }
 
 export const NonHoverable = Template.bind({})
 NonHoverable.args = {
-  width: '700px',
   hoverable: false,
   showTooltip: false,
   onClick: undefined
@@ -255,7 +250,6 @@ NonHoverable.args = {
 
 export const Clickable = Template.bind({})
 Clickable.args = {
-  width: '700px',
   hoverable: false,
   clickable: true,
   showTooltip: false

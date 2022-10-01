@@ -16,13 +16,11 @@ const Template: ComponentStory<typeof Regions> = (args) => <Regions {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  width: '700px',
   onClick: undefined
 }
 
 export const WithCustomizeRegions = Template.bind({})
 WithCustomizeRegions.args = {
-  width: '700px',
   customizeAreas: (municipality) => {
     if (municipality.id === 'syddanmark') {
       return {

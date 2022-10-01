@@ -33,7 +33,7 @@ interface PrivateMapProps<Type extends Area> extends MapProps<Type> {
 
 const defaultProps: MapProps<Area> = {
   style: {},
-  width: 'auto',
+  width: '750px',
   height: 'auto',
   color: '#ccc',
   showTooltip: true,

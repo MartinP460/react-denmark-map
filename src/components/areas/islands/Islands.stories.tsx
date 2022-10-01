@@ -15,13 +15,11 @@ const Template: ComponentStory<typeof Islands> = (args) => <Islands {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  width: '700px',
   onClick: undefined
 }
 
 export const WithCustomizeIslands = Template.bind({})
 WithCustomizeIslands.args = {
-  width: '700px',
   customizeAreas: (island) => {
     if (island.id === 'sjaelland') {
       return {
