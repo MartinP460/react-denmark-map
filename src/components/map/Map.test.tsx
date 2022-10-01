@@ -7,16 +7,6 @@ describe('Map', () => {
     render(<Municipalities />)
   })
 
-  it('should render with default props', () => {
-    const { container } = render(<Municipalities />)
-
-    const svg = container.querySelector('svgsdsd')
-
-    expect(svg?.style.width).toBe('auto')
-    expect(svg?.style.height).toBe('auto')
-    expect(svg?.style.fill).toBe('#ccc')
-  })
-
   it('should render with the given className', () => {
     const { container } = render(<Municipalities className="test" />)
 
@@ -107,6 +97,7 @@ describe('Map', () => {
 
     expect(onClick).toHaveBeenCalled()
     expect(onClick).toHaveBeenCalledWith(
+      // @ts-ignore
       expect.objectContaining({
         id: 'langeland',
         name: 'langeland',
@@ -129,6 +120,7 @@ describe('Map', () => {
 
     expect(onHover).toHaveBeenCalled()
     expect(onHover).toHaveBeenCalledWith(
+      // @ts-ignore
       expect.objectContaining({
         id: 'langeland',
         name: 'langeland',
