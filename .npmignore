@@ -3,3 +3,5 @@ node_modules
 src
 tsconfig.json
 *.config.js
+*.test.tsx
+*.stories.tsx

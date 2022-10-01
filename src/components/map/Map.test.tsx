@@ -10,7 +10,7 @@ describe('Map', () => {
   it('should render with default props', () => {
     const { container } = render(<Municipalities />)
 
-    const svg = container.querySelector('svg')
+    const svg = container.querySelector('svgsdsd')
 
     expect(svg?.style.width).toBe('auto')
     expect(svg?.style.height).toBe('auto')
