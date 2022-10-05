@@ -10,7 +10,7 @@ describe('Map', () => {
   it('should render with the given className', () => {
     const { container } = render(<Municipalities className="test" />)
 
-    const style = container.querySelector('#react-denmark-map')?.classList
+    const style = container.querySelector('#react-denmark-map-svg')?.classList
 
     expect(style).toContain('test')
   })
@@ -19,13 +19,13 @@ describe('Map', () => {
     const { container } = render(<Municipalities style={{ backgroundColor: 'red' }} />)
 
     // @ts-ignore
-    const style = container.querySelector('#react-denmark-map')?.style.backgroundColor
+    const style = container.querySelector('#react-denmark-map-svg')?.style.backgroundColor
 
     expect(style).toBe('red')
   })
 
   it('should render with the given width', () => {
-    const { container } = render(<Municipalities width="700px" />)
+    const { container } = render(<Municipalities style={{ width: '700px' }} />)
 
     // @ts-ignore
     const width = container.querySelector('#react-denmark-map-svg')?.style.width

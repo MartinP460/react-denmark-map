@@ -156,6 +156,11 @@ const mockMunicipalityData: { id: string; average: number }[] = [
   }
 ]
 
+const defaultStyle = {
+  maxWidth: '750px',
+  margin: '0 auto'
+}
+
 export default {
   title: 'ReactDenmarkMap/Municipalities',
   component: Municipalities,
@@ -171,13 +176,13 @@ const Template: ComponentStory<typeof Municipalities> = (args) => <Municipalitie
 
 export const Default = Template.bind({})
 Default.args = {
-  onClick: undefined // for whatever reason, Storybook automatically applies the onClick prop
+  onClick: undefined, // for whatever reason, Storybook automatically applies the onClick prop
+  style: defaultStyle
 }
 
 export const WithCustomStyle = Template.bind({})
 WithCustomStyle.args = {
-  width: '650px',
-  style: { backgroundColor: 'black', paddingTop: '20px', paddingBottom: '20px' },
+  style: { backgroundColor: 'black', paddingTop: '20px', paddingBottom: '20px', ...defaultStyle },
   color: 'white'
 }
 
@@ -198,7 +203,8 @@ WithCustomizeMunicipalities.args = {
       }
     }
   },
-  onClick: undefined
+  onClick: undefined,
+  style: defaultStyle
 }
 
 export const WithCustomTooltip = Template.bind({})
@@ -232,25 +238,29 @@ WithCustomTooltip.args = {
       </div>
     )
   },
-  onClick: undefined
+  onClick: undefined,
+  style: defaultStyle
 }
 
 export const WithoutTooltip = Template.bind({})
 WithoutTooltip.args = {
   showTooltip: false,
-  onClick: undefined
+  onClick: undefined,
+  style: defaultStyle
 }
 
 export const NonHoverable = Template.bind({})
 NonHoverable.args = {
   hoverable: false,
   showTooltip: false,
-  onClick: undefined
+  onClick: undefined,
+  style: defaultStyle
 }
 
 export const Clickable = Template.bind({})
 Clickable.args = {
   hoverable: false,
   clickable: true,
-  showTooltip: false
+  showTooltip: false,
+  style: defaultStyle
 }

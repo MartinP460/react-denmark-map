@@ -13,8 +13,6 @@ export type Area = {
 export interface MapProps<Type extends Area> {
   className?: string
   style?: CSSProperties
-  width?: CSSProperties['width']
-  height?: CSSProperties['height']
   color?: CSSProperties['fill']
   showTooltip?: boolean
   clickable?: boolean
@@ -33,8 +31,6 @@ interface PrivateMapProps<Type extends Area> extends MapProps<Type> {
 
 const defaultProps: MapProps<Area> = {
   style: {},
-  width: '750px',
-  height: 'auto',
   color: '#ccc',
   showTooltip: true,
   hoverable: true
@@ -96,11 +92,7 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
   }
 
   return (
-    <figure
-      id="react-denmark-map"
-      className={props.className}
-      style={{ textAlign: 'center', ...props.style }}
-    >
+    <figure id="react-denmark-map">
       <Tooltip
         show={typeof props.showTooltip === 'undefined' ? true : props.showTooltip}
         areas={props.areas}
@@ -114,16 +106,16 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
         xmlSpace="preserve"
+        className={props.className}
         style={{
-          width: props.width,
-          height: props.height,
           fill: props.color,
-          margin: '0 auto',
+          display: 'block',
           maxWidth: '1180px',
           fillRule: 'evenodd',
           clipRule: 'evenodd',
           strokeLinejoin: 'round',
-          strokeMiterlimit: 2
+          strokeMiterlimit: 2,
+          ...props.style
         }}
       >
         <g>{getAreas()}</g>

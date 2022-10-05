@@ -22,7 +22,7 @@ function Tooltip<Type extends Area>(
 ) {
   const [hoveredArea, setHoveredArea] = useState<Type | null>(null)
   const [tooltipStyle, setTooltipStyle] = useState<CSSProperties>({
-    position: 'absolute',
+    position: 'fixed',
     display: 'block',
     top: 0,
     left: 0
@@ -37,13 +37,15 @@ function Tooltip<Type extends Area>(
   const handleMouseMove: MouseEventHandler = (event) => {
     if (!show) return
 
+    const scrollTop = document.documentElement.scrollTop
+
     const textLength = event.currentTarget.id.length * 11
 
     const left = event.pageX + 20 + 120 > window.innerWidth ? event.pageX - textLength : event.pageX
 
     setTooltipStyle((prevState) => ({
       ...prevState,
-      top: event.pageY - 35,
+      top: event.pageY - 35 - scrollTop,
       left: left + 20
     }))
   }

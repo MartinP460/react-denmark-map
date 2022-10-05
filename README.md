@@ -206,25 +206,15 @@ The exported components also support a number of different ways of styling the m
 import { Municipalities } from 'react-denmark-map'
 
 const App = () => {
-  return (
-    <Municipalities
-      className="denmark"
-      style={{ marginTop: '20px' }}
-      width="100%"
-      height="750px"
-      color="lightgray"
-    />
-  )
+  return <Municipalities className="denmark" style={{ marginTop: '20px' }} color="lightgray" />
 }
 ```
 
 These props are:
 
-- `className` is a string which is applied to the SVG's parent element, `<figure>`. It can be used for positioning.
-- `style` is an object of CSS properties which is applied to the SVG's parent element, `<figure>`. It can be used for positioning.
-- `width` is a string that controls the width of the map.
-- `height` is a string that controls the height of the map.
-- `color` is the default color applied to each area of the map. Essentially, this is the color of the map. It's overwritten by styles returned by the `customizeAreas` function if the function returns a color for that area.
+- `className` is a string which is applied directly to the SVG element.
+- `style` is an object of CSS properties which is applied directly to the SVG element.
+- `color` is the default color applied to each area of the map. Essentially, this is the default color of the map. It's overwritten by styles returned by the `customizeAreas` function if the function returns a color for that area. Keep in mind that you can apply the `fill` style in the `style` object and it will have the same effect.
 
 In addition to the props mentioned above, the `clickable` and `hoverable` props are booleans used to toggle hover styles on each `<path>` element / area. They are purely decorational.
 
@@ -240,8 +230,8 @@ const App = () => {
 
 Alternatively, you can apply styles to some of the components' HTML tags. Some tags are available through their ID attribute.
 
-- `svg` is the element which child elements are the `path` elements / areas. It has the id `react-denmark-map-svg`.
-- `figure` is the parent element of `svg` and has the id `react-denmark-map`.
+- `svg` is the element which contains the paths of each area. It has the id `react-denmark-map-svg`.
+- `figure` is the top-most element an the parent of `svg` and has the id `react-denmark-map`.
 - The default tooltip is a `div` element and has the id `react-denmark-map-tooltip`.
 - The parent element of the tooltip is a div that has the id `react-denmark-map-tooltip-wrapper`. It's recommended to _not_ use this to style the tooltip, since it is used solely for positioning and uses inline styles.
 
@@ -284,11 +274,9 @@ React Denmark Map exports several components, each being a map of Denmark with d
 
 | Prop             | Description                                                                        | Type                                                                          | Default |
 | ---------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------- |
-| `className`      | The `className` applied directly to the top-most `<figure>` element.               | string                                                                        |         |
-| `style`          | The style object applied directly to the top-most `<figure>` element.              | CSSProperties<sup>1</sup>                                                     |         |
+| `className`      | The `className` applied directly to the `<svg>` element.                           | string                                                                        | ""      |
+| `style`          | The style object applied directly to the `<svg>` element.                          | CSSProperties<sup>1</sup>                                                     | {}      |
 | `color`          | The default color of each municipality.                                            | CSSProperties["fill"]                                                         | #ccc    |
-| `width`          | The width of the map.                                                              | CSSProperties["width"]                                                        | 750px   |
-| `height`         | The height of the map.                                                             | CSSProperties["height"]                                                       | auto    |
 | `clickable`      | Whether the clickable styles should be applied to the `<path>` element (the area). | boolean                                                                       | false   |
 | `hoverable`      | Whether the hoverable styles should be applied to the `<path>` element (the area). | boolean                                                                       | true    |
 | `showTooltip`    | Whether the tooltip should be shown.                                               | boolean                                                                       | true    |
@@ -305,7 +293,7 @@ React Denmark Map exports several components, each being a map of Denmark with d
 
 Each area has at least the first 5 properties and potentially more.
 
-```jsx
+```ts
 type AreaType = {
   id: string // the name of the area with substitutes for Danish letters (e.g. 'fanoe')
   name: string // the name of the area with Danish letters (e.g. 'fanø')

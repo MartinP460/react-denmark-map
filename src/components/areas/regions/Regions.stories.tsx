@@ -1,6 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Regions from './Regions'
 
+const defaultStyle = {
+  maxWidth: '750px',
+  margin: '0 auto'
+}
+
 export default {
   title: 'ReactDenmarkMap/Regions',
   component: Regions,
@@ -16,7 +21,8 @@ const Template: ComponentStory<typeof Regions> = (args) => <Regions {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  onClick: undefined
+  onClick: undefined,
+  style: defaultStyle
 }
 
 export const WithCustomizeRegions = Template.bind({})
@@ -28,5 +34,6 @@ WithCustomizeRegions.args = {
       }
     }
   },
-  onClick: undefined
+  onClick: undefined,
+  style: defaultStyle
 }

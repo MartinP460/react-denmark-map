@@ -1,6 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Islands from './Islands'
 
+const defaultStyle = {
+  maxWidth: '750px',
+  margin: '0 auto'
+}
+
 export default {
   title: 'ReactDenmarkMap/Islands',
   component: Islands,
@@ -15,7 +20,8 @@ const Template: ComponentStory<typeof Islands> = (args) => <Islands {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  onClick: undefined
+  onClick: undefined,
+  style: defaultStyle
 }
 
 export const WithCustomizeIslands = Template.bind({})
@@ -27,5 +33,6 @@ WithCustomizeIslands.args = {
       }
     }
   },
-  onClick: undefined
+  onClick: undefined,
+  style: defaultStyle
 }
