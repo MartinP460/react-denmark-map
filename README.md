@@ -4,7 +4,7 @@
 
 Customizable map of Denmark with support for municipalities, regions, islands, and a full map with no borders or subsequent areas.
 
-Try it for yourself.
+Try it for yourself - [demo](https://react-denmark-map-demo.vercel.app/).
 
 ## Installation
 
@@ -216,6 +216,8 @@ These props are:
 - `style` is an object of CSS properties which is applied directly to the SVG element.
 - `color` is the default color applied to each area of the map. Essentially, this is the default color of the map. It's overwritten by styles returned by the `customizeAreas` function if the function returns a color for that area. Keep in mind that you can apply the `fill` style in the `style` object and it will have the same effect.
 
+For positioning, it is, in many cases, easier to wrap the map in an element and position that according to your needs.
+
 In addition to the props mentioned above, the `clickable` and `hoverable` props are booleans used to toggle hover styles on each `<path>` element / area. They are purely decorational.
 
 ```jsx
@@ -317,3 +319,11 @@ The types corresponding to each component are:
 Using the `Denmark` component means that there's only one path element, so DenmarkType describes just that one area.
 
 All entries for the areas can be found under 'src/components/_[area]_/data.ts'.
+
+## License
+
+React Denmark Map is licensed under the [MIT license](https://github.com/MartinP460/react-denmark-map/blob/main/LICENSE.md).
+
+## Contributing
+
+Contributing is always appreciated. Fork the project and open a pull request. Please provide a relevant description and I will try to accomodate your request as best as possible.

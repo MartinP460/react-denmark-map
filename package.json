@@ -1,15 +1,32 @@
 {
   "name": "react-denmark-map",
-  "version": "0.1.5",
+  "version": "0.2.2",
   "description": "Customizable plug-and-play map of Denmark for visual presentation.",
   "scripts": {
     "test": "jest --watchAll",
     "rollup": "rollup -c",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "publish": "npm run rollup && npm publish"
   },
   "author": "Martin Polley",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MartinP460/react-denmark-map"
+  },
+  "homepage": "https://github.com/MartinP460/react-denmark-map",
+  "bugs": {
+    "url": "https://github.com/MartinP460/react-denmark-map/issues"
+  },
+  "keywords": [
+    "react-denmark-map",
+    "denmark-map",
+    "interactive",
+    "map",
+    "react",
+    "svg"
+  ],
   "devDependencies": {
     "@babel/core": "^7.18.13",
     "@babel/preset-env": "^7.18.10",
@@ -46,7 +63,8 @@
     "typescript": "^4.8.2"
   },
   "peerDependencies": {
-    "react": "^18.2.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
