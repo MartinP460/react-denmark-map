@@ -1,5 +1,3 @@
-#### ⚠️ Work in progress
-
 # react-denmark-map
 
 Customizable map of Denmark with support for municipalities, regions, islands, and a full map with no borders or subsequent areas.
@@ -301,7 +299,7 @@ type AreaType = {
   name: string // the name of the area with Danish letters (e.g. 'fanø')
   en_name: string // same as 'id'
   display_name: string // the local name of the area capitalized (e.g. 'Høje Taastrup')
-  d: string // the path of the area applied to the
+  d: string // the path of the area applied to the <path> element
   code: string // the municipality or region code (e.g. 482 or 1083)
   en_term: string // the term used to describe the area in English (i.e. jyllland = jutland)
 }
