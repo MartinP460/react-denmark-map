@@ -1,13 +1,12 @@
 {
   "name": "react-denmark-map",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "description": "Customizable plug-and-play map of Denmark for visual presentation.",
   "scripts": {
     "test": "jest --watchAll",
     "rollup": "rollup -c",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "publish": "npm run rollup && npm publish"
+    "build-storybook": "build-storybook"
   },
   "author": "Martin Polley",
   "license": "MIT",
