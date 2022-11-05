@@ -160,4 +160,50 @@ describe('Map', () => {
 
     expect(municipality.classList).toContain('react-denmark-map-clickable')
   })
+
+  it('should call the onMouseEnter callback when entering a municipality', () => {
+    const onMouseEnter = jest.fn()
+
+    const { container } = render(<Municipalities onMouseEnter={onMouseEnter} />)
+
+    const municipality = container.querySelector('#langeland')
+    if (!municipality) throw new Error('Municipality not found')
+
+    fireEvent.mouseEnter(municipality)
+
+    expect(onMouseEnter).toHaveBeenCalled()
+    expect(onMouseEnter).toHaveBeenCalledWith(
+      // @ts-ignore
+      expect.objectContaining({
+        id: 'langeland',
+        name: 'langeland',
+        en_name: 'langeland',
+        display_name: 'Langeland',
+        code: '482'
+      })
+    )
+  })
+
+  it('should call the onMouseLeave callback when leaving a municipality', () => {
+    const onMouseLeave = jest.fn()
+
+    const { container } = render(<Municipalities onMouseLeave={onMouseLeave} />)
+
+    const municipality = container.querySelector('#langeland')
+    if (!municipality) throw new Error('Municipality not found')
+
+    fireEvent.mouseLeave(municipality)
+
+    expect(onMouseLeave).toHaveBeenCalled()
+    expect(onMouseLeave).toHaveBeenCalledWith(
+      // @ts-ignore
+      expect.objectContaining({
+        id: 'langeland',
+        name: 'langeland',
+        en_name: 'langeland',
+        display_name: 'Langeland',
+        code: '482'
+      })
+    )
+  })
 })

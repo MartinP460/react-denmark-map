@@ -116,7 +116,7 @@ const App = () => {
 }
 ```
 
-The first parameter / the area parameter of the `customTooltip` function (here named `municipality`) contains several fields that can be used to identify the correct area. See "API" for full reference.
+The first parameter / the area parameter of the `customTooltip` function (here named `municipality`) contains several fields that can be used to identify the correct area. See "API" for full reference. Also, keep in mind that the tooltip won't move to the other side of the cursor when it goes beyond the length of the viewpor.
 
 The tooltip is shown by default, but you can disable the tooltip by toggling `showTooltip`:
 
@@ -281,9 +281,11 @@ React Denmark Map exports several components, each being a map of Denmark with d
 | `hoverable`      | Whether the hoverable styles should be applied to the `<path>` element (the area). | boolean                                                                       | true    |
 | `showTooltip`    | Whether the tooltip should be shown.                                               | boolean                                                                       | true    |
 | `customTooltip`  | A function that returns a custom tooltip.                                          | (area: AreaType<sup>2</sup>) => ReactNode                                     |         |
-| `customizeAreas` | A function that is run for every area and returns an object to style the area.     | (area: AreaType) => void                                                      |         |
-| `onClick`        | A function that is run when an area is clicked.                                    | (area: AreaType) => void                                                      |         |
-| `onHover`        | A function that is run when an area is hovered.                                    | (area: AreaType) => { className?: string, style? CSSProperties } \| undefined |         |
+| `customizeAreas` | A function that is invoked for every area and returns an object to style the area. | (area: AreaType) => { className?: string, style? CSSProperties } \| undefined |         |
+| `onClick`        | A function that is invoked when an area is clicked.                                | (area: AreaType) => void                                                      |         |
+| `onHover`        | A function that is invoked when an area is hovered.                                | (area: AreaType) => void                                                      |         |
+| `onMouseEnter`   | A function that is invoked when the mouse enters an area.                          | (area: AreaType) => void                                                      |         |
+| `onHover`        | A function that is invoked when the mouse leaves an area.                          | (area: AreaType) => void                                                      |         |
 
 1: CSSProperties refers to the object provided to the style attribute in React. Fields in this object are denoted as CSSProperties["property"].
 

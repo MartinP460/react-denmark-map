@@ -20,6 +20,8 @@ export interface MapProps<Type extends Area> {
   customTooltip?: (area: Type) => ReactNode
   onClick?: (area: Type) => void
   onHover?: (area: Type) => void
+  onMouseEnter?: (area: Type) => void
+  onMouseLeave?: (area: Type) => void
   customizeAreas?: (area: Type) => { className?: string; style?: CSSProperties } | undefined
 }
 
@@ -55,6 +57,26 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
     area && onHover(area)
   }
 
+  const handleMouseEnter = (event: MouseEvent<SVGPathElement>) => {
+    tooltip.current.handleMouseEnter(event)
+
+    const { onMouseEnter } = props
+    if (!onMouseEnter) return
+
+    const area = props.areas.find((area) => area.id === event.currentTarget.id)
+    area && onMouseEnter(area)
+  }
+
+  const handleMouseLeave = (event: MouseEvent<SVGPathElement>) => {
+    tooltip.current.handleMouseLeave(event)
+
+    const { onMouseLeave } = props
+    if (!onMouseLeave) return
+
+    const area = props.areas.find((area) => area.id === event.currentTarget.id)
+    area && onMouseLeave(area)
+  }
+
   const getAreas = () => {
     const { areas, clickable, hoverable, customizeAreas, onClick, onHover } = props
 
@@ -79,11 +101,11 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
           data-en_name={area.en_name}
           data-display_name={area.display_name}
           d={area.d}
-          onMouseEnter={(event) => tooltip.current.handleMouseEnter(event)}
-          onMouseLeave={(event) => tooltip.current.handleMouseLeave(event)}
-          onMouseMove={(event) => tooltip.current.handleMouseMove(event)}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
           onClick={onClick && handleClick}
           onMouseOver={onHover && handleHover}
+          onMouseMove={(event) => tooltip.current.handleMouseMove(event)}
           style={attributes?.style}
           className={attributes?.className ? `${className}${attributes.className}` : className}
         />

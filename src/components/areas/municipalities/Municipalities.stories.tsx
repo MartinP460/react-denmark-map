@@ -242,6 +242,18 @@ WithCustomTooltip.args = {
   style: defaultStyle
 }
 
+export const WithMouseEvents = Template.bind({})
+WithMouseEvents.args = {
+  onMouseEnter: (municipality) => {
+    console.log('Mouse entered: ', municipality)
+  },
+  onMouseLeave: (municipality) => {
+    console.log('Mouse left: ', municipality)
+  },
+  onClick: undefined,
+  style: defaultStyle
+}
+
 export const WithoutTooltip = Template.bind({})
 WithoutTooltip.args = {
   showTooltip: false,

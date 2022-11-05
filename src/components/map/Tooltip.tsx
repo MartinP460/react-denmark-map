@@ -39,14 +39,10 @@ function Tooltip<Type extends Area>(
 
     const scrollTop = document.documentElement.scrollTop
 
-    const textLength = event.currentTarget.id.length * 11
-
-    const left = event.pageX + 20 + 120 > window.innerWidth ? event.pageX - textLength : event.pageX
-
     setTooltipStyle((prevState) => ({
       ...prevState,
       top: event.pageY - 35 - scrollTop,
-      left: left + 20
+      left: event.pageX + 20
     }))
   }
 
