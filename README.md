@@ -285,7 +285,7 @@ React Denmark Map exports several components, each being a map of Denmark with d
 | `onClick`        | A function that is invoked when an area is clicked.                                | (area: AreaType) => void                                                      |         |
 | `onHover`        | A function that is invoked when an area is hovered.                                | (area: AreaType) => void                                                      |         |
 | `onMouseEnter`   | A function that is invoked when the mouse enters an area.                          | (area: AreaType) => void                                                      |         |
-| `onHover`        | A function that is invoked when the mouse leaves an area.                          | (area: AreaType) => void                                                      |         |
+| `onMouseLeave`   | A function that is invoked when the mouse leaves an area.                          | (area: AreaType) => void                                                      |         |
 
 1: CSSProperties refers to the object provided to the style attribute in React. Fields in this object are denoted as CSSProperties["property"].
 
