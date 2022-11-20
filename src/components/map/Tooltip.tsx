@@ -39,10 +39,18 @@ function Tooltip<Type extends Area>(
 
     const scrollTop = document.documentElement.scrollTop
 
+    /* this code calculates whether the tooltip is overflowing the window
+    without measuring the width of the tooltip, but instead using a fixed
+    width of 120px. Measuring the width causes major performance issues
+    due to excessive amounts of rerenders and this is therefore an intentional
+    feature. */
+    const isXOverflowing = event.pageX + 20 + 120 > window.innerWidth
+
     setTooltipStyle((prevState) => ({
       ...prevState,
       top: event.pageY - 35 - scrollTop,
-      left: event.pageX + 20
+      left: event.pageX,
+      transform: isXOverflowing ? 'translateX(calc(-100% - 20px))' : 'translateX(20px)'
     }))
   }
 
