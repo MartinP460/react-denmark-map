@@ -266,6 +266,7 @@ React Denmark Map exports several components, each being a map of Denmark with d
 | Component        | Description                                        |
 | ---------------- | -------------------------------------------------- |
 | `Municipalities` | All 98 municipalities of Denmark.                  |
+| `Constituencies` | The 10 constituencies of Denmark.                  |
 | `Regions`        | The five regions of Denmark.                       |
 | `Islands`        | Zealand, Fyn and Jutland (Sjælland, Fyn, Jylland). |
 | `Denmark`        | A map of Denmark with no subsequent areas.         |
@@ -275,21 +276,21 @@ React Denmark Map exports several components, each being a map of Denmark with d
 | Prop             | Description                                                                        | Type                                                                          | Default |
 | ---------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------- |
 | `className`      | The `className` applied directly to the `<svg>` element.                           | string                                                                        | ""      |
-| `style`          | The style object applied directly to the `<svg>` element.                          | CSSProperties<sup>1</sup>                                                     | {}      |
+| `style`          | The style object applied directly to the `<svg>` element.                          | CSSProperties<sup>\*</sup>                                                    | {}      |
 | `color`          | The default color of each municipality.                                            | CSSProperties["fill"]                                                         | #ccc    |
 | `clickable`      | Whether the clickable styles should be applied to the `<path>` element (the area). | boolean                                                                       | false   |
 | `hoverable`      | Whether the hoverable styles should be applied to the `<path>` element (the area). | boolean                                                                       | true    |
 | `showTooltip`    | Whether the tooltip should be shown.                                               | boolean                                                                       | true    |
-| `customTooltip`  | A function that returns a custom tooltip.                                          | (area: AreaType<sup>2</sup>) => ReactNode                                     |         |
+| `customTooltip`  | A function that returns a custom tooltip.                                          | (area: AreaType<sup>\*\*</sup>) => ReactNode                                  |         |
 | `customizeAreas` | A function that is invoked for every area and returns an object to style the area. | (area: AreaType) => { className?: string, style? CSSProperties } \| undefined |         |
 | `onClick`        | A function that is invoked when an area is clicked.                                | (area: AreaType) => void                                                      |         |
 | `onHover`        | A function that is invoked when an area is hovered.                                | (area: AreaType) => void                                                      |         |
 | `onMouseEnter`   | A function that is invoked when the mouse enters an area.                          | (area: AreaType) => void                                                      |         |
 | `onMouseLeave`   | A function that is invoked when the mouse leaves an area.                          | (area: AreaType) => void                                                      |         |
 
-1: CSSProperties refers to the object provided to the style attribute in React. Fields in this object are denoted as CSSProperties["property"].
+\*: CSSProperties refers to the object provided to the style attribute in React. Fields in this object are denoted as CSSProperties["property"].
 
-2: AreaType is one of the four types corresponding to the component used (see "Types" below).
+\*\*: AreaType is one of the four types corresponding to the component used (see "Types" below).
 
 ### Types
 
@@ -309,12 +310,15 @@ type AreaType = {
 
 The types corresponding to each component are:
 
-| Component        | Name of exported type | Included in type                                |
-| ---------------- | --------------------- | ----------------------------------------------- |
-| `Municipalities` | MunicipalityType      | { id, name, en_name, display_name, d, code }    |
-| `Regions`        | RegionType            | { id, name, en_name, display_name, d, code }    |
-| `Islands`        | IslandType            | { id, name, en_name, display_name, d, en_term } |
-| `Denmark`        | DenmarkType           | { id, name, en_name, display_name, d, en_term } |
+| Component                    | Name of exported type | Included in type                                |
+| ---------------------------- | --------------------- | ----------------------------------------------- |
+| `Municipalities`             | MunicipalityType      | { id, name, en_name, display_name, d, code }    |
+| `Constituencies`<sup>\*<sup> | ConstituencyType      | { id, name, en_name, display_name, d }          |
+| `Regions`                    | RegionType            | { id, name, en_name, display_name, d, code }    |
+| `Islands`                    | IslandType            | { id, name, en_name, display_name, d, en_term } |
+| `Denmark`                    | DenmarkType           | { id, name, en_name, display_name, d, en_term } |
+
+\*: When filtering using any of the strings in the ConstituencyType be aware that the constituencies (danish: "storkredse"), e.g. "sydjyllands storkreds", have the word "storkreds" omitted in the properties `id`, `name` and `en_name`. Thus, "sydjyllands storkreds" is just "sydjyllands" and so on.
 
 Using the `Denmark` component means that there's only one path element, so DenmarkType describes just that one area.
 
