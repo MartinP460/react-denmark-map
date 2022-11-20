@@ -116,7 +116,7 @@ const App = () => {
 }
 ```
 
-The first parameter / the area parameter of the `customTooltip` function (here named `municipality`) contains several fields that can be used to identify the correct area. See "API" for full reference. Also, keep in mind that the tooltip won't move to the other side of the cursor when it goes beyond the length of the viewpor.
+The first parameter / the area parameter of the `customTooltip` function (here named `municipality`) contains several fields that can be used to identify the correct area. See "API" for full reference.
 
 The tooltip is shown by default, but you can disable the tooltip by toggling `showTooltip`:
 

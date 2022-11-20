@@ -1,6 +1,6 @@
 {
   "name": "react-denmark-map",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Customizable plug-and-play map of Denmark for visual presentation.",
   "scripts": {
     "test": "jest --watchAll",
