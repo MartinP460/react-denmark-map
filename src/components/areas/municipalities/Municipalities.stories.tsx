@@ -1,5 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Municipalities from './Municipalities'
+import Regions, { RegionType } from '../regions'
+import { MunicipalityType } from './data'
+import { useState } from 'react'
 
 const mockMunicipalityData: { id: string; average: number }[] = [
   {
@@ -205,6 +208,85 @@ WithCustomizeMunicipalities.args = {
   },
   onClick: undefined,
   style: defaultStyle
+}
+
+const MunicipalitiesInRegionsTemplate: ComponentStory<typeof Municipalities> = (args) => {
+  const [selectedRegion, setSelectedRegion] = useState<RegionType | null>(null)
+
+  const regionViewboxes = {
+    nordjylland: {
+      top: -500,
+      width: 6000,
+      height: 6000
+    },
+    midtjylland: {
+      top: 3000,
+      width: 6300,
+      height: 6000
+    },
+    syddanmark: {
+      top: 6300,
+      width: 6500,
+      height: 6000
+    },
+    sjælland: {
+      left: 5000,
+      top: 6600,
+      width: 6500,
+      height: 6000
+    },
+    hovedstaden: {
+      left: 5500,
+      top: 500,
+      width: 7000,
+      height: 8000
+    }
+  }
+
+  const customizeAreas = (municipality: MunicipalityType) => {
+    if (selectedRegion?.id === municipality.region.id) {
+      return {
+        style: {
+          fill: 'red'
+        }
+      }
+    } else {
+      return {
+        style: {
+          fill: 'transparent'
+        }
+      }
+    }
+  }
+
+  if (!selectedRegion) {
+    return (
+      <Regions
+        style={{
+          backgroundColor: '#f0f0f0',
+          ...defaultStyle
+        }}
+        onClick={(region) => setSelectedRegion(region)}
+      />
+    )
+  }
+
+  return (
+    <Municipalities
+      style={{
+        backgroundColor: '#f0f0f0',
+        ...defaultStyle
+      }}
+      customizeAreas={customizeAreas}
+      viewbox={regionViewboxes[selectedRegion.name]}
+      {...args}
+    />
+  )
+}
+
+export const WithHighlightedRegions = MunicipalitiesInRegionsTemplate.bind({})
+WithHighlightedRegions.args = {
+  onClick: undefined
 }
 
 export const WithCustomTooltip = Template.bind({})
