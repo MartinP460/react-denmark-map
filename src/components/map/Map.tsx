@@ -10,7 +10,15 @@ export type Area = {
   d: string
 }
 
+type ViewBox = {
+  top?: number
+  left?: number
+  width?: number
+  height?: number
+}
+
 export interface MapProps<Type extends Area> {
+  viewbox?: ViewBox
   className?: string
   style?: CSSProperties
   color?: CSSProperties['fill']
@@ -123,7 +131,9 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
       />
       <svg
         id="react-denmark-map-svg"
-        viewBox={`0 0 ${props.viewBoxWidth} ${props.viewBoxHeight}`}
+        viewBox={`${props.viewbox?.left ?? 0} ${props.viewbox?.top ?? 0} ${
+          props.viewbox?.width ?? props.viewBoxWidth
+        } ${props.viewbox?.height ?? props.viewBoxHeight}`}
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
