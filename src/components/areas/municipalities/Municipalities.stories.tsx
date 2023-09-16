@@ -278,7 +278,7 @@ const MunicipalitiesInRegionsTemplate: ComponentStory<typeof Municipalities> = (
         ...defaultStyle
       }}
       customizeAreas={customizeAreas}
-      viewbox={regionViewboxes[selectedRegion.name]}
+      viewBox={regionViewboxes[selectedRegion.name]}
       {...args}
     />
   )

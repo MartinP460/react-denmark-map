@@ -41,6 +41,16 @@ describe('Map', () => {
     expect(color).toBe('blue')
   })
 
+  it('should render with the given viewbox', () => {
+    const { container } = render(
+      <Municipalities viewBox={{ left: 0, top: 0, width: 7000, height: 8000 }} />
+    )
+
+    const viewbox = container.querySelector('svg')?.getAttribute('viewBox')
+
+    expect(viewbox).toBe('0 0 7000 8000')
+  })
+
   it('should render the municipality name in the tooltip when hovering', () => {
     const { container } = render(<Municipalities />)
 
