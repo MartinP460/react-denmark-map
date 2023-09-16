@@ -261,4 +261,17 @@ describe('Map', () => {
     expect(municipality2).toBeNull()
     expect(municipality3).toBeNull()
   })
+
+  it('should render different `d` when bornholmAltPosition prop is set', () => {
+    const mapWithDefaultBornholm = render(<Municipalities />)
+    const mapWithAltBornholm = render(<Municipalities bornholmAltPostition />)
+
+    const bornholmDefault = mapWithDefaultBornholm.container
+      .querySelector('#bornholm')
+      ?.getAttribute('d')
+    const bornholmAlt = mapWithAltBornholm.container.querySelector('#bornholm')?.getAttribute('d')
+    expect(bornholmDefault).toBeTruthy()
+    expect(bornholmAlt).toBeTruthy()
+    expect(bornholmDefault).not.toBe(bornholmAlt)
+  })
 })
