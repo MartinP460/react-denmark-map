@@ -236,10 +236,10 @@ const MunicipalitiesInRegionsTemplate: ComponentStory<typeof Municipalities> = (
       height: 6000
     },
     hovedstaden: {
-      left: 5500,
-      top: 500,
-      width: 7000,
-      height: 8000
+      left: 8000,
+      top: 5500,
+      width: 4600,
+      height: 4000
     }
   }
 
@@ -276,8 +276,10 @@ const MunicipalitiesInRegionsTemplate: ComponentStory<typeof Municipalities> = (
       <button onClick={() => setSelectedRegion(null)}>Back</button>
       <Municipalities
         customizeAreas={customizeAreas}
+        // @ts-ignore - the keys have been manually verified to correspond to the entries in region
         viewBox={regionViewboxes[selectedRegion.name]}
         filterAreas={(municipality) => municipality.region.id === selectedRegion.id}
+        bornholmAltPostition
         {...args}
       />
     </div>

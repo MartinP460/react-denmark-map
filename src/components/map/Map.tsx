@@ -8,6 +8,7 @@ export type Area = {
   en_name: string
   display_name: string
   d: string
+  altD?: string
 }
 
 type ViewBox = {
@@ -25,6 +26,7 @@ export interface MapProps<Type extends Area> {
   showTooltip?: boolean
   clickable?: boolean
   hoverable?: boolean
+  bornholmAltPostition?: boolean
   customTooltip?: (area: Type) => ReactNode
   onClick?: (area: Type) => void
   onHover?: (area: Type) => void
@@ -87,7 +89,16 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
   }
 
   const getAreas = () => {
-    const { areas, clickable, hoverable, customizeAreas, onClick, onHover, filterAreas } = props
+    const {
+      areas,
+      clickable,
+      hoverable,
+      bornholmAltPostition,
+      customizeAreas,
+      onClick,
+      onHover,
+      filterAreas
+    } = props
 
     return areas.map((area) => {
       if (filterAreas && !filterAreas(area)) return null
@@ -104,6 +115,8 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
         ${hoverable ? 'react-denmark-map-hoverable ' : ''}
       `
 
+      const draw = bornholmAltPostition && area.altD ? area.altD : area.d
+
       return (
         <path
           key={area.id}
@@ -111,7 +124,7 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
           data-name={area.name}
           data-en_name={area.en_name}
           data-display_name={area.display_name}
-          d={area.d}
+          d={draw}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           onClick={onClick && handleClick}
