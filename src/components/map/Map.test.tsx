@@ -41,16 +41,6 @@ describe('Map', () => {
     expect(color).toBe('blue')
   })
 
-  it('should render with the given viewbox', () => {
-    const { container } = render(
-      <Municipalities viewBox={{ left: 0, top: 0, width: 7000, height: 8000 }} />
-    )
-
-    const viewbox = container.querySelector('svg')?.getAttribute('viewBox')
-
-    expect(viewbox).toBe('0 0 7000 8000')
-  })
-
   it('should render the municipality name in the tooltip when hovering', () => {
     const { container } = render(<Municipalities />)
 
@@ -215,5 +205,38 @@ describe('Map', () => {
         code: '482'
       })
     )
+  })
+
+  it('should render with the given viewbox', () => {
+    const { container } = render(
+      <Municipalities viewBox={{ left: 0, top: 0, width: 7000, height: 8000 }} />
+    )
+
+    const viewbox = container.querySelector('svg')?.getAttribute('viewBox')
+
+    expect(viewbox).toBe('0 0 7000 8000')
+  })
+
+  it('should render with the default viewBox width when no viewbox is provided', () => {
+    const { container } = render(<Municipalities />)
+
+    const viewbox = container.querySelector('svg')?.getAttribute('viewBox')
+
+    expect(viewbox).toBe('0 0 10116 12289') // default width and height from the municipalities component
+  })
+
+  it('should round viewbox width and height to nearest integer', () => {
+    const { container } = render(
+      <Municipalities
+        viewBox={{
+          width: 1000.499,
+          height: 1000.5
+        }}
+      />
+    )
+
+    const viewbox = container.querySelector('svg')?.getAttribute('viewBox')
+
+    expect(viewbox).toBe('0 0 1000 1001')
   })
 })

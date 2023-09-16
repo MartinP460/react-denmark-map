@@ -35,8 +35,8 @@ export interface MapProps<Type extends Area> {
 
 interface PrivateMapProps<Type extends Area> extends MapProps<Type> {
   areas: Type[]
-  viewBoxWidth: string
-  viewBoxHeight: string
+  defaultViewBoxWidth: number
+  defaultViewBoxHeight: number
 }
 
 const defaultProps: MapProps<Area> = {
@@ -132,9 +132,12 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
       <svg
         id="react-denmark-map-svg"
         version="1.1"
-        viewBox={`${props.viewBox?.left ?? 0} ${props.viewBox?.top ?? 0} ${
-          props.viewBox?.width ?? props.viewBoxWidth
-        } ${props.viewBox?.height ?? props.viewBoxHeight}`}
+        viewBox={
+          `${Math.round(props.viewBox?.left ?? 0)} ` +
+          `${Math.round(props.viewBox?.top ?? 0)} ` +
+          `${Math.round(props.viewBox?.width ?? props.defaultViewBoxWidth)} ` +
+          `${Math.round(props.viewBox?.height ?? props.defaultViewBoxHeight)}`
+        }
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
         xmlSpace="preserve"
