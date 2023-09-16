@@ -31,6 +31,7 @@ export interface MapProps<Type extends Area> {
   onMouseEnter?: (area: Type) => void
   onMouseLeave?: (area: Type) => void
   customizeAreas?: (area: Type) => { className?: string; style?: CSSProperties } | undefined
+  filterAreas?: (area: Type) => boolean
 }
 
 interface PrivateMapProps<Type extends Area> extends MapProps<Type> {
@@ -86,9 +87,11 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
   }
 
   const getAreas = () => {
-    const { areas, clickable, hoverable, customizeAreas, onClick, onHover } = props
+    const { areas, clickable, hoverable, customizeAreas, onClick, onHover, filterAreas } = props
 
     return areas.map((area) => {
+      if (filterAreas && !filterAreas(area)) return null
+
       const attributes = customizeAreas ? customizeAreas(area) : null
 
       /* if the clickable prop is not explicitly set to false and the onCLick prop is set, 

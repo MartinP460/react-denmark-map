@@ -239,4 +239,26 @@ describe('Map', () => {
 
     expect(viewbox).toBe('0 0 1000 1001')
   })
+
+  it('should exclude an area when the exclude prop is set to filter an area', () => {
+    const { container } = render(
+      <Municipalities filterAreas={(municipality) => !(municipality.name === 'københavn')} />
+    )
+
+    const municipality = container.querySelector('#koebenhavn')
+    expect(municipality).toBeNull()
+  })
+
+  it('should exclude all other areas when the exclude prop is set to a specific area', () => {
+    const { container } = render(
+      <Municipalities filterAreas={(municipality) => municipality.region.name === 'nordjylland'} />
+    )
+
+    const municipality1 = container.querySelector('#koebenhavn')
+    const municipality2 = container.querySelector('#odense')
+    const municipality3 = container.querySelector('#faxe')
+    expect(municipality1).toBeNull()
+    expect(municipality2).toBeNull()
+    expect(municipality3).toBeNull()
+  })
 })

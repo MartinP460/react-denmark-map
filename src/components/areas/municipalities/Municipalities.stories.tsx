@@ -272,15 +272,15 @@ const MunicipalitiesInRegionsTemplate: ComponentStory<typeof Municipalities> = (
   }
 
   return (
-    <Municipalities
-      style={{
-        backgroundColor: '#f0f0f0',
-        ...defaultStyle
-      }}
-      customizeAreas={customizeAreas}
-      viewBox={regionViewboxes[selectedRegion.name]}
-      {...args}
-    />
+    <div style={{ backgroundColor: '#f0f0f0', ...defaultStyle }}>
+      <button onClick={() => setSelectedRegion(null)}>Back</button>
+      <Municipalities
+        customizeAreas={customizeAreas}
+        viewBox={regionViewboxes[selectedRegion.name]}
+        filterAreas={(municipality) => municipality.region.id === selectedRegion.id}
+        {...args}
+      />
+    </div>
   )
 }
 
@@ -356,5 +356,11 @@ Clickable.args = {
   hoverable: false,
   clickable: true,
   showTooltip: false,
+  style: defaultStyle
+}
+
+export const WithFilterAreas = Template.bind({})
+WithFilterAreas.args = {
+  filterAreas: (municipality) => !(municipality.region.name === 'hovedstaden'),
   style: defaultStyle
 }
