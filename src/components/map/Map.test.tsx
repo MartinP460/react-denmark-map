@@ -206,4 +206,72 @@ describe('Map', () => {
       })
     )
   })
+
+  it('should render with the given viewbox', () => {
+    const { container } = render(
+      <Municipalities viewBox={{ left: 0, top: 0, width: 7000, height: 8000 }} />
+    )
+
+    const viewbox = container.querySelector('svg')?.getAttribute('viewBox')
+
+    expect(viewbox).toBe('0 0 7000 8000')
+  })
+
+  it('should render with the default viewBox width when no viewbox is provided', () => {
+    const { container } = render(<Municipalities />)
+
+    const viewbox = container.querySelector('svg')?.getAttribute('viewBox')
+
+    expect(viewbox).toBe('0 0 10116 12289') // default width and height from the municipalities component
+  })
+
+  it('should round viewbox width and height to nearest integer', () => {
+    const { container } = render(
+      <Municipalities
+        viewBox={{
+          width: 1000.499,
+          height: 1000.5
+        }}
+      />
+    )
+
+    const viewbox = container.querySelector('svg')?.getAttribute('viewBox')
+
+    expect(viewbox).toBe('0 0 1000 1001')
+  })
+
+  it('should exclude an area when the exclude prop is set to filter an area', () => {
+    const { container } = render(
+      <Municipalities filterAreas={(municipality) => !(municipality.name === 'københavn')} />
+    )
+
+    const municipality = container.querySelector('#koebenhavn')
+    expect(municipality).toBeNull()
+  })
+
+  it('should exclude all other areas when the exclude prop is set to a specific area', () => {
+    const { container } = render(
+      <Municipalities filterAreas={(municipality) => municipality.region.name === 'nordjylland'} />
+    )
+
+    const municipality1 = container.querySelector('#koebenhavn')
+    const municipality2 = container.querySelector('#odense')
+    const municipality3 = container.querySelector('#faxe')
+    expect(municipality1).toBeNull()
+    expect(municipality2).toBeNull()
+    expect(municipality3).toBeNull()
+  })
+
+  it('should render different `d` when bornholmAltPosition prop is set', () => {
+    const mapWithDefaultBornholm = render(<Municipalities />)
+    const mapWithAltBornholm = render(<Municipalities bornholmAltPostition />)
+
+    const bornholmDefault = mapWithDefaultBornholm.container
+      .querySelector('#bornholm')
+      ?.getAttribute('d')
+    const bornholmAlt = mapWithAltBornholm.container.querySelector('#bornholm')?.getAttribute('d')
+    expect(bornholmDefault).toBeTruthy()
+    expect(bornholmAlt).toBeTruthy()
+    expect(bornholmDefault).not.toBe(bornholmAlt)
+  })
 })

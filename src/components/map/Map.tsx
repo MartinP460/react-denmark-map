@@ -8,27 +8,38 @@ export type Area = {
   en_name: string
   display_name: string
   d: string
+  altD?: string
+}
+
+type ViewBox = {
+  top?: number
+  left?: number
+  width?: number
+  height?: number
 }
 
 export interface MapProps<Type extends Area> {
+  viewBox?: ViewBox
   className?: string
   style?: CSSProperties
   color?: CSSProperties['fill']
   showTooltip?: boolean
   clickable?: boolean
   hoverable?: boolean
+  bornholmAltPostition?: boolean
   customTooltip?: (area: Type) => ReactNode
   onClick?: (area: Type) => void
   onHover?: (area: Type) => void
   onMouseEnter?: (area: Type) => void
   onMouseLeave?: (area: Type) => void
   customizeAreas?: (area: Type) => { className?: string; style?: CSSProperties } | undefined
+  filterAreas?: (area: Type) => boolean
 }
 
 interface PrivateMapProps<Type extends Area> extends MapProps<Type> {
   areas: Type[]
-  viewBoxWidth: string
-  viewBoxHeight: string
+  defaultViewBoxWidth: number
+  defaultViewBoxHeight: number
 }
 
 const defaultProps: MapProps<Area> = {
@@ -78,9 +89,20 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
   }
 
   const getAreas = () => {
-    const { areas, clickable, hoverable, customizeAreas, onClick, onHover } = props
+    const {
+      areas,
+      clickable,
+      hoverable,
+      bornholmAltPostition,
+      customizeAreas,
+      onClick,
+      onHover,
+      filterAreas
+    } = props
 
     return areas.map((area) => {
+      if (filterAreas && !filterAreas(area)) return null
+
       const attributes = customizeAreas ? customizeAreas(area) : null
 
       /* if the clickable prop is not explicitly set to false and the onCLick prop is set, 
@@ -93,6 +115,8 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
         ${hoverable ? 'react-denmark-map-hoverable ' : ''}
       `
 
+      const draw = bornholmAltPostition && area.altD ? area.altD : area.d
+
       return (
         <path
           key={area.id}
@@ -100,7 +124,7 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
           data-name={area.name}
           data-en_name={area.en_name}
           data-display_name={area.display_name}
-          d={area.d}
+          d={draw}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           onClick={onClick && handleClick}
@@ -123,8 +147,13 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
       />
       <svg
         id="react-denmark-map-svg"
-        viewBox={`0 0 ${props.viewBoxWidth} ${props.viewBoxHeight}`}
         version="1.1"
+        viewBox={
+          `${Math.round(props.viewBox?.left ?? 0)} ` +
+          `${Math.round(props.viewBox?.top ?? 0)} ` +
+          `${Math.round(props.viewBox?.width ?? props.defaultViewBoxWidth)} ` +
+          `${Math.round(props.viewBox?.height ?? props.defaultViewBoxHeight)}`
+        }
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
         xmlSpace="preserve"

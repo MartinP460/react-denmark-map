@@ -1,5 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Municipalities from './Municipalities'
+import Regions, { RegionType } from '../regions'
+import { MunicipalityType } from './data'
+import { useState } from 'react'
 
 const mockMunicipalityData: { id: string; average: number }[] = [
   {
@@ -207,6 +210,87 @@ WithCustomizeMunicipalities.args = {
   style: defaultStyle
 }
 
+const MunicipalitiesInRegionsTemplate: ComponentStory<typeof Municipalities> = (args) => {
+  const [selectedRegion, setSelectedRegion] = useState<RegionType | null>(null)
+
+  const regionViewboxes = {
+    nordjylland: {
+      top: -500,
+      width: 6000,
+      height: 6000
+    },
+    midtjylland: {
+      top: 3000,
+      width: 6300,
+      height: 6000
+    },
+    syddanmark: {
+      top: 6300,
+      width: 6500,
+      height: 6000
+    },
+    sjælland: {
+      left: 5000,
+      top: 6600,
+      width: 6500,
+      height: 6000
+    },
+    hovedstaden: {
+      left: 8000,
+      top: 5500,
+      width: 4600,
+      height: 4000
+    }
+  }
+
+  const customizeAreas = (municipality: MunicipalityType) => {
+    if (selectedRegion?.id === municipality.region.id) {
+      return {
+        style: {
+          fill: 'red'
+        }
+      }
+    } else {
+      return {
+        style: {
+          fill: 'transparent'
+        }
+      }
+    }
+  }
+
+  if (!selectedRegion) {
+    return (
+      <Regions
+        style={{
+          backgroundColor: '#f0f0f0',
+          ...defaultStyle
+        }}
+        onClick={(region) => setSelectedRegion(region)}
+      />
+    )
+  }
+
+  return (
+    <div style={{ backgroundColor: '#f0f0f0', ...defaultStyle }}>
+      <button onClick={() => setSelectedRegion(null)}>Back</button>
+      <Municipalities
+        customizeAreas={customizeAreas}
+        // @ts-ignore - the keys have been manually verified to correspond to the entries in region
+        viewBox={regionViewboxes[selectedRegion.name]}
+        filterAreas={(municipality) => municipality.region.id === selectedRegion.id}
+        bornholmAltPostition
+        {...args}
+      />
+    </div>
+  )
+}
+
+export const WithHighlightedRegions = MunicipalitiesInRegionsTemplate.bind({})
+WithHighlightedRegions.args = {
+  onClick: undefined
+}
+
 export const WithCustomTooltip = Template.bind({})
 WithCustomTooltip.args = {
   customizeAreas: (municipality) => {
@@ -274,5 +358,11 @@ Clickable.args = {
   hoverable: false,
   clickable: true,
   showTooltip: false,
+  style: defaultStyle
+}
+
+export const WithFilterAreas = Template.bind({})
+WithFilterAreas.args = {
+  filterAreas: (municipality) => !(municipality.region.name === 'hovedstaden'),
   style: defaultStyle
 }

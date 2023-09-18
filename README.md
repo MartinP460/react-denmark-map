@@ -1,6 +1,6 @@
 # react-denmark-map
 
-Customizable map of Denmark with support for municipalities, regions, islands, and a full map with no borders or subsequent areas.
+Customizable map of Denmark with support for municipalities, constituencies, regions, islands, and a full map with no borders or subsequent areas.
 
 Try it for yourself - [demo](https://react-denmark-map-demo.vercel.app/).
 
@@ -273,24 +273,30 @@ React Denmark Map exports several components, each being a map of Denmark with d
 
 ### Props
 
-| Prop             | Description                                                                        | Type                                                                          | Default |
-| ---------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------- |
-| `className`      | The `className` applied directly to the `<svg>` element.                           | string                                                                        | ""      |
-| `style`          | The style object applied directly to the `<svg>` element.                          | CSSProperties<sup>\*</sup>                                                    | {}      |
-| `color`          | The default color of each municipality.                                            | CSSProperties["fill"]                                                         | #ccc    |
-| `clickable`      | Whether the clickable styles should be applied to the `<path>` element (the area). | boolean                                                                       | false   |
-| `hoverable`      | Whether the hoverable styles should be applied to the `<path>` element (the area). | boolean                                                                       | true    |
-| `showTooltip`    | Whether the tooltip should be shown.                                               | boolean                                                                       | true    |
-| `customTooltip`  | A function that returns a custom tooltip.                                          | (area: AreaType<sup>\*\*</sup>) => ReactNode                                  |         |
-| `customizeAreas` | A function that is invoked for every area and returns an object to style the area. | (area: AreaType) => { className?: string, style? CSSProperties } \| undefined |         |
-| `onClick`        | A function that is invoked when an area is clicked.                                | (area: AreaType) => void                                                      |         |
-| `onHover`        | A function that is invoked when an area is hovered.                                | (area: AreaType) => void                                                      |         |
-| `onMouseEnter`   | A function that is invoked when the mouse enters an area.                          | (area: AreaType) => void                                                      |         |
-| `onMouseLeave`   | A function that is invoked when the mouse leaves an area.                          | (area: AreaType) => void                                                      |         |
+| Prop                  | Description                                                                                             | Type                                                                          | Default             |
+| --------------------- | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------- |
+| `className`           | The `className` applied directly to the `<svg>` element.                                                | string                                                                        | ""                  |
+| `style`               | The style object applied directly to the `<svg>` element.                                               | CSSProperties<sup>\*</sup>                                                    | {}                  |
+| `viewbox`             | The viewbox applied directly to the `<svg>` element.                                                    | { top?: number, left?: number, width?: number, height?: number }              | { top: 0, left: 0 } |
+| `color`               | The default color of each municipality.                                                                 | CSSProperties["fill"]                                                         | #ccc                |
+| `color`               | The default color of each municipality.                                                                 | CSSProperties["fill"]                                                         | #ccc                |
+| `clickable`           | Whether the clickable styles should be applied to the `<path>` element (the area).                      | boolean                                                                       | false               |
+| `hoverable`           | Whether the hoverable styles should be applied to the `<path>` element (the area).                      | boolean                                                                       | true                |
+| `showTooltip`         | Whether the tooltip should be shown.                                                                    | boolean                                                                       | true                |
+| `bornholmAltPosition` | Whether to render Bornholm closer to Zealand in the `Municipalities` component.\*\*                     | boolean                                                                       | false               |
+| `customTooltip`       | A function that returns a custom tooltip.                                                               | (area: AreaType<sup>\*\*\*</sup>) => ReactNode                                |                     |
+| `customizeAreas`      | A function that is invoked for every area and returns an object to style the area.                      | (area: AreaType) => { className?: string, style? CSSProperties } \| undefined |                     |
+| `filterAreas`         | A function that is invoked for every area that avoids rendering the area if the function returns false. | (area: AreaType) => boolean                                                   |                     |
+| `onClick`             | A function that is invoked when an area is clicked.                                                     | (area: AreaType) => void                                                      |                     |
+| `onHover`             | A function that is invoked when an area is hovered.                                                     | (area: AreaType) => void                                                      |                     |
+| `onMouseEnter`        | A function that is invoked when the mouse enters an area.                                               | (area: AreaType) => void                                                      |                     |
+| `onMouseLeave`        | A function that is invoked when the mouse leaves an area.                                               | (area: AreaType) => void                                                      |                     |
 
 \*: CSSProperties refers to the object provided to the style attribute in React. Fields in this object are denoted as CSSProperties["property"].
 
-\*\*: AreaType is one of the four types corresponding to the component used (see "Types" below).
+\*\*: It will be out of the viewbox when first rendered so you need to manually set the viewbox to render it. See example for use case.
+
+\*\*\*: AreaType is one of the five types corresponding to the component used (see "Types" below).
 
 ### Types
 
@@ -304,19 +310,21 @@ type AreaType = {
   display_name: string // the local name of the area capitalized (e.g. 'Høje Taastrup')
   d: string // the path of the area applied to the <path> element
   code: string // the municipality or region code (e.g. 482 or 1083)
-  en_term: string // the term used to describe the area in English (i.e. jyllland = jutland)
+  en_term: string // the term used to describe the area in English (e.g. jyllland = jutland)
+  region: RegionType // the region that a municipality is located in (e.g. fanø -> syddanmark)
+  altD?: string // a possible alternative position for the area in the map (only Bornholm)
 }
 ```
 
 The types corresponding to each component are:
 
-| Component                    | Name of exported type | Included in type                                |
-| ---------------------------- | --------------------- | ----------------------------------------------- |
-| `Municipalities`             | MunicipalityType      | { id, name, en_name, display_name, d, code }    |
-| `Constituencies`<sup>\*<sup> | ConstituencyType      | { id, name, en_name, display_name, d }          |
-| `Regions`                    | RegionType            | { id, name, en_name, display_name, d, code }    |
-| `Islands`                    | IslandType            | { id, name, en_name, display_name, d, en_term } |
-| `Denmark`                    | DenmarkType           | { id, name, en_name, display_name, d, en_term } |
+| Component                    | Name of exported type | Included in type                                           |
+| ---------------------------- | --------------------- | ---------------------------------------------------------- |
+| `Municipalities`             | MunicipalityType      | { id, name, en_name, display_name, d, code, region, altD } |
+| `Constituencies`<sup>\*<sup> | ConstituencyType      | { id, name, en_name, display_name, d }                     |
+| `Regions`                    | RegionType            | { id, name, en_name, display_name, d, code }               |
+| `Islands`                    | IslandType            | { id, name, en_name, display_name, d, en_term }            |
+| `Denmark`                    | DenmarkType           | { id, name, en_name, display_name, d, en_term }            |
 
 \*: When filtering using any of the strings in the ConstituencyType be aware that the constituencies (danish: "storkredse"), e.g. "sydjyllands storkreds", have the word "storkreds" omitted in the properties `id`, `name` and `en_name`. Thus, "sydjyllands storkreds" is just "sydjyllands" and so on.
 
