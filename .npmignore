@@ -5,3 +5,4 @@ tsconfig.json
 *.config.js
 *.test.tsx
 *.stories.tsx
+CHANGELOG.md
