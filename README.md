@@ -279,11 +279,12 @@ React Denmark Map exports several components, each being a map of Denmark with d
 | `style`               | The style object applied directly to the `<svg>` element.                                               | CSSProperties<sup>\*</sup>                                                    | {}                  |
 | `viewbox`             | The viewbox applied directly to the `<svg>` element.                                                    | { top?: number, left?: number, width?: number, height?: number }              | { top: 0, left: 0 } |
 | `color`               | The default color of each municipality.                                                                 | CSSProperties["fill"]                                                         | #ccc                |
-| `color`               | The default color of each municipality.                                                                 | CSSProperties["fill"]                                                         | #ccc                |
 | `clickable`           | Whether the clickable styles should be applied to the `<path>` element (the area).                      | boolean                                                                       | false               |
 | `hoverable`           | Whether the hoverable styles should be applied to the `<path>` element (the area).                      | boolean                                                                       | true                |
 | `showTooltip`         | Whether the tooltip should be shown.                                                                    | boolean                                                                       | true                |
 | `bornholmAltPosition` | Whether to render Bornholm closer to Zealand in the `Municipalities` component.\*\*                     | boolean                                                                       | false               |
+| `laesoeAltPosition`   | Whether to render Læsø slightly closer to Jylland in the `Municipalities` component.                    | boolean                                                                       | false               |
+| `anholtAltPosition`   | Whether to render Bornholm closer to Zealand in the `Municipalities` component.                         | boolean                                                                       | false               |
 | `customTooltip`       | A function that returns a custom tooltip.                                                               | (area: AreaType<sup>\*\*\*</sup>) => ReactNode                                |                     |
 | `customizeAreas`      | A function that is invoked for every area and returns an object to style the area.                      | (area: AreaType) => { className?: string, style? CSSProperties } \| undefined |                     |
 | `filterAreas`         | A function that is invoked for every area that avoids rendering the area if the function returns false. | (area: AreaType) => boolean                                                   |                     |
@@ -312,7 +313,7 @@ type AreaType = {
   code: string // the municipality or region code (e.g. 482 or 1083)
   en_term: string // the term used to describe the area in English (e.g. jyllland = jutland)
   region: RegionType // the region that a municipality is located in (e.g. fanø -> syddanmark)
-  altD?: string // a possible alternative position for the area in the map (only Bornholm)
+  altD?: string // a possible alternative path for the area in the map
 }
 ```
 
