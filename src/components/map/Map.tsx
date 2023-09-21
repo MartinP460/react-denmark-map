@@ -27,6 +27,8 @@ export interface MapProps<Type extends Area> {
   clickable?: boolean
   hoverable?: boolean
   bornholmAltPostition?: boolean
+  laesoeAltPosition?: boolean
+  anholtAltPosition?: boolean
   customTooltip?: (area: Type) => ReactNode
   onClick?: (area: Type) => void
   onHover?: (area: Type) => void
@@ -94,6 +96,8 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
       clickable,
       hoverable,
       bornholmAltPostition,
+      laesoeAltPosition,
+      anholtAltPosition,
       customizeAreas,
       onClick,
       onHover,
@@ -115,7 +119,12 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
         ${hoverable ? 'react-denmark-map-hoverable ' : ''}
       `
 
-      const draw = bornholmAltPostition && area.altD ? area.altD : area.d
+      let shouldUseAltPosition =
+        (area.name === 'bornholm' && bornholmAltPostition) ||
+        (area.name === 'læsø' && laesoeAltPosition) ||
+        (area.name === 'norddjurs' && anholtAltPosition)
+
+      const draw = shouldUseAltPosition && area.altD ? area.altD : area.d
 
       return (
         <path

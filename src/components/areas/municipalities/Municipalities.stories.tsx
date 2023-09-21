@@ -215,8 +215,9 @@ const MunicipalitiesInRegionsTemplate: ComponentStory<typeof Municipalities> = (
 
   const regionViewboxes = {
     nordjylland: {
+      left: 200,
       top: -500,
-      width: 6000,
+      width: 6500,
       height: 6000
     },
     midtjylland: {
@@ -280,6 +281,8 @@ const MunicipalitiesInRegionsTemplate: ComponentStory<typeof Municipalities> = (
         viewBox={regionViewboxes[selectedRegion.name]}
         filterAreas={(municipality) => municipality.region.id === selectedRegion.id}
         bornholmAltPostition
+        anholtAltPosition
+        laesoeAltPosition
         {...args}
       />
     </div>
