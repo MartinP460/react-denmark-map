@@ -29,6 +29,7 @@ Steps to reproduce the behavior:
 4. See error
 
 ### Specifications
+
  - Browser: [e.g. chrome, safari]
  - `react-denmark-map` version: [e.g. 22]
 
