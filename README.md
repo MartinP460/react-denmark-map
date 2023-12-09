@@ -339,4 +339,4 @@ React Denmark Map is licensed under the [MIT license](https://github.com/MartinP
 
 ## Contributing
 
-Contributing is always appreciated. Fork the project and open a pull request. Please provide a relevant description and I will try to accomodate your request as best as possible.
+Contributions are really appreciated! Read [CONTRIBUTING.md](https://github.com/MartinP460/react-denmark-map/blob/main/CHANGELOG.md) for more information.
