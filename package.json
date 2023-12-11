@@ -3,12 +3,14 @@
   "version": "1.3.1",
   "description": "Customizable plug-and-play map of Denmark for visual presentation.",
   "scripts": {
-    "test": "jest --watchAll",
-    "rollup": "rollup -c --bundleConfigAsCjs",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build": "rollup -c --bundleConfigAsCjs",
+    "format": "eslint . --fix",
     "lint": "eslint .",
-    "format": "eslint . --fix"
+    "prepare": "husky install",
+    "storybook": "storybook dev -p 6006",
+    "test:build": "rm -rf ./dist && rollup -c --bundleConfigAsCjs && rm -rf ./dist",
+    "test:unit:watch": "jest --watch",
+    "test:unit": "jest"
   },
   "author": "Martin Polley",
   "license": "MIT",
@@ -70,7 +72,8 @@
     "rollup-plugin-postcss": "^4.0.2",
     "storybook": "^7.6.4",
     "tslib": "^2.6.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "husky": "^8.0.0"
   },
   "peerDependencies": {
     "react": "17.x || 18.x",
