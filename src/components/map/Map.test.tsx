@@ -1,6 +1,7 @@
 import { fireEvent, render } from '@testing-library/react'
 // the municipalities component is used to test the generic map component
 import Municipalities from '../areas/municipalities/Municipalities'
+import { MunicipalityType } from '../areas/municipalities'
 
 describe('Map', () => {
   it('should render successfully', () => {
@@ -18,7 +19,7 @@ describe('Map', () => {
   it('should render with the given style', () => {
     const { container } = render(<Municipalities style={{ backgroundColor: 'red' }} />)
 
-    // @ts-ignore
+    // @ts-expect-error - the style property is not defined on the HTMLElement type
     const style = container.querySelector('#react-denmark-map-svg')?.style.backgroundColor
 
     expect(style).toBe('red')
@@ -27,7 +28,7 @@ describe('Map', () => {
   it('should render with the given width', () => {
     const { container } = render(<Municipalities style={{ width: '700px' }} />)
 
-    // @ts-ignore
+    // @ts-expect-error - the style property is not defined on the HTMLElement type
     const width = container.querySelector('#react-denmark-map-svg')?.style.width
 
     expect(width).toBe('700px')
@@ -69,7 +70,7 @@ describe('Map', () => {
   })
 
   it('should render the custom tooltip when hovering', () => {
-    const customTooltip = (municipality: any) => <div>{municipality.display_name}</div>
+    const customTooltip = (municipality: MunicipalityType) => <div>{municipality.display_name}</div>
 
     const { container } = render(<Municipalities customTooltip={customTooltip} />)
 
@@ -97,7 +98,6 @@ describe('Map', () => {
 
     expect(onClick).toHaveBeenCalled()
     expect(onClick).toHaveBeenCalledWith(
-      // @ts-ignore
       expect.objectContaining({
         id: 'langeland',
         name: 'langeland',
@@ -120,7 +120,6 @@ describe('Map', () => {
 
     expect(onHover).toHaveBeenCalled()
     expect(onHover).toHaveBeenCalledWith(
-      // @ts-ignore
       expect.objectContaining({
         id: 'langeland',
         name: 'langeland',
@@ -173,7 +172,6 @@ describe('Map', () => {
 
     expect(onMouseEnter).toHaveBeenCalled()
     expect(onMouseEnter).toHaveBeenCalledWith(
-      // @ts-ignore
       expect.objectContaining({
         id: 'langeland',
         name: 'langeland',
@@ -196,7 +194,6 @@ describe('Map', () => {
 
     expect(onMouseLeave).toHaveBeenCalled()
     expect(onMouseLeave).toHaveBeenCalledWith(
-      // @ts-ignore
       expect.objectContaining({
         id: 'langeland',
         name: 'langeland',
