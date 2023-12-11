@@ -1,4 +1,4 @@
-import { MouseEvent, CSSProperties, ReactNode, useRef } from 'react'
+import { CSSProperties, MouseEvent, ReactNode, useRef } from 'react'
 import Tooltip, { TooltipMethods } from './Tooltip'
 import '../../styles.css'
 

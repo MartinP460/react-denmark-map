@@ -1,12 +1,12 @@
 import {
-  useState,
-  useImperativeHandle,
-  forwardRef,
-  ReactNode,
   CSSProperties,
   MouseEvent,
   MouseEventHandler,
-  Ref
+  ReactNode,
+  Ref,
+  forwardRef,
+  useImperativeHandle,
+  useState
 } from 'react'
 import { Area } from './Map'
 

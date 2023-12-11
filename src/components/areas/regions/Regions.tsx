@@ -1,5 +1,5 @@
 import Map, { MapProps } from '../../map/Map'
-import { regions, RegionType } from './data'
+import { RegionType, regions } from './data'
 
 /**
  * Component displaying a map of Denmark with five regions.

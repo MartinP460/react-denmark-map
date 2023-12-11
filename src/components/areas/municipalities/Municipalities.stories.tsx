@@ -1,4 +1,4 @@
-import { Meta, StoryObj, StoryFn } from '@storybook/react'
+import { Meta, StoryFn, StoryObj } from '@storybook/react'
 import Municipalities from './Municipalities'
 import Regions, { RegionType } from '../regions'
 import { MunicipalityType } from './data'
