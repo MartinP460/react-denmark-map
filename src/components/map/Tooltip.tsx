@@ -1,12 +1,12 @@
 import {
-  useState,
-  useImperativeHandle,
-  forwardRef,
-  ReactNode,
   CSSProperties,
   MouseEvent,
   MouseEventHandler,
-  Ref
+  ReactNode,
+  Ref,
+  forwardRef,
+  useImperativeHandle,
+  useState
 } from 'react'
 import { Area } from './Map'
 
@@ -16,9 +16,15 @@ interface TooltipProps<Type> {
   customTooltip?: (area: Type) => ReactNode
 }
 
+export type TooltipMethods = {
+  handleMouseEnter: (event: MouseEvent<SVGPathElement>) => void
+  handleMouseLeave: () => void
+  handleMouseMove: MouseEventHandler
+}
+
 function Tooltip<Type extends Area>(
   { show, areas, customTooltip }: TooltipProps<Type>,
-  ref: Ref<any>
+  ref: Ref<TooltipMethods | undefined>
 ) {
   const [hoveredArea, setHoveredArea] = useState<Type | null>(null)
   const [tooltipStyle, setTooltipStyle] = useState<CSSProperties>({

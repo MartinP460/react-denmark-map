@@ -1,4 +1,4 @@
-import { Meta, StoryObj, StoryFn } from '@storybook/react'
+import { Meta, StoryFn, StoryObj } from '@storybook/react'
 import Municipalities from './Municipalities'
 import Regions, { RegionType } from '../regions'
 import { MunicipalityType } from './data'
@@ -271,7 +271,7 @@ const MunicipalitiesInRegionsTemplate: StoryFn<typeof Municipalities> = (args) =
       <button onClick={() => setSelectedRegion(null)}>Back</button>
       <Municipalities
         customizeAreas={customizeAreas}
-        // @ts-ignore - the keys have been manually verified to correspond to the entries in region
+        // @ts-expect-error - the keys have been manually verified to correspond to the entries in region
         viewBox={regionViewboxes[selectedRegion.name]}
         filterAreas={(municipality) => municipality.region.id === selectedRegion.id}
         bornholmAltPostition

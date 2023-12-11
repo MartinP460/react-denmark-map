@@ -1,5 +1,5 @@
 import Map, { MapProps } from '../../map/Map'
-import { municipalities, MunicipalityType } from './data'
+import { MunicipalityType, municipalities } from './data'
 
 /**
  * Component displaying a map of Denmark with all 98 municipalities.

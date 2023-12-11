@@ -1,5 +1,5 @@
-import { MouseEvent, CSSProperties, ReactNode, useRef } from 'react'
-import Tooltip from './Tooltip'
+import { CSSProperties, MouseEvent, ReactNode, useRef } from 'react'
+import Tooltip, { TooltipMethods } from './Tooltip'
 import '../../styles.css'
 
 export type Area = {
@@ -52,7 +52,7 @@ const defaultProps: MapProps<Area> = {
 }
 
 export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
-  const tooltip = useRef<any>()
+  const tooltip = useRef<TooltipMethods>()
 
   const handleClick = (event: MouseEvent<SVGPathElement>) => {
     const { onClick } = props
@@ -71,7 +71,7 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
   }
 
   const handleMouseEnter = (event: MouseEvent<SVGPathElement>) => {
-    tooltip.current.handleMouseEnter(event)
+    tooltip?.current?.handleMouseEnter(event)
 
     const { onMouseEnter } = props
     if (!onMouseEnter) return
@@ -81,7 +81,7 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
   }
 
   const handleMouseLeave = (event: MouseEvent<SVGPathElement>) => {
-    tooltip.current.handleMouseLeave(event)
+    tooltip?.current?.handleMouseLeave()
 
     const { onMouseLeave } = props
     if (!onMouseLeave) return
@@ -119,7 +119,7 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
         ${hoverable ? 'react-denmark-map-hoverable ' : ''}
       `
 
-      let shouldUseAltPosition =
+      const shouldUseAltPosition =
         (area.name === 'bornholm' && bornholmAltPostition) ||
         (area.name === 'læsø' && laesoeAltPosition) ||
         (area.name === 'norddjurs' && anholtAltPosition)
@@ -138,7 +138,7 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
           onMouseLeave={handleMouseLeave}
           onClick={onClick && handleClick}
           onMouseOver={onHover && handleHover}
-          onMouseMove={(event) => tooltip.current.handleMouseMove(event)}
+          onMouseMove={(event) => tooltip?.current?.handleMouseMove(event)}
           style={attributes?.style}
           className={attributes?.className ? `${className}${attributes.className}` : className}
         />
