@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryObj, StoryFn } from '@storybook/react'
 import Municipalities from './Municipalities'
 import Regions, { RegionType } from '../regions'
 import { MunicipalityType } from './data'
@@ -164,53 +164,47 @@ const defaultStyle = {
   margin: '0 auto'
 }
 
-export default {
+const meta = {
   title: 'ReactDenmarkMap/Municipalities',
   component: Municipalities,
-  argTypes: {
-    customizeMunicipalities: {
-      description:
-        'A function that is invoked for every municipality and return a custom object or className.'
+  args: {
+    style: defaultStyle
+  }
+} satisfies Meta<typeof Municipalities>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const Default: Story = {}
+
+export const WithCustomStyle: Story = {
+  args: {
+    style: { backgroundColor: 'black', paddingTop: '20px', paddingBottom: '20px', ...defaultStyle },
+    color: 'white'
+  }
+}
+
+export const WithCustomizeMunicipalities: Story = {
+  args: {
+    customizeAreas: (municipality) => {
+      const result = mockMunicipalityData.find((item) => item.id === municipality.name)
+
+      if (!result) return
+
+      if (result.average > 6) {
+        return {
+          style: { fill: 'green' }
+        }
+      } else {
+        return {
+          style: { fill: 'red' }
+        }
+      }
     }
   }
-} as ComponentMeta<typeof Municipalities>
-
-const Template: ComponentStory<typeof Municipalities> = (args) => <Municipalities {...args} />
-
-export const Default = Template.bind({})
-Default.args = {
-  onClick: undefined, // for whatever reason, Storybook automatically applies the onClick prop
-  style: defaultStyle
 }
 
-export const WithCustomStyle = Template.bind({})
-WithCustomStyle.args = {
-  style: { backgroundColor: 'black', paddingTop: '20px', paddingBottom: '20px', ...defaultStyle },
-  color: 'white'
-}
-
-export const WithCustomizeMunicipalities = Template.bind({})
-WithCustomizeMunicipalities.args = {
-  customizeAreas: (municipality) => {
-    const result = mockMunicipalityData.find((item) => item.id === municipality.name)
-
-    if (!result) return
-
-    if (result.average > 6) {
-      return {
-        style: { fill: 'green' }
-      }
-    } else {
-      return {
-        style: { fill: 'red' }
-      }
-    }
-  },
-  onClick: undefined,
-  style: defaultStyle
-}
-
-const MunicipalitiesInRegionsTemplate: ComponentStory<typeof Municipalities> = (args) => {
+const MunicipalitiesInRegionsTemplate: StoryFn<typeof Municipalities> = (args) => {
   const [selectedRegion, setSelectedRegion] = useState<RegionType | null>(null)
 
   const regionViewboxes = {
@@ -290,82 +284,74 @@ const MunicipalitiesInRegionsTemplate: ComponentStory<typeof Municipalities> = (
 }
 
 export const WithHighlightedRegions = MunicipalitiesInRegionsTemplate.bind({})
-WithHighlightedRegions.args = {
-  onClick: undefined
-}
 
-export const WithCustomTooltip = Template.bind({})
-WithCustomTooltip.args = {
-  customizeAreas: (municipality) => {
-    const result = mockMunicipalityData.find((item) => item.id === municipality.name)
+export const WithCustomTooltip: Story = {
+  args: {
+    customizeAreas: (municipality) => {
+      const result = mockMunicipalityData.find((item) => item.id === municipality.name)
 
-    if (!result) return
+      if (!result) return
 
-    return {
-      style: {
-        fill: '#17407a'
+      return {
+        style: {
+          fill: '#17407a'
+        }
       }
+    },
+    customTooltip: (municipality) => {
+      const result = mockMunicipalityData.find((item) => item.id === municipality.name)
+
+      return (
+        <div
+          style={{
+            color: 'white',
+            backgroundColor: '#101e2b',
+            borderRadius: '4px',
+            boxShadow: '0 0 8px rgba(0, 0, 0, 0.2)',
+            padding: '6px 12px'
+          }}
+        >
+          <p style={{ fontWeight: 'bold', margin: '0px' }}>{municipality.display_name}</p>
+          <p style={{ margin: '2px 0 0' }}>Average: {result?.average ? result.average : 'N/A'}</p>
+        </div>
+      )
     }
-  },
-  customTooltip: (municipality) => {
-    const result = mockMunicipalityData.find((item) => item.id === municipality.name)
-
-    return (
-      <div
-        style={{
-          color: 'white',
-          backgroundColor: '#101e2b',
-          borderRadius: '4px',
-          boxShadow: '0 0 8px rgba(0, 0, 0, 0.2)',
-          padding: '6px 12px'
-        }}
-      >
-        <p style={{ fontWeight: 'bold', margin: '0px' }}>{municipality.display_name}</p>
-        <p style={{ margin: '2px 0 0' }}>Average: {result?.average ? result.average : 'N/A'}</p>
-      </div>
-    )
-  },
-  onClick: undefined,
-  style: defaultStyle
+  }
 }
 
-export const WithMouseEvents = Template.bind({})
-WithMouseEvents.args = {
-  onMouseEnter: (municipality) => {
-    console.log('Mouse entered: ', municipality)
-  },
-  onMouseLeave: (municipality) => {
-    console.log('Mouse left: ', municipality)
-  },
-  onClick: undefined,
-  style: defaultStyle
+export const WithMouseEvents: Story = {
+  args: {
+    onMouseEnter: (municipality) => {
+      console.log('Mouse entered: ', municipality)
+    },
+    onMouseLeave: (municipality) => {
+      console.log('Mouse left: ', municipality)
+    }
+  }
 }
 
-export const WithoutTooltip = Template.bind({})
-WithoutTooltip.args = {
-  showTooltip: false,
-  onClick: undefined,
-  style: defaultStyle
+export const WithoutTooltip: Story = {
+  args: {
+    showTooltip: false
+  }
 }
 
-export const NonHoverable = Template.bind({})
-NonHoverable.args = {
-  hoverable: false,
-  showTooltip: false,
-  onClick: undefined,
-  style: defaultStyle
+export const NonHoverable: Story = {
+  args: {
+    hoverable: false,
+    showTooltip: false
+  }
 }
 
-export const Clickable = Template.bind({})
-Clickable.args = {
-  hoverable: false,
-  clickable: true,
-  showTooltip: false,
-  style: defaultStyle
+export const Clickable: Story = {
+  args: {
+    hoverable: false,
+    clickable: true
+  }
 }
 
-export const WithFilterAreas = Template.bind({})
-WithFilterAreas.args = {
-  filterAreas: (municipality) => !(municipality.region.name === 'hovedstaden'),
-  style: defaultStyle
+export const WithFilterAreas: Story = {
+  args: {
+    filterAreas: (municipality) => !(municipality.region.name === 'hovedstaden')
+  }
 }

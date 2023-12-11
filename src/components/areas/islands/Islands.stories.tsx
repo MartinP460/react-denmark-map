@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import Islands from './Islands'
 
 const defaultStyle = {
@@ -6,33 +6,29 @@ const defaultStyle = {
   margin: '0 auto'
 }
 
-export default {
+const meta = {
   title: 'ReactDenmarkMap/Islands',
   component: Islands,
-  argTypes: {
-    customizeAreas: {
-      description: 'A function that is invoked for every geographical area.'
-    }
+  args: {
+    style: defaultStyle
   }
-} as ComponentMeta<typeof Islands>
+} satisfies Meta<typeof Islands>
 
-const Template: ComponentStory<typeof Islands> = (args) => <Islands {...args} />
+export default meta
+type Story = StoryObj<typeof meta>
 
-export const Default = Template.bind({})
-Default.args = {
-  onClick: undefined,
-  style: defaultStyle
-}
+export const Default: Story = {}
 
-export const WithCustomizeIslands = Template.bind({})
-WithCustomizeIslands.args = {
-  customizeAreas: (island) => {
-    if (island.id === 'sjaelland') {
-      return {
-        style: { fill: 'green' }
+export const WithCustomizeIslands: Story = {
+  args: {
+    customizeAreas: (island) => {
+      if (island.id === 'sjaelland') {
+        return {
+          style: { fill: 'green' }
+        }
       }
-    }
-  },
-  onClick: undefined,
-  style: defaultStyle
+    },
+    onClick: undefined,
+    style: defaultStyle
+  }
 }
