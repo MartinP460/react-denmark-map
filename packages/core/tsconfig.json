@@ -6,7 +6,6 @@
     "moduleResolution": "node",
     "declaration": true,
     "emitDeclarationOnly": true,
-    "sourceMap": true,
     "outDir": "dist",
     "declarationDir": "types",
     "allowSyntheticDefaultImports": true,
