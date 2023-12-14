@@ -19,45 +19,30 @@ There are three ways you can contribute:
 
 [Open an issue](https://github.com/MartinP460/react-denmark-map/issues/new) if you encounter problems getting it running.
 
-The repo consists of a `src` project which is the core package. There are a few useful scripts in the root directory:
+The repo consists of the core package, an ESLint configuration package and the demo app. The core directory is `packages/core`. There are two ways to run scripts - by running them from the root directory and by `cd`-ing into the package and running them from there. Instructions for running scripts are under the `README.md` in each package. The root scripts are:
 
 ```zsh
 npm run format                              /* Formats files using ESLint. */
 npm run lint                                /* Checks formatting of files using ESLint. */
 npm run storybook                           /* Runs storybook (for visual testing). */
-npm run test:unit                           /* Runs unit tests. */
-npm run test:unit:watch                     /* Runs unit tests on watch mode. */
-npm run test:build                          /* Tests that the project can build. */
+npm run test                                /* Runs all tests. */
 ```
 
 There are Git hooks set up that run tests before you push.
 
 ## Folder structure
 
-The tree below should give you an idea of the folder structure.
+Below is a very top-level view of the repository.
 
-```
-src/
-└── components/
-    ├── areas/
-    │   ├── municipalities/
-    │   │   ├── Municipalities.stories.tsx   /* Storybook component for a particular map display. */
-    │   │   ├── Constituencies.tsx           /* Primary component rendering the map display. */
-    │   │   ├── data.ts                      /* The SVG data for rendering the particular map. */
-    │   │   └── index.ts                     /* Default export of the component. */
-    │   ├── denmark/
-    │   ├── islands/
-    │   ├── constituencies/
-    │   └── regions/
-    └── map/
-        ├── Map.test.tsx                     /* Unit tests for the `Map` component. */
-        ├── Map.tsx                          /* The underlying map component rendered by each map display. */
-        └── Tooltip.tsx                      /* The tooltip for the `Map`` component. */
+```zsh
+apps/
+└── demo                                    /* Demo Next.js app. */
+packages/
+├── eslint-config-custom                    /* Shared ESLint configuration. */
+└── core                                    /* The core react-denmark-map components. */
 ```
 
-The directories in `areas` contain similar files and are used to render each display/version of the map of Denmark.
-
-You should be able to get a good idea of the code by just exploring it.
+To be clear, the components contained in the actual NPM package are in the `packages/core`.
 
 ## Workflow
 
@@ -71,7 +56,9 @@ There is no formal convention on commits but try to keep your commits small and 
 
 ### Testing
 
-When making changes, you should make sure that the change works visually (if it's a visual change). You can use Storybook to do this (see [Running locally](#running-locally)).
+In terms of testing, the core components in `packages/core` are the ones that need testing (visually and with unit tests). There's no need to write tests for the demo app.
+
+When making changes in that package, you should make sure that the change works visually (if it's a visual change). You can use Storybook to do this (see [Running locally](#running-locally)).
 
 Unit tests are written for the `Map` component. If you're adding a new prop or modifying an existing, make sure to add test(s) to verify that it works as intended.
 
