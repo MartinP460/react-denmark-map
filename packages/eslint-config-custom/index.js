@@ -7,7 +7,8 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended'
+    'plugin:react/recommended',
+    'next/core-web-vitals'
   ],
   overrides: [
     {
@@ -32,7 +33,7 @@ module.exports = {
     'sort-imports': [
       'error',
       {
-        ignoreDeclarationSort: true,
+        ignoreDeclarationSort: true
       }
     ]
   },
