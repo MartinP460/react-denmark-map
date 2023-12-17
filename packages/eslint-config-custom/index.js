@@ -35,7 +35,8 @@ module.exports = {
       {
         ignoreDeclarationSort: true
       }
-    ]
+    ],
+    '@next/next/no-html-link-for-pages': 'off'
   },
   settings: {
     react: {
