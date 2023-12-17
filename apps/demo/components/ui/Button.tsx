@@ -16,7 +16,10 @@ const variants = {
 export default function Button({ variant = 'fill', link, href, children }: ButtonProps) {
   if (link) {
     return (
-      <Link href={href ?? ''} className={`py-2 px-5 rounded border-2 ${variants[variant]}`}>
+      <Link
+        href={href ?? ''}
+        className={`py-2 px-5 rounded border-2 shadow-lg ${variants[variant]}`}
+      >
         {children}
       </Link>
     )
