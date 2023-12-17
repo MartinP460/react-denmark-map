@@ -10,10 +10,14 @@ export default function Home() {
       <h1 className="text-5xl">React Denmark Map</h1>
       <h5 className="mt-4">Customizable plug-and-play map of Denmark for visual representation.</h5>
       <div className="flex gap-4 mt-8">
-        <Button variant="fill" href="/demo" link>
+        <Button variant="fill" href="/demo" className="shadow-lg">
           Demo
         </Button>
-        <Button variant="outline" href="https://github.com/MartinP460/react-denmark-map" link>
+        <Button
+          variant="outline"
+          href="https://github.com/MartinP460/react-denmark-map"
+          className="shadow-lg"
+        >
           Docs
         </Button>
       </div>

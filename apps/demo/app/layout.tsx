@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Navbar from '@/components/ui/Navbar'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -14,6 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={inter.className + ' min-h-screen max-w-screen-2xl mx-auto bg-gray-100'}>
+        <Navbar />
         {children}
       </body>
     </html>
