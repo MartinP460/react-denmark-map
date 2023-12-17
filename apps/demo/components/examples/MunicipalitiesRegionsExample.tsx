@@ -57,12 +57,12 @@ export default function MunicipalitiesRegionsExample() {
           viewBox={regionViewboxes[selectedRegion.name]}
           filterAreas={(municipality) => municipality.region.id === selectedRegion.id}
           bornholmAltPostition
-          className="mt-4 md:mt-20 p-2 sm:p-8 md:w-[750px] mx-auto"
+          className="p-2 sm:p-8 md:w-[750px] mx-auto"
         />
       ) : (
         <Regions
           onClick={(region) => setSelectedRegion(region)}
-          className="mt-4 md:mt-20 p-2 sm:p-8 md:w-[750px] mx-auto"
+          className="p-2 sm:p-8 md:w-[750px] mx-auto"
         />
       )}
     </div>

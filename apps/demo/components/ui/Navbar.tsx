@@ -8,7 +8,7 @@ export default function Navbar() {
 
   return (
     <header className="bg-white md:bg-transparent">
-      <nav className="px-12 py-4 flex justify-between h-fit items-center">
+      <nav className="px-4 md:px-12 py-3 md:py-4 flex justify-between h-fit items-center">
         <a href="/">Home</a>
         <ul className="flex gap-4">
           {pathname !== '/demo' && (

@@ -44,7 +44,7 @@ export default function Home() {
       <div className="xl:col-span-2">
         <Tabs tabs={TABS} activeTab={activeTab} onSelect={(i) => setActiveTab(i)} />
       </div>
-      <div className="xl:order-2 xl:mt-4 col-span-3">{getMap()}</div>
+      <div className="xl:order-2 col-span-3 mt-4 md:mt-4 -z-10">{getMap()}</div>
       <Description activeTab={activeTab} />
     </main>
   )

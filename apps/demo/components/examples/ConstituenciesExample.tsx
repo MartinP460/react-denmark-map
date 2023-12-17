@@ -10,9 +10,6 @@ export default function ConstituenciesExample() {
   }
 
   return (
-    <Constituencies
-      customizeAreas={customizeAreas}
-      className="mt-4 md:mt-20 p-2 sm:p-8 md:w-[750px] mx-auto"
-    />
+    <Constituencies customizeAreas={customizeAreas} className="p-2 sm:p-8 md:w-[750px] mx-auto" />
   )
 }
