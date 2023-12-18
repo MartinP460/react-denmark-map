@@ -25,7 +25,7 @@ export default function Tabs({ tabs, activeTab, onSelect }: TabsProps) {
   })
 
   return (
-    <div className="w-full md:w-fit md:absolute md:top-4 md:left-10">
+    <div className="w-full md:w-fit md:absolute md:top-4 md:left-10 z-10">
       <p className="text-xs uppercase text-gray-500 m-2 hidden md:block">Select a component</p>
       <nav className="md:w-fit w-full overflow-x-scroll xl:overflow-x-scroll flex shadow-md border border-gray-100 md:max-w-md rounded-lg">
         {tab}
