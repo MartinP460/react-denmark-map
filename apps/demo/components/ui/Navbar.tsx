@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import Button from '@/components/ui/Button'
+import { IconExternalLink, IconPhoto } from '@tabler/icons-react'
 
 export default function Navbar() {
   const pathname = usePathname()
@@ -13,7 +14,7 @@ export default function Navbar() {
         <ul className="flex gap-4">
           {pathname !== '/demo' && (
             <li>
-              <Button variant="fill" size="sm" href="/demo">
+              <Button variant="fill" size="sm" href="/demo" Icon={IconPhoto}>
                 Demo
               </Button>
             </li>
@@ -23,6 +24,7 @@ export default function Navbar() {
               variant="outline"
               size="sm"
               href="https://github.com/MartinP460/react-denmark-map"
+              Icon={IconExternalLink}
             >
               Docs
             </Button>

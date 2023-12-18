@@ -1,6 +1,7 @@
 'use client'
 
 import { CopyBlock, dracula } from 'react-code-blocks'
+import { IconExternalLink, IconPhoto } from '@tabler/icons-react'
 import Button from '@/components/ui/Button'
 import Pattern from '@/components/ui/Pattern'
 
@@ -17,13 +18,14 @@ export default function Home() {
         customStyle={{ width: '50%', marginTop: '1rem', padding: '0.7rem', fontSize: '14px' }}
       />
       <div className="flex gap-4 mt-8">
-        <Button variant="fill" href="/demo" className="shadow-lg">
+        <Button variant="fill" href="/demo" className="shadow-lg" Icon={IconPhoto}>
           Demo
         </Button>
         <Button
           variant="outline"
           href="https://github.com/MartinP460/react-denmark-map"
           className="shadow-lg"
+          Icon={IconExternalLink}
         >
           Docs
         </Button>

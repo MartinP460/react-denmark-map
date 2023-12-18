@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { CopyBlock, dracula } from 'react-code-blocks'
+import { IconMinus, IconPlus } from '@tabler/icons-react'
 import { descriptions } from '../../utils/descriptions'
 
 export default function Description({ activeTab }: { activeTab: number }) {
@@ -12,9 +13,9 @@ export default function Description({ activeTab }: { activeTab: number }) {
       <button
         name="Toggle code"
         onClick={() => setCode(!code)}
-        className="border-t-2 border-x-2 rounded-t px-2 py-1 border-[#282a36] text-gray-800 bg-gray-100 hover:bg-gray-200 hover:text-gray-900 text-sm self-end"
+        className="border-t-2 border-x-2 rounded-t px-1.5 py-1 border-[#282a36] text-gray-800 bg-gray-100 hover:bg-gray-200 hover:text-gray-900 text-sm self-end"
       >
-        {code ? '❌' : '➕'}
+        {code ? <IconMinus /> : <IconPlus />}
       </button>
       <div className="text-sm">
         {code ? (
