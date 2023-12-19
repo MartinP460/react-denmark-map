@@ -7,15 +7,17 @@ import Pattern from '@/components/ui/Pattern'
 
 export default function Home() {
   return (
-    <main className="flex flex-col mt-36 relative max-w-screen-lg mx-auto">
-      <Pattern className="absolute -left-20 -top-20" />
-      <h1 className="text-5xl">React Denmark Map</h1>
+    <main className="flex flex-col relative xl:max-w-screen-lg max-w-screen-md container mx-auto px-4 md:px-12 h-[75vh] md:h-[70vh] justify-center">
+      <div className="relative">
+        <Pattern className="absolute -left-20 -top-20" />
+      </div>
+      <h1 className="text-3xl sm:text-5xl">React Denmark Map</h1>
       <h5 className="mt-4">Customizable plug-and-play map of Denmark for visual representation.</h5>
       <CopyBlock
         text="npm install react-denmark-map"
         language="txt"
         theme={dracula}
-        customStyle={{ width: '50%', marginTop: '1rem', padding: '0.7rem', fontSize: '14px' }}
+        customStyle={{ width: '325px', marginTop: '1rem', padding: '0.7rem', fontSize: '14px' }}
       />
       <div className="flex gap-4 mt-8">
         <Button variant="fill" href="/demo" className="shadow-lg" Icon={IconPhoto}>
