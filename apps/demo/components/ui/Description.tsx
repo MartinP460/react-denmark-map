@@ -13,7 +13,7 @@ export default function Description({ activeTab }: { activeTab: number }) {
       <button
         name="Toggle code"
         onClick={() => setCode(!code)}
-        className="border-t-2 border-x-2 rounded-t px-1.5 py-1 border-[#282a36] text-gray-800 bg-gray-100 hover:bg-gray-200 hover:text-gray-900 text-sm self-end"
+        className="border-t-2 border-x-2 rounded-t px-1.5 py-1 border-[#282a36] text-gray-800 bg-gray-100 hover:bg-gray-200 hover:text-gray-900 text-sm self-end transition-colors"
       >
         {code ? <IconMinus /> : <IconPlus />}
       </button>

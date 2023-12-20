@@ -25,6 +25,7 @@ export default function Navbar() {
               size="sm"
               href="https://github.com/MartinP460/react-denmark-map"
               Icon={IconExternalLink}
+              externalLink
             >
               Docs
             </Button>
@@ -34,6 +35,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               href="https://github.com/MartinP460/react-denmark-map"
+              className="hover:scale-105 transition-all duration-150"
             >
               <svg
                 className="block h-8 w-8 fill-[#24292f] hover:fill-gray-600"

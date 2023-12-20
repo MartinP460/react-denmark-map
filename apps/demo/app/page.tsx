@@ -28,6 +28,7 @@ export default function Home() {
           href="https://github.com/MartinP460/react-denmark-map"
           className="shadow-lg"
           Icon={IconExternalLink}
+          externalLink
         >
           Docs
         </Button>

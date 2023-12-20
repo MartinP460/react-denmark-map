@@ -7,6 +7,7 @@ type ButtonProps = {
   variant: 'fill' | 'outline'
   size?: 'sm' | 'md'
   href?: string
+  externalLink?: boolean
   className?: string
   Icon?: (props: TablerIconsProps) => JSX.Element
   children: ReactNode
@@ -22,6 +23,7 @@ export default function Button({
   variant,
   size = 'md',
   href,
+  externalLink,
   Icon,
   className,
   children
@@ -29,7 +31,7 @@ export default function Button({
   const buttonSize = size === 'sm' ? 'py-2 px-4 text-sm' : 'py-2 px-5 text-base'
 
   const buttonClassName = clsx(
-    'rounded border-2 block flex items-center gap-2',
+    'rounded border-2 block flex items-center gap-2 hover:scale-[1.03] transition-all duration-150',
     buttonSize,
     variants[variant],
     className
@@ -37,7 +39,12 @@ export default function Button({
 
   if (href) {
     return (
-      <Link href={href ?? ''} className={buttonClassName}>
+      <Link
+        href={href ?? ''}
+        className={buttonClassName}
+        target={externalLink ? '_blank' : undefined}
+        rel={externalLink ? 'noopener noreferrer' : undefined}
+      >
         {children}
         {Icon && <Icon size={size === 'sm' ? 18 : 20} />}
       </Link>

@@ -16,8 +16,8 @@ export default function Tabs({ tabs, activeTab, onSelect }: TabsProps) {
         onClick={() => handleClick(i)}
         key={i}
         className={`
-          ${i === activeTab ? '!font-semibold' : ''}
-          ${'py-4 md:py-2 px-4 md:px-6 inline-flex items-center justify-center text-center focus:bg-primary text-black text-sm md:text-base font-light capitalize bg-white md:w-fit'}`}
+          ${i === activeTab ? '!font-semibold bg-gray-100' : 'bg-white hover:bg-gray-50'}
+          ${'py-4 md:py-2 px-4 md:px-6 inline-flex items-center justify-center text-center focus:bg-primary text-black hover:text-[17px] md:text-base font-light capitalize md:w-fit transition-all'}`}
       >
         {tab}
       </button>
@@ -26,7 +26,7 @@ export default function Tabs({ tabs, activeTab, onSelect }: TabsProps) {
 
   return (
     <div className="w-full md:w-fit md:absolute md:top-4 md:left-10 z-10">
-      <p className="text-xs uppercase text-gray-500 m-2 hidden md:block">Select a component</p>
+      <p className="uppercase text-gray-600 m-2 hidden md:block text-xs">Select a component</p>
       <nav className="md:w-fit w-full overflow-x-scroll xl:overflow-x-scroll flex shadow-md border border-gray-100 md:max-w-md rounded-lg">
         {tab}
       </nav>
