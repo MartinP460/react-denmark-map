@@ -30,7 +30,11 @@ export default function Navbar() {
             </Button>
           </li>
           <li className="flex items-center pl-2">
-            <a href="https://github.com/MartinP460/react-denmark-map">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/MartinP460/react-denmark-map"
+            >
               <svg
                 className="block h-8 w-8 fill-[#24292f] hover:fill-gray-600"
                 viewBox="0 0 98 96"
