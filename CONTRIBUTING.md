@@ -24,7 +24,7 @@ The repo consists of the core package, an ESLint configuration package and the d
 ```zsh
 npm run format                              /* Formats files using ESLint. */
 npm run lint                                /* Checks formatting of files using ESLint. */
-npm run storybook                           /* Runs storybook (for visual testing). */
+npm run storybook                           /* Runs storybook (for visual testing of the package). */
 npm run test                                /* Runs all tests. */
 ```
 

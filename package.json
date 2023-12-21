@@ -2,7 +2,7 @@
   "name": "workspace",
   "description": "Workspace for react-denmark-map - a customizable plug-and-play map of Denmark for visual presentation.",
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build --filter=react-denmark-map",
     "lint": "turbo run lint",
     "format": "turbo run format",
     "prepare": "husky install",

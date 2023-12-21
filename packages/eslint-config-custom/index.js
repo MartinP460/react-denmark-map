@@ -7,7 +7,8 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended'
+    'plugin:react/recommended',
+    'next/core-web-vitals'
   ],
   overrides: [
     {
@@ -24,7 +25,7 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'react'],
   rules: {
-    indent: ['error', 2],
+    indent: ['error', 2, { SwitchCase: 1 }],
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
@@ -32,9 +33,10 @@ module.exports = {
     'sort-imports': [
       'error',
       {
-        ignoreDeclarationSort: true,
+        ignoreDeclarationSort: true
       }
-    ]
+    ],
+    '@next/next/no-html-link-for-pages': 'off'
   },
   settings: {
     react: {

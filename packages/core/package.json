@@ -7,10 +7,10 @@
     "format": "eslint . --fix",
     "lint": "eslint .",
     "storybook": "storybook dev -p 6006",
-    "test": "npm run test:build && npm run test:unit",
     "test:build": "rm -rf ./dist && rollup -c --bundleConfigAsCjs && rm -rf ./dist",
     "test:unit:watch": "jest --watch",
-    "test:unit": "jest --silent"
+    "test:unit": "jest --silent",
+    "test": "npm run test:build && npm run test:unit"
   },
   "author": "Martin Polley",
   "license": "MIT",
