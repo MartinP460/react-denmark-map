@@ -7,10 +7,8 @@ const titillium = Titillium_Web({
 
 export default function Logo() {
   return (
-    <>
-      <span className={titillium.className}>
-        React <span className="text-red-700">Denmark</span> Map
-      </span>
-    </>
+    <span className={titillium.className}>
+      React <span className="text-red-700">Denmark</span> Map
+    </span>
   )
 }
