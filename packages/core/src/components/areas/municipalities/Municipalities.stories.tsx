@@ -271,7 +271,6 @@ const MunicipalitiesInRegionsTemplate: StoryFn<typeof Municipalities> = (args) =
       <button onClick={() => setSelectedRegion(null)}>Back</button>
       <Municipalities
         customizeAreas={customizeAreas}
-        // @ts-expect-error - the keys have been manually verified to correspond to the entries in region
         viewBox={regionViewboxes[selectedRegion.name]}
         filterAreas={(municipality) => municipality.region.id === selectedRegion.id}
         bornholmAltPostition
