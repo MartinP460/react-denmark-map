@@ -1,6 +1,7 @@
 import { CSSProperties, MouseEvent, ReactNode, useRef } from 'react'
 import Tooltip, { TooltipMethods } from './Tooltip'
 import '../../styles.css'
+import { RegionType } from '../areas/regions'
 
 export type Area = {
   id: string
@@ -8,7 +9,13 @@ export type Area = {
   en_name: string
   display_name: string
   d: string
+  region?: Omit<RegionType, 'd'>
+  code?: string
   altD?: string
+}
+
+export type AreaType<T extends readonly Area[]> = {
+  [K in keyof T[number]]: T[number][K]
 }
 
 type ViewBox = {
@@ -39,7 +46,7 @@ export interface MapProps<Type extends Area> {
 }
 
 interface PrivateMapProps<Type extends Area> extends MapProps<Type> {
-  areas: Type[]
+  areas: readonly Type[]
   defaultViewBoxWidth: number
   defaultViewBoxHeight: number
 }

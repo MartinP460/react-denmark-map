@@ -53,7 +53,6 @@ export default function MunicipalitiesRegionsExample() {
       {selectedRegion ? (
         <Municipalities
           customizeAreas={customizeAreas}
-          // @ts-expect-error manually verified
           viewBox={regionViewboxes[selectedRegion.name]}
           filterAreas={(municipality) => municipality.region.id === selectedRegion.id}
           bornholmAltPostition

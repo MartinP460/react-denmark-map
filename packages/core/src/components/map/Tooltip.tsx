@@ -12,7 +12,7 @@ import { Area } from './Map'
 
 interface TooltipProps<Type> {
   show: boolean
-  areas: Type[]
+  areas: readonly Type[]
   customTooltip?: (area: Type) => ReactNode
 }
 
