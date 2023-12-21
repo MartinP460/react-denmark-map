@@ -1,16 +1,31 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import Button from '@/components/ui/Button'
 import { IconExternalLink, IconPhoto } from '@tabler/icons-react'
+import Button from '@/components/ui/Button'
+import Logo from '@/components/ui/Logo'
+import clsx from 'clsx'
 
 export default function Navbar() {
   const pathname = usePathname()
 
   return (
     <header className="bg-white md:bg-transparent">
-      <nav className="px-4 md:px-12 py-3 md:py-4 flex justify-between h-fit items-center">
-        <a href="/">Home</a>
+      <nav
+        className={clsx(
+          'px-4 md:px-12 py-3 md:py-4 flex h-fit items-center',
+          pathname === '/' ? 'justify-end sm:justify-between' : 'justify-between'
+        )}
+      >
+        <a
+          href="/"
+          className={clsx(
+            'text-lg hover:text-gray-700 transition-all hover:scale-105',
+            pathname === '/' && 'hidden sm:inline'
+          )}
+        >
+          <Logo />
+        </a>
         <ul className="flex gap-4">
           {pathname !== '/demo' && (
             <li>
