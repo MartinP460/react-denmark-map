@@ -1,7 +1,7 @@
 import { CSSProperties, MouseEvent, ReactNode, useRef } from 'react'
 import Tooltip, { TooltipMethods } from './Tooltip'
-import '../../styles.css'
 import { RegionType } from '../areas/regions'
+import '../../styles.css'
 
 export type Area = {
   id: string
@@ -9,6 +9,7 @@ export type Area = {
   en_name: string
   display_name: string
   d: string
+  en_term?: string
   region?: Omit<RegionType, 'd'>
   code?: string
   altD?: string
