@@ -257,6 +257,35 @@ All props that accept a function as an argument have the same type in that compo
 
 Different components have different types for the area parameter. The `Regions` component, for example, exports a `RegionsType` that can be used in the same way as shown above. See "API - Types" for the full reference of area types.
 
+## Performance
+
+If you want to make sure that each version of the map rerenders as few times as possible to improve performance, make sure to memoize the objects and functions that you pass as props with [`useMemo`](https://react.dev/reference/react/useMemo) and [`useCallback`](https://react.dev/reference/react/useCallback). Each component is only shallowly memoized. Below is an example of memoizing the `customizeAreas` and `style` props.
+
+```jsx
+const App = () => {
+  const [state, setState] = useState(0)
+
+  const style = useMemo(() => ({ color: 'red' }), [])
+
+  const customizeAreas = useCallback(() => {
+    return {
+      style: {
+        fill: 'red'
+      }
+    }
+  }, [])
+
+  return (
+    <>
+      <button onClick={() => setState(state + 1)}></button>
+      <Municipalities customizeAreas={customizeAreas} style={style} />
+    </>
+  )
+}
+```
+
+The result is that the map won't be rerendered when updating the unrelated state.
+
 ## API
 
 ### Components
