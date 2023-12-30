@@ -1,6 +1,7 @@
-import { CSSProperties, MouseEvent, ReactNode, useRef } from 'react'
+import { CSSProperties, MouseEvent, ReactNode, memo, useRef } from 'react'
 import Tooltip, { TooltipMethods } from './Tooltip'
 import { RegionType } from '../areas/regions'
+import { test } from '../../utils'
 import '../../styles.css'
 
 export type Area = {
@@ -59,7 +60,9 @@ const defaultProps: MapProps<Area> = {
   hoverable: true
 }
 
-export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
+function Map<Type extends Area>(props: PrivateMapProps<Type>) {
+  test.rerenders()
+
   const tooltip = useRef<TooltipMethods>()
 
   const handleClick = (event: MouseEvent<SVGPathElement>) => {
@@ -193,3 +196,6 @@ export default function Map<Type extends Area>(props: PrivateMapProps<Type>) {
 }
 
 Map.defaultProps = defaultProps
+
+// @ts-expect-error Default props cause the type to be incorrect. Remove this line when fixed.
+export default memo(Map) as typeof Map
