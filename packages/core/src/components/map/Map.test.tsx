@@ -1,12 +1,48 @@
 import { useCallback, useMemo, useState } from 'react'
 import { fireEvent, render } from '@testing-library/react'
 // the municipalities component is used to test the generic map component
+import Constituencies from '../areas/constituencies/Constituencies'
+import Denmark from '../areas/denmark/Denmark'
+import Islands from '../areas/islands/Islands'
 import Municipalities from '../areas/municipalities/Municipalities'
+import Regions from '../areas/regions/Regions'
 import { MunicipalityType } from '../areas/municipalities'
 import { test } from '../../utils'
 
 describe('Map', () => {
   afterEach(() => jest.restoreAllMocks())
+
+  describe('should render with', () => {
+    it('constituencies', () => {
+      const { container } = render(<Constituencies />)
+      const constituency = container.querySelector('#sydjyllands')
+      expect(constituency).toBeTruthy()
+    })
+
+    it('denmark', () => {
+      const { container } = render(<Denmark />)
+      const denmark = container.querySelector('#danmark')
+      expect(denmark).toBeTruthy()
+    })
+
+    it('islands', () => {
+      const { container } = render(<Islands />)
+      const island = container.querySelector('#fyn')
+      expect(island).toBeTruthy()
+    })
+
+    it('municipalities', () => {
+      const { container } = render(<Municipalities />)
+      const municipality = container.querySelector('#langeland')
+      expect(municipality).toBeTruthy()
+    })
+
+    it('regions', () => {
+      const { container } = render(<Regions />)
+      const region = container.querySelector('#nordjylland')
+      expect(region).toBeTruthy()
+    })
+  })
 
   describe('should rerender', () => {
     it('upon prop update', async () => {
