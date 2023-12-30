@@ -197,5 +197,5 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
 
 Map.defaultProps = defaultProps
 
-// @ts-expect-error Default props cause the type to be incorrect. Remove this line when fixed.
+// @ts-expect-error Default props cause the type to be incorrect. Remove this line when we switch to default parameters.
 export default memo(Map) as typeof Map
