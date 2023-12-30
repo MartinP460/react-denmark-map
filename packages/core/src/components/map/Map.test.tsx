@@ -337,6 +337,37 @@ describe('Map', () => {
       })
     })
 
+    describe('customizeAreas', () => {
+      it('should render given areas with the given style and className', () => {
+        const customizeAreas = (municipality: MunicipalityType) => {
+          if (municipality.name === 'langeland') {
+            return {
+              className: 'red-municipality',
+              style: {
+                fill: 'red'
+              }
+            }
+          }
+        }
+
+        const { container } = render(<Municipalities customizeAreas={customizeAreas} />)
+
+        const municipality = container.querySelector('#langeland')
+        if (!municipality) throw new Error('Municipality not found')
+
+        const differentMunicipality = container.querySelector('#koebenhavn')
+        if (!differentMunicipality) throw new Error('Municipality not found')
+
+        // @ts-expect-error - the style property is not defined on the HTMLElement type
+        expect(municipality.style.fill).toBe('red')
+        expect(municipality.classList).toContain('red-municipality')
+
+        // @ts-expect-error - the style property is not defined on the HTMLElement type
+        expect(differentMunicipality.style.fill).not.toBe('red')
+        expect(differentMunicipality.classList).not.toContain('red-municipality')
+      })
+    })
+
     describe('viewBox', () => {
       it('should render with the given viewbox', () => {
         const { container } = render(
