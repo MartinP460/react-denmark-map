@@ -14,12 +14,14 @@ export default function Home() {
       </div>
       <Logo width="96" />
       <h1 className="text-4xl sm:text-6xl tracking-tight mt-3">react-denmark-map</h1>
-      <h5 className="mt-4">Customizable plug-and-play map of Denmark for visual representation.</h5>
+      <h5 className="mt-4 text-gray-800">
+        Customizable plug-and-play map of Denmark for visual representation.
+      </h5>
       <CopyBlock
         text="npm install react-denmark-map"
         language="txt"
         theme={dracula}
-        customStyle={{ width: '325px', marginTop: '1rem', padding: '0.7rem', fontSize: '14px' }}
+        customStyle={{ width: '325px', marginTop: '2rem', padding: '0.7rem', fontSize: '14px' }}
       />
       <div className="flex gap-4 mt-8">
         <Button variant="fill" href="/demo" className="shadow-lg" Icon={IconPhoto}>

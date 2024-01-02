@@ -68,7 +68,7 @@ export default function Navbar() {
           </li>
         </ul>
       </nav>
-      <div className="h-1 rounded-full mx-12 bg-white md:bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200" />
+      <div className="h-1 rounded-full mx-12 bg-white md:bg-gradient-to-r from-gray-300 via-gray-100 to-gray-300" />
     </header>
   )
 }
