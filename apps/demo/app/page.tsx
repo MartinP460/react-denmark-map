@@ -1,26 +1,19 @@
 'use client'
 
-import { Titillium_Web } from 'next/font/google'
 import { CopyBlock, dracula } from 'react-code-blocks'
 import { IconExternalLink, IconPhoto } from '@tabler/icons-react'
 import Button from '@/components/ui/Button'
 import Pattern from '@/components/ui/Pattern'
 import Logo from '@/components/ui/Logo'
 
-const titillium = Titillium_Web({
-  subsets: ['latin'],
-  weight: ['300']
-})
-
 export default function Home() {
   return (
-    <main className="flex flex-col relative xl:max-w-screen-lg max-w-screen-md container mx-auto px-4 md:px-12 h-[75vh] md:h-[70vh] justify-center">
+    <main className="flex flex-col relative xl:max-w-screen-lg max-w-screen-md container mx-auto px-4 sm:px-8 md:px-12 h-[75vh] md:h-[70vh] justify-center">
       <div className="relative">
-        <Pattern className="absolute w-[410px] h-[410px] -left-20 -top-20 md:w-[510px] md:h-[510px] md:-left-32 md:-top-32" />
+        <Pattern className="absolute w-[410px] h-[410px] -left-20 -top-12 md:w-[510px] md:h-[510px] md:-left-32 md:-top-20" />
       </div>
-      <h1 className={titillium.className + ' text-4xl sm:text-6xl tracking-tight'}>
-        <Logo />
-      </h1>
+      <Logo width="96" />
+      <h1 className="text-4xl sm:text-6xl tracking-tight mt-3">react-denmark-map</h1>
       <h5 className="mt-4">Customizable plug-and-play map of Denmark for visual representation.</h5>
       <CopyBlock
         text="npm install react-denmark-map"

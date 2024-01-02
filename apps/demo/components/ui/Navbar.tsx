@@ -23,8 +23,9 @@ export default function Navbar() {
             'text-lg hover:text-gray-700 transition-all hover:scale-105',
             pathname === '/' && 'hidden sm:inline'
           )}
+          title="Home"
         >
-          <Logo />
+          <Logo width="48" />
         </a>
         <ul className="flex gap-4">
           {pathname !== '/demo' && (
