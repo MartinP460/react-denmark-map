@@ -6,16 +6,9 @@ export default function MunicipalitiesExample() {
 
     if (!result) return
 
-    if (result.population < 40000) {
-      return {
-        style: {
-          fill: 'skyblue'
-        }
-      }
-    }
     return {
       style: {
-        fill: 'royalblue'
+        fill: `rgba(204, 0, 0, ${result.population / 150000})`
       }
     }
   }

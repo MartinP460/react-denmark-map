@@ -4,7 +4,7 @@ export default function ConstituenciesExample() {
   const customizeAreas = (constituency: ConstituencyType) => {
     if (constituency.id === 'fyns') {
       return {
-        style: { fill: 'darkred' }
+        style: { fill: '#c00' }
       }
     }
   }
