@@ -149,6 +149,7 @@ const App = () => {
     <Islands
       customizeAreas={customizeIslands}
       onHover={(island) => ...}
+      hoverable={false}
     />
   )
 }`,
@@ -170,6 +171,7 @@ const App = () => {
     <Islands
       customizeAreas={customizeIslands}
       onHover={(island) => setHoveredIsland(island.id)}
+      hoverable={false}
     />
   )
 }`
