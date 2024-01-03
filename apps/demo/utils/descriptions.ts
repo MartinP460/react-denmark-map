@@ -11,7 +11,7 @@ export const descriptions: Description[] = [
   {
     name: 'Municipalities',
     description: `The Municipality component. 
-      This example displays municipalities with a population over 40,000 with a darker blue, and municipalities with a population under 40,000 with a lighter blue.`,
+      This example displays municipalities and more specifically the population of each. More pronounced colors indicate a higher population.`,
     code: {
       thumbnail: `import { Municipalities } from 'react-denmark-map'
 
@@ -35,16 +35,9 @@ const App = () => {
 
     if (!result) return
 
-    if (result.population < 40000) {
-      return {
-        style: {
-          fill: 'skyblue'
-        }
-      }
-    }
     return {
       style: {
-        fill: 'royalblue'
+        fill: \`rgba(204, 0, 0, \${result.population / 150000})\`
       }
     }
   }
@@ -91,7 +84,7 @@ const App = () => {
     // because it's an abbrevation for, e.g. 'fyns storkreds'
     if (constituency.id === 'fyns') {
       return {
-        style: { fill: 'darkred' }
+        style: { fill: '#c00' }
       }
     }
   }
@@ -144,7 +137,8 @@ const App = () => {
   {
     name: 'Islands',
     description:
-      'The Islands component. In this example, hovering an island sets it to either green, yellow or red.',
+      // eslint-disable-next-line quotes
+      "The Islands component. In this example, hovering an island sets it's color to red.",
     code: {
       thumbnail: `import { Islands } from 'react-denmark-map'
       
@@ -155,6 +149,7 @@ const App = () => {
     <Islands
       customizeAreas={customizeIslands}
       onHover={(island) => ...}
+      hoverable={false}
     />
   )
 }`,
@@ -164,18 +159,10 @@ import { Islands } from 'react-denmark-map'
 const App = () => {
   const [hoveredIsland, setHoveredIsland] = useState(null)
 
-  const customizeIslands = (island) => {
-    const islandColor = {
-      sjaelland: 'red',
-      fyn: 'gold',
-      jylland: 'green'
-    }
-
-    if (island.id === hoveredIsland) {
-      return {
-        style: {
-          fill: islandColor[island.id]
-        }
+  if (island.id === hoveredIsland) {
+    return {
+      style: {
+        fill: '#c00'
       }
     }
   }
@@ -184,6 +171,7 @@ const App = () => {
     <Islands
       customizeAreas={customizeIslands}
       onHover={(island) => setHoveredIsland(island.id)}
+      hoverable={false}
     />
   )
 }`
@@ -282,11 +270,11 @@ const App = () => {
     }
   }
 
-  const customizeAreas = (municipality: MunicipalityType) => {
+  const customizeAreas = (municipality) => {
     if (selectedRegion?.id === municipality.region.id) {
       return {
         style: {
-          fill: 'red'
+          fill: '#c00'
         }
       }
     }

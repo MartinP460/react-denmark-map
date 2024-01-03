@@ -36,7 +36,7 @@ export default function MunicipalitiesRegionsExample() {
 
   const customizeAreas = () => ({
     style: {
-      fill: 'red'
+      fill: '#c00'
     }
   })
 

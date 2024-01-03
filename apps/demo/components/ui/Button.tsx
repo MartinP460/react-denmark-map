@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { MouseEventHandler, ReactNode } from 'react'
 import Link from 'next/link'
 import { TablerIconsProps } from '@tabler/icons-react'
 import clsx from 'clsx'
@@ -9,6 +9,7 @@ type ButtonProps = {
   href?: string
   externalLink?: boolean
   className?: string
+  onClick?: MouseEventHandler<HTMLButtonElement>
   Icon?: (props: TablerIconsProps) => JSX.Element
   children: ReactNode
 }
@@ -24,8 +25,9 @@ export default function Button({
   size = 'md',
   href,
   externalLink,
-  Icon,
   className,
+  Icon,
+  onClick,
   children
 }: ButtonProps) {
   const buttonSize = size === 'sm' ? 'py-2 px-4 text-sm' : 'py-2 px-5 text-base'
@@ -51,5 +53,9 @@ export default function Button({
     )
   }
 
-  return <button className={buttonClassName}>{children}</button>
+  return (
+    <button className={buttonClassName} onClick={onClick}>
+      {children}
+    </button>
+  )
 }

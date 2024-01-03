@@ -1,8 +1,13 @@
-# react-denmark-map
-
-Customizable map of Denmark with support for municipalities, constituencies, regions, islands, and a full map with no borders or subsequent areas.
-
-Try it for yourself - [demo](https://react-denmark-map-demo.vercel.app/).
+<p align="center">
+  <img src="static/logo.svg" width="120px" align="center" alt="React Denmark Map logo" />
+  <h1 align="center">react-denmark-map</h1>
+  <p align="center">
+    Customizable plug-and-play map of Denmark for visual presentation 🗺️
+    <br />
+    <br/>
+    ✨ <a href="https://react-denmark-map-demo.vercel.app/">Demo</a> ✨
+  </p>
+</p>
 
 ## Installation
 
