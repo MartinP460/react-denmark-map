@@ -137,7 +137,8 @@ const App = () => {
   {
     name: 'Islands',
     description:
-      'The Islands component. In this example, hovering an island sets it to either green, yellow or red.',
+      // eslint-disable-next-line quotes
+      "The Islands component. In this example, hovering an island sets it's color to red.",
     code: {
       thumbnail: `import { Islands } from 'react-denmark-map'
       
