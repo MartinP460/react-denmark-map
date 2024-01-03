@@ -5,7 +5,7 @@ import { IconExternalLink } from '@tabler/icons-react'
 export default function Footer() {
   return (
     <footer className="w-full mt-auto h-full">
-      <nav className="bg-gray-900 xl:rounded-lg shadow-xl mx-auto xl:w-fit xl:mb-12 xl:hover:scale-[1.03] transition-transform duration-150">
+      <nav className="xl:bg-black bg-gray-700 xl:rounded-lg shadow-xl mx-auto xl:w-fit xl:mb-12 xl:hover:scale-[1.03] transition-transform duration-150">
         <ul className="flex items-center justify-center w-full text-gray-100 py-3 xl:py-0 flex-wrap">
           <li>
             <a
