@@ -30,7 +30,7 @@ const App = () => {
 const municipalityData = [{ ... }]
 
 const App = () => {
-  const customizeMunicipalities = (municipality: MunicipalityType) => {
+  const customizeMunicipalities = (municipality) => {
     const result = municipalityData.find((item) => item.id === municipality.name)
 
     if (!result) return
@@ -270,7 +270,7 @@ const App = () => {
     }
   }
 
-  const customizeAreas = (municipality: MunicipalityType) => {
+  const customizeAreas = (municipality) => {
     if (selectedRegion?.id === municipality.region.id) {
       return {
         style: {
