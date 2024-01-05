@@ -3,6 +3,7 @@ import Municipalities from './Municipalities'
 import Regions, { RegionType } from '../regions'
 import { MunicipalityType } from './data'
 import { useState } from 'react'
+import { MapProps } from '../../map/Map'
 
 const mockMunicipalityData: { id: string; average: number }[] = [
   {
@@ -159,18 +160,18 @@ const mockMunicipalityData: { id: string; average: number }[] = [
   }
 ]
 
-const defaultStyle = {
-  maxWidth: '750px',
-  margin: '0 auto'
+const Wrapper = (props: MapProps<MunicipalityType>) => {
+  return (
+    <div style={{ maxWidth: '650px', margin: '0 auto' }}>
+      <Municipalities {...props} />
+    </div>
+  )
 }
 
 const meta = {
   title: 'ReactDenmarkMap/Municipalities',
-  component: Municipalities,
-  args: {
-    style: defaultStyle
-  }
-} satisfies Meta<typeof Municipalities>
+  component: Wrapper
+} satisfies Meta<typeof Wrapper>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -179,7 +180,7 @@ export const Default: Story = {}
 
 export const WithCustomStyle: Story = {
   args: {
-    style: { backgroundColor: 'black', paddingTop: '20px', paddingBottom: '20px', ...defaultStyle },
+    style: { backgroundColor: 'black', paddingTop: '20px', paddingBottom: '20px' },
     color: 'white'
   }
 }
@@ -256,18 +257,24 @@ const MunicipalitiesInRegionsTemplate: StoryFn<typeof Municipalities> = (args) =
 
   if (!selectedRegion) {
     return (
-      <Regions
+      <div
         style={{
-          backgroundColor: '#f0f0f0',
-          ...defaultStyle
+          maxWidth: '650px',
+          margin: '0 auto'
         }}
-        onClick={(region) => setSelectedRegion(region)}
-      />
+      >
+        <Regions
+          style={{
+            backgroundColor: '#f0f0f0'
+          }}
+          onClick={(region) => setSelectedRegion(region)}
+        />
+      </div>
     )
   }
 
   return (
-    <div style={{ backgroundColor: '#f0f0f0', ...defaultStyle }}>
+    <div style={{ backgroundColor: '#f0f0f0', maxWidth: '750px', margin: '0 auto' }}>
       <button onClick={() => setSelectedRegion(null)}>Back</button>
       <Municipalities
         customizeAreas={customizeAreas}

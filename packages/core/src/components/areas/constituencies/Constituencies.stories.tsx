@@ -1,18 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import Constituencies from './Constituencies'
+import { MapProps } from '../../map/Map'
+import { ConstituencyType } from './data'
 
-const defaultStyle = {
-  maxWidth: '750px',
-  margin: '0 auto'
+const Wrapper = (props: MapProps<ConstituencyType>) => {
+  return (
+    <div style={{ maxWidth: '650px', margin: '0 auto' }}>
+      <Constituencies {...props} />
+    </div>
+  )
 }
 
 const meta = {
   title: 'ReactDenmarkMap/Constituencies',
-  component: Constituencies,
-  args: {
-    style: defaultStyle
-  }
-} satisfies Meta<typeof Constituencies>
+  component: Wrapper,
+  args: {}
+} satisfies Meta<typeof Wrapper>
 
 export default meta
 type Story = StoryObj<typeof meta>
