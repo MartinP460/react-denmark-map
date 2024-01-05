@@ -1,5 +1,6 @@
 import { CSSProperties, MouseEvent, ReactNode, memo, useRef } from 'react'
 import Tooltip, { TooltipMethods } from './Tooltip'
+import Zoompane from './Zoompane'
 import { RegionType } from '../areas/regions'
 import { test } from '../../utils'
 import '../../styles.css'
@@ -158,39 +159,45 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
   }
 
   return (
-    <figure id="react-denmark-map">
+    <figure
+      id="react-denmark-map"
+      style={{
+        position: 'relative',
+        maxWidth: '1180px'
+      }}
+    >
       <Tooltip
         show={typeof props.showTooltip === 'undefined' ? true : props.showTooltip}
         areas={props.areas}
         customTooltip={props.customTooltip as (area: Area) => ReactNode}
         ref={tooltip}
       />
-      <svg
-        id="react-denmark-map-svg"
-        version="1.1"
-        viewBox={
-          `${Math.round(props.viewBox?.left ?? 0)} ` +
-          `${Math.round(props.viewBox?.top ?? 0)} ` +
-          `${Math.round(props.viewBox?.width ?? props.defaultViewBoxWidth)} ` +
-          `${Math.round(props.viewBox?.height ?? props.defaultViewBoxHeight)}`
-        }
-        xmlns="http://www.w3.org/2000/svg"
-        xmlnsXlink="http://www.w3.org/1999/xlink"
-        xmlSpace="preserve"
-        className={props.className}
-        style={{
-          fill: props.color,
-          display: 'block',
-          maxWidth: '1180px',
-          fillRule: 'evenodd',
-          clipRule: 'evenodd',
-          strokeLinejoin: 'round',
-          strokeMiterlimit: 2,
-          ...props.style
-        }}
-      >
-        <g>{getAreas()}</g>
-      </svg>
+      <Zoompane>
+        <svg
+          id="react-denmark-map-svg"
+          version="1.1"
+          viewBox={
+            `${Math.round(props.viewBox?.left ?? 0)} ` +
+            `${Math.round(props.viewBox?.top ?? 0)} ` +
+            `${Math.round(props.viewBox?.width ?? props.defaultViewBoxWidth)} ` +
+            `${Math.round(props.viewBox?.height ?? props.defaultViewBoxHeight)}`
+          }
+          xmlns="http://www.w3.org/2000/svg"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+          xmlSpace="preserve"
+          className={props.className}
+          style={{
+            fill: props.color,
+            fillRule: 'evenodd',
+            clipRule: 'evenodd',
+            strokeLinejoin: 'round',
+            strokeMiterlimit: 2,
+            ...props.style
+          }}
+        >
+          <g>{getAreas()}</g>
+        </svg>
+      </Zoompane>
     </figure>
   )
 }

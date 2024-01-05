@@ -20,3 +20,43 @@
   fill-opacity: 70%;
   cursor: pointer;
 }
+
+.react-denmark-map-zoom-controls {
+  position: absolute;
+  right: 0;
+  display: inline-flex;
+  flex-direction: column;
+  z-index: 1;
+  border: #ededed 1px solid;
+  border-radius: 5px;
+  margin: 8px;
+  box-shadow: 0 0 7px 0px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 0 7px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 0 7px 0px rgba(0, 0, 0, 0.3);
+}
+
+.react-denmark-map-zoom-controls > button {
+  outline: none;
+  border: 0;
+  background-color: white;
+  padding: 6px 6px 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.react-denmark-map-zoom-controls > button:first-child {
+  border-radius: 3px 3px 0 0;
+}
+
+.react-denmark-map-zoom-controls > button:last-child {
+  border-radius: 0 0 3px 3px;
+}
+
+.react-denmark-map-zoom-controls > button:hover {
+  background-color: #ededed;
+  transition: background-color 0.1s ease-in-out;
+}
+
+.react-denmark-map-zoom-controls > button:active {
+  background-color: lightgray;
+}
