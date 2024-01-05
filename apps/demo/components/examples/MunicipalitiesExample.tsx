@@ -27,11 +27,13 @@ export default function MunicipalitiesExample() {
   }
 
   return (
-    <Municipalities
-      className="p-2 sm:p-8 md:w-[750px] mx-auto"
-      customTooltip={customTooltip}
-      customizeAreas={customizeMunicipalities}
-    />
+    <div className="max-w-2xl mx-auto">
+      <Municipalities
+        className="p-2 sm:p-8"
+        customTooltip={customTooltip}
+        customizeAreas={customizeMunicipalities}
+      />
+    </div>
   )
 }
 
