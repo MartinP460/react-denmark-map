@@ -361,3 +361,20 @@ export const WithFilterAreas: Story = {
     filterAreas: (municipality) => !(municipality.region.name === 'hovedstaden')
   }
 }
+
+export const WithCustomZoomControls: Story = {
+  args: {
+    CustomZoomControls: ({ onZoomIn, onZoomOut }) => (
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <button onClick={() => onZoomIn()}>+</button>
+        <button onClick={() => onZoomOut()}>–</button>
+      </div>
+    )
+  }
+}
+
+export const NonZoomable: Story = {
+  args: {
+    zoomable: false
+  }
+}

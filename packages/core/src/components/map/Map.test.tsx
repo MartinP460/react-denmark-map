@@ -527,5 +527,14 @@ describe('Map', () => {
         expect(laesoeDefault).not.toBe(laesoeAlt)
       })
     })
+
+    describe('zoomable', () => {
+      it('should not render zoom controls when zoomable prop is false', () => {
+        const { container } = render(<Municipalities zoomable={false} />)
+
+        const zoomControls = container.querySelector('.react-denmark-map-zoom-controls')
+        expect(zoomControls).toBeFalsy()
+      })
+    })
   })
 })

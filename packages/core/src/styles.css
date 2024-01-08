@@ -21,15 +21,18 @@
   cursor: pointer;
 }
 
-.react-denmark-map-zoom-controls {
+.react-denmark-map-zoom-controls-wrapper {
+  margin: 8px;
+  z-index: 1;
   position: absolute;
   right: 0;
+}
+
+.react-denmark-map-zoom-controls {
   display: inline-flex;
   flex-direction: column;
-  z-index: 1;
   border: #ededed 1px solid;
   border-radius: 5px;
-  margin: 8px;
   box-shadow: 0 0 7px 0px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0 0 7px 0px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 0 7px 0px rgba(0, 0, 0, 0.3);

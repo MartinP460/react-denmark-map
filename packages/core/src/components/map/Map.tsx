@@ -1,4 +1,4 @@
-import { CSSProperties, MouseEvent, ReactNode, memo, useRef } from 'react'
+import { CSSProperties, ComponentType, MouseEvent, ReactNode, memo, useRef } from 'react'
 import Tooltip, { TooltipMethods } from './Tooltip'
 import Zoompane from './Zoompane'
 import { RegionType } from '../areas/regions'
@@ -36,6 +36,14 @@ export interface MapProps<Type extends Area> {
   showTooltip?: boolean
   clickable?: boolean
   hoverable?: boolean
+  /** Controls whether the ability to zoom in and out should be enabled. */
+  zoomable?: boolean
+  /** Custom zoom controls for controlling zooming in and out.
+   *
+   * @param onZoomIn Callback for zooming in.
+   * @param onZoomOut Callback for zooming out.
+   */
+  CustomZoomControls?: ComponentType<{ onZoomIn(): void; onZoomOut(): void }>
   bornholmAltPostition?: boolean
   laesoeAltPosition?: boolean
   anholtAltPosition?: boolean
@@ -58,7 +66,8 @@ const defaultProps: MapProps<Area> = {
   style: {},
   color: '#ccc',
   showTooltip: true,
-  hoverable: true
+  hoverable: true,
+  zoomable: true
 }
 
 function Map<Type extends Area>(props: PrivateMapProps<Type>) {
@@ -172,7 +181,7 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
         customTooltip={props.customTooltip as (area: Area) => ReactNode}
         ref={tooltip}
       />
-      <Zoompane>
+      <Zoompane zoomable={props.zoomable as boolean} CustomZoomControls={props.CustomZoomControls}>
         <svg
           id="react-denmark-map-svg"
           version="1.1"
