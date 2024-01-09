@@ -536,5 +536,33 @@ describe('Map', () => {
         expect(zoomControls).toBeFalsy()
       })
     })
+
+    describe('CustomZoomControls', () => {
+      it('should render custom zoom controls when set', () => {
+        const CustomZoomControls = ({
+          onZoomIn,
+          onZoomOut
+        }: {
+          onZoomIn(): void
+          onZoomOut(): void
+        }) => (
+          <div>
+            <button id="zoom-in" onClick={onZoomIn}>
+              Zoom in
+            </button>
+            <button id="zoom-out" onClick={onZoomOut}>
+              Zoom out
+            </button>
+          </div>
+        )
+
+        const { container } = render(<Municipalities CustomZoomControls={CustomZoomControls} />)
+
+        const zoomInButton = container.querySelector('#zoom-in')
+        const zoomOutButton = container.querySelector('#zoom-out')
+
+        if (!zoomInButton || !zoomOutButton) throw new Error('Zoom buttons not found')
+      })
+    })
   })
 })
