@@ -38,7 +38,7 @@ export interface MapProps<Type extends Area> {
   hoverable?: boolean
   /** Controls whether the ability to zoom in and out should be enabled. */
   zoomable?: boolean
-  /** Custom zoom controls for controlling zooming in and out.
+  /** Custom zoom control component for controlling zooming in and out.
    *
    * @param onZoomIn Callback for zooming in.
    * @param onZoomOut Callback for zooming out.
