@@ -538,7 +538,7 @@ describe('Map', () => {
     })
 
     describe('CustomZoomControls', () => {
-      it('should render custom zoom controls when set', () => {
+      it('should render custom zoom controls', () => {
         const CustomZoomControls = ({
           onZoomIn,
           onZoomOut

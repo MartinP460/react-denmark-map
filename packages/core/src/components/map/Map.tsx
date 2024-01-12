@@ -36,6 +36,9 @@ export interface MapProps<Type extends Area> {
   showTooltip?: boolean
   clickable?: boolean
   hoverable?: boolean
+  bornholmAltPostition?: boolean
+  laesoeAltPosition?: boolean
+  anholtAltPosition?: boolean
   /** Controls whether the ability to zoom in and out should be enabled. */
   zoomable?: boolean
   /** Custom zoom control component for controlling zooming in and out.
@@ -44,9 +47,6 @@ export interface MapProps<Type extends Area> {
    * @param onZoomOut Callback for zooming out.
    */
   CustomZoomControls?: ComponentType<{ onZoomIn(): void; onZoomOut(): void }>
-  bornholmAltPostition?: boolean
-  laesoeAltPosition?: boolean
-  anholtAltPosition?: boolean
   customTooltip?: (area: Type) => ReactNode
   onClick?: (area: Type) => void
   onHover?: (area: Type) => void
@@ -170,6 +170,7 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
   return (
     <figure
       id="react-denmark-map"
+      className="react-denmark-map"
       style={{
         position: 'relative',
         maxWidth: '1180px',

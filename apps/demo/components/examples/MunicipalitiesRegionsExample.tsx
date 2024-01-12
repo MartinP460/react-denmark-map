@@ -44,7 +44,7 @@ export default function MunicipalitiesRegionsExample() {
     <div className="relative">
       {selectedRegion && (
         <button
-          className="absolute left-4 md:top-10 md:left-20 text-5xl hover:opacity-60 opacity-80 bg-gray-300 rounded px-2 py-1"
+          className="absolute left-4 md:top-10 md:left-20 text-5xl hover:opacity-60 opacity-80 bg-gray-300 rounded px-2 py-1 z-20"
           onClick={() => setSelectedRegion(null)}
         >
           &larr;
