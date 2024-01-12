@@ -171,6 +171,43 @@ describe('Map', () => {
 
       expect(tooltip?.textContent).toBe('Langeland')
     })
+
+    it('should be able to zoom in and out', async () => {
+      const { container } = render(<Municipalities />)
+
+      const zoomInButton = container.querySelector('.react-denmark-map-zoom-controls > button')
+      const zoomOutButton = container.querySelector(
+        '.react-denmark-map-zoom-controls > button:nth-child(2)'
+      )
+
+      if (!zoomInButton || !zoomOutButton) throw new Error('Zoom buttons not found')
+
+      let zoomPanePrevious = container.querySelector<HTMLElement>('.react-transform-component')
+      let zoomPanePreviousStyle = zoomPanePrevious?.style.transform
+
+      fireEvent.click(zoomInButton)
+
+      // Since zooming has an animation, we must wait for the animation to finish before testing
+      // whether the zoom has triggered. It may cause some flakyness.
+      await new Promise((r) => setTimeout(r, 250))
+
+      expect(
+        container.querySelector<HTMLElement>('.react-transform-component')?.style.transform
+      ).not.toBe(zoomPanePreviousStyle)
+
+      fireEvent.click(zoomOutButton)
+
+      zoomPanePrevious = container.querySelector<HTMLElement>('.react-transform-component')
+      zoomPanePreviousStyle = zoomPanePrevious?.style.transform
+
+      fireEvent.click(zoomInButton)
+
+      await new Promise((r) => setTimeout(r, 250))
+
+      expect(
+        container.querySelector<HTMLElement>('.react-transform-component')?.style.transform
+      ).not.toBe(zoomPanePreviousStyle)
+    })
   })
 
   describe('with prop', () => {
@@ -188,8 +225,7 @@ describe('Map', () => {
       it('should render with the given style', () => {
         const { container } = render(<Municipalities style={{ width: '700px' }} />)
 
-        // @ts-expect-error - the style property is not defined on the HTMLElement type
-        const width = container.querySelector('#react-denmark-map-svg')?.style.width
+        const width = container.querySelector<HTMLElement>('#react-denmark-map-svg')?.style.width
 
         expect(width).toBe('700px')
       })
@@ -388,17 +424,15 @@ describe('Map', () => {
 
         const { container } = render(<Municipalities customizeAreas={customizeAreas} />)
 
-        const municipality = container.querySelector('#langeland')
+        const municipality = container.querySelector<HTMLElement>('#langeland')
         if (!municipality) throw new Error('Municipality not found')
 
-        const differentMunicipality = container.querySelector('#koebenhavn')
+        const differentMunicipality = container.querySelector<HTMLElement>('#koebenhavn')
         if (!differentMunicipality) throw new Error('Municipality not found')
 
-        // @ts-expect-error - the style property is not defined on the HTMLElement type
         expect(municipality.style.fill).toBe('red')
         expect(municipality.classList).toContain('red-municipality')
 
-        // @ts-expect-error - the style property is not defined on the HTMLElement type
         expect(differentMunicipality.style.fill).not.toBe('red')
         expect(differentMunicipality.classList).not.toContain('red-municipality')
       })
@@ -491,6 +525,43 @@ describe('Map', () => {
         expect(laesoeDefault).toBeTruthy()
         expect(laesoeAlt).toBeTruthy()
         expect(laesoeDefault).not.toBe(laesoeAlt)
+      })
+    })
+
+    describe('zoomable', () => {
+      it('should not render zoom controls when zoomable prop is false', () => {
+        const { container } = render(<Municipalities zoomable={false} />)
+
+        const zoomControls = container.querySelector('.react-denmark-map-zoom-controls')
+        expect(zoomControls).toBeFalsy()
+      })
+    })
+
+    describe('CustomZoomControls', () => {
+      it('should render custom zoom controls', () => {
+        const CustomZoomControls = ({
+          onZoomIn,
+          onZoomOut
+        }: {
+          onZoomIn(): void
+          onZoomOut(): void
+        }) => (
+          <div>
+            <button id="zoom-in" onClick={onZoomIn}>
+              Zoom in
+            </button>
+            <button id="zoom-out" onClick={onZoomOut}>
+              Zoom out
+            </button>
+          </div>
+        )
+
+        const { container } = render(<Municipalities CustomZoomControls={CustomZoomControls} />)
+
+        const zoomInButton = container.querySelector('#zoom-in')
+        const zoomOutButton = container.querySelector('#zoom-out')
+
+        if (!zoomInButton || !zoomOutButton) throw new Error('Zoom buttons not found')
       })
     })
   })

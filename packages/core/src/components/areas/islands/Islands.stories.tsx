@@ -1,18 +1,21 @@
 import { Meta, StoryObj } from '@storybook/react'
 import Islands from './Islands'
+import { MapProps } from '../../map/Map'
+import { IslandType } from './data'
 
-const defaultStyle = {
-  maxWidth: '750px',
-  margin: '0 auto'
+const Wrapper = (props: MapProps<IslandType>) => {
+  return (
+    <div style={{ maxWidth: '650px', margin: '0 auto' }}>
+      <Islands {...props} />
+    </div>
+  )
 }
 
 const meta = {
   title: 'ReactDenmarkMap/Islands',
-  component: Islands,
-  args: {
-    style: defaultStyle
-  }
-} satisfies Meta<typeof Islands>
+  component: Wrapper,
+  args: {}
+} satisfies Meta<typeof Wrapper>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -27,8 +30,6 @@ export const WithCustomizeIslands: Story = {
           style: { fill: 'green' }
         }
       }
-    },
-    onClick: undefined,
-    style: defaultStyle
+    }
   }
 }

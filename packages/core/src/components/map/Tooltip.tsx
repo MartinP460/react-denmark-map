@@ -31,7 +31,8 @@ function Tooltip<Type extends Area>(
     position: 'fixed',
     display: 'block',
     top: 0,
-    left: 0
+    left: 0,
+    zIndex: 1
   })
 
   useImperativeHandle(ref, () => ({

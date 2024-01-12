@@ -15,11 +15,13 @@ export default function IslandsExample() {
   }
 
   return (
-    <Islands
-      customizeAreas={customizeIslands}
-      onHover={(island) => setHoveredIsland(island.id)}
-      className="p-2 sm:p-8 md:w-[750px] mx-auto"
-      hoverable={false}
-    />
+    <div className="max-w-2xl mx-auto">
+      <Islands
+        customizeAreas={customizeIslands}
+        onHover={(island) => setHoveredIsland(island.id)}
+        className="p-2 sm:p-8"
+        hoverable={false}
+      />
+    </div>
   )
 }

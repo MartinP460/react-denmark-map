@@ -44,26 +44,25 @@ export default function MunicipalitiesRegionsExample() {
     <div className="relative">
       {selectedRegion && (
         <button
-          className="absolute left-4 md:top-10 md:left-20 text-5xl hover:opacity-60 opacity-80 bg-gray-300 rounded px-2 py-1"
+          className="absolute left-4 md:top-10 md:left-20 text-5xl hover:opacity-60 opacity-80 bg-gray-300 rounded px-2 py-1 z-20"
           onClick={() => setSelectedRegion(null)}
         >
           &larr;
         </button>
       )}
-      {selectedRegion ? (
-        <Municipalities
-          customizeAreas={customizeAreas}
-          viewBox={regionViewboxes[selectedRegion.name]}
-          filterAreas={(municipality) => municipality.region.id === selectedRegion.id}
-          bornholmAltPostition
-          className="p-2 sm:p-8 md:w-[750px] mx-auto"
-        />
-      ) : (
-        <Regions
-          onClick={(region) => setSelectedRegion(region)}
-          className="p-2 sm:p-8 md:w-[750px] mx-auto"
-        />
-      )}
+      <div className="max-w-2xl mx-auto">
+        {selectedRegion ? (
+          <Municipalities
+            customizeAreas={customizeAreas}
+            viewBox={regionViewboxes[selectedRegion.name]}
+            filterAreas={(municipality) => municipality.region.id === selectedRegion.id}
+            bornholmAltPostition
+            className="p-2 sm:p-8"
+          />
+        ) : (
+          <Regions onClick={(region) => setSelectedRegion(region)} className="p-2 sm:p-8" />
+        )}
+      </div>
     </div>
   )
 }
