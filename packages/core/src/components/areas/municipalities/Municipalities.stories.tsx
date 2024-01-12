@@ -162,7 +162,7 @@ const mockMunicipalityData: { id: string; average: number }[] = [
 
 const Wrapper = (props: MapProps<MunicipalityType>) => {
   return (
-    <div style={{ maxWidth: '650px', margin: '0 auto' }}>
+    <div style={{ maxWidth: '600px', margin: '0 auto' }}>
       <Municipalities {...props} />
     </div>
   )

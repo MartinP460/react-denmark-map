@@ -203,6 +203,18 @@ Instead of municipalities, these areas could also be each region or island, depe
 
 ### Styling
 
+#### Positioning
+
+It's strongly recommended that you wrap the map in an element and position that according to your needs. Applying a max width and a margin will center the map and preserve it's dimensions across screen sizes.
+
+```jsx
+<div style={{ maxWidth: '600px', margin: '0 auto' }}>
+  <Municipalities />
+</div>
+```
+
+#### Appearance
+
 The exported components also support a number of different ways of styling the map:
 
 ```jsx
@@ -217,9 +229,7 @@ These props are:
 
 - `className` is a string which is applied directly to the SVG element.
 - `style` is an object of CSS properties which is applied directly to the SVG element.
-- `color` is the default color applied to each area of the map. Essentially, this is the default color of the map. It's overwritten by styles returned by the `customizeAreas` function if the function returns a color for that area. Keep in mind that you can apply the `fill` style in the `style` object and it will have the same effect.
-
-For positioning, it is, in many cases, easier to wrap the map in an element and position that according to your needs.
+- `color` is the default color applied to each area of the map.
 
 In addition to the props mentioned above, the `clickable` and `hoverable` props are booleans used to toggle hover styles on each `<path>` element / area. They are purely decorational.
 

@@ -172,7 +172,8 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
       id="react-denmark-map"
       style={{
         position: 'relative',
-        maxWidth: '1180px'
+        maxWidth: '1180px',
+        margin: 0
       }}
     >
       <Tooltip
