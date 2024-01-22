@@ -4,7 +4,7 @@
   "scripts": {
     "build": "turbo run build --filter=react-denmark-map",
     "lint": "turbo run lint",
-    "format": "turbo run format",
+    "format": "turbo run format && prettier --write .",
     "prepare": "husky install",
     "storybook": "turbo run storybook",
     "test": "turbo run test"

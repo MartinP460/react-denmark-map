@@ -4,7 +4,6 @@ about: Create a report to help us improve
 title: ''
 labels: bug
 assignees: ''
-
 ---
 
 ### Description
@@ -30,8 +29,8 @@ Steps to reproduce the behavior:
 
 ### Specifications
 
- - Browser: [e.g. chrome, safari]
- - `react-denmark-map` version: [e.g. 22]
+- Browser: [e.g. chrome, safari]
+- `react-denmark-map` version: [e.g. 22]
 
 ### Additional context
 
