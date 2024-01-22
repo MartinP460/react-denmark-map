@@ -180,7 +180,11 @@ export const Default: Story = {}
 
 export const WithCustomStyle: Story = {
   args: {
-    style: { backgroundColor: 'black', paddingTop: '20px', paddingBottom: '20px' },
+    style: {
+      backgroundColor: 'black',
+      paddingTop: '20px',
+      paddingBottom: '20px'
+    },
     color: 'white'
   }
 }
@@ -274,7 +278,13 @@ const MunicipalitiesInRegionsTemplate: StoryFn<typeof Municipalities> = (args) =
   }
 
   return (
-    <div style={{ backgroundColor: '#f0f0f0', maxWidth: '750px', margin: '0 auto' }}>
+    <div
+      style={{
+        backgroundColor: '#f0f0f0',
+        maxWidth: '750px',
+        margin: '0 auto'
+      }}
+    >
       <button onClick={() => setSelectedRegion(null)}>Back</button>
       <Municipalities
         customizeAreas={customizeAreas}

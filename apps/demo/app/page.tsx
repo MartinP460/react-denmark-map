@@ -17,7 +17,12 @@ export default function Home() {
         text="npm install react-denmark-map"
         language="txt"
         theme={dracula}
-        customStyle={{ width: '325px', marginTop: '3rem', padding: '0.7rem', fontSize: '14px' }}
+        customStyle={{
+          width: '325px',
+          marginTop: '3rem',
+          padding: '0.7rem',
+          fontSize: '14px'
+        }}
       />
       <div className="flex gap-4 mt-8">
         <Button variant="fill" href="/demo" className="shadow-lg" Icon={IconPhoto}>

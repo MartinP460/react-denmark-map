@@ -4,7 +4,6 @@ about: Suggest an new feature
 title: ''
 labels: feature request
 assignees: ''
-
 ---
 
 ### Description
