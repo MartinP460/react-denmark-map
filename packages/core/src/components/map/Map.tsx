@@ -151,10 +151,7 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
       return (
         <path
           key={area.id}
-          id={area.id}
-          data-name={area.name}
-          data-en_name={area.en_name}
-          data-display_name={area.display_name}
+          data-area-id={area.id}
           d={draw}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
