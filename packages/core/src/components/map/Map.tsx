@@ -80,7 +80,7 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
     const { onClick } = props
     if (!onClick) return
 
-    const area = props.areas.find((area) => area.id === event.currentTarget.id)
+    const area = props.areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
     area && onClick(area)
   }
 
@@ -88,7 +88,7 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
     const { onHover } = props
     if (!onHover) return
 
-    const area = props.areas.find((area) => area.id === event.currentTarget.id)
+    const area = props.areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
     area && onHover(area)
   }
 
@@ -98,7 +98,7 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
     const { onMouseEnter } = props
     if (!onMouseEnter) return
 
-    const area = props.areas.find((area) => area.id === event.currentTarget.id)
+    const area = props.areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
     area && onMouseEnter(area)
   }
 
@@ -108,7 +108,7 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
     const { onMouseLeave } = props
     if (!onMouseLeave) return
 
-    const area = props.areas.find((area) => area.id === event.currentTarget.id)
+    const area = props.areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
     area && onMouseLeave(area)
   }
 

@@ -64,7 +64,7 @@ function Tooltip<Type extends Area>(
   const handleMouseEnter = (event: MouseEvent<SVGPathElement>) => {
     if (!show) return
 
-    const area = areas.find((area) => area.id === event.currentTarget.id)
+    const area = areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
 
     setHoveredArea(area || null)
     setTooltipStyle((prevState) => ({

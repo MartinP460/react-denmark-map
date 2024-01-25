@@ -15,31 +15,31 @@ describe('Map', () => {
   describe('should render with', () => {
     it('constituencies', () => {
       const { container } = render(<Constituencies />)
-      const constituency = container.querySelector('#sydjyllands')
+      const constituency = container.querySelector('[data-area-id="sydjyllands"]')
       expect(constituency).toBeTruthy()
     })
 
     it('denmark', () => {
       const { container } = render(<Denmark />)
-      const denmark = container.querySelector('#danmark')
+      const denmark = container.querySelector('[data-area-id="danmark"]')
       expect(denmark).toBeTruthy()
     })
 
     it('islands', () => {
       const { container } = render(<Islands />)
-      const island = container.querySelector('#fyn')
+      const island = container.querySelector('[data-area-id="fyn"]')
       expect(island).toBeTruthy()
     })
 
     it('municipalities', () => {
       const { container } = render(<Municipalities />)
-      const municipality = container.querySelector('#langeland')
+      const municipality = container.querySelector('[data-area-id="langeland"]')
       expect(municipality).toBeTruthy()
     })
 
     it('regions', () => {
       const { container } = render(<Regions />)
-      const region = container.querySelector('#nordjylland')
+      const region = container.querySelector('[data-area-id="nordjylland"]')
       expect(region).toBeTruthy()
     })
   })
@@ -161,7 +161,7 @@ describe('Map', () => {
     it('should render the municipality name in the tooltip when hovering', () => {
       const { container } = render(<Municipalities />)
 
-      const municipality = container.querySelector('#langeland')
+      const municipality = container.querySelector('[data-area-id="langeland"]')
 
       if (!municipality) throw new Error('Municipality not found')
 
@@ -245,7 +245,7 @@ describe('Map', () => {
       it('should not render the tooltip when showTooltip is false', () => {
         const { container } = render(<Municipalities showTooltip={false} />)
 
-        const municipality = container.querySelector('#langeland')
+        const municipality = container.querySelector('[data-area-id="langeland"]')
 
         if (!municipality) throw new Error('Municipality not found')
 
@@ -264,7 +264,7 @@ describe('Map', () => {
 
         const { container } = render(<Municipalities customTooltip={customTooltip} />)
 
-        const municipality = container.querySelector('#langeland')
+        const municipality = container.querySelector('[data-area-id="langeland"]')
         if (!municipality) throw new Error('Municipality not found')
 
         fireEvent.mouseEnter(municipality)
@@ -285,7 +285,7 @@ describe('Map', () => {
 
         const { container } = render(<Municipalities onClick={onClick} />)
 
-        const municipality = container.querySelector('#langeland')
+        const municipality = container.querySelector('[data-area-id="langeland"]')
         if (!municipality) throw new Error('Municipality not found')
 
         fireEvent.click(municipality)
@@ -307,7 +307,7 @@ describe('Map', () => {
 
         const { container } = render(<Municipalities onClick={onClick} />)
 
-        const municipality = container.querySelector('#langeland')
+        const municipality = container.querySelector('[data-area-id="langeland"]')
 
         if (!municipality) throw new Error('Municipality not found')
 
@@ -321,7 +321,7 @@ describe('Map', () => {
 
         const { container } = render(<Municipalities onHover={onHover} />)
 
-        const municipality = container.querySelector('#langeland')
+        const municipality = container.querySelector('[data-area-id="langeland"]')
         if (!municipality) throw new Error('Municipality not found')
 
         fireEvent.mouseOver(municipality)
@@ -343,7 +343,7 @@ describe('Map', () => {
       it('should not apply the hoverable className when hoverable prop is false', () => {
         const { container } = render(<Municipalities hoverable={false} />)
 
-        const municipality = container.querySelector('#langeland')
+        const municipality = container.querySelector('[data-area-id="langeland"]')
         if (!municipality) throw new Error('Municipality not found')
 
         expect(municipality.classList).not.toContain('react-denmark-map-hoverable')
@@ -354,7 +354,7 @@ describe('Map', () => {
       it('should apply the clickable className when clickable prop is true', () => {
         const { container } = render(<Municipalities clickable />)
 
-        const municipality = container.querySelector('#langeland')
+        const municipality = container.querySelector('[data-area-id="langeland"]')
         if (!municipality) throw new Error('Municipality not found')
 
         expect(municipality.classList).toContain('react-denmark-map-clickable')
@@ -367,7 +367,7 @@ describe('Map', () => {
 
         const { container } = render(<Municipalities onMouseEnter={onMouseEnter} />)
 
-        const municipality = container.querySelector('#langeland')
+        const municipality = container.querySelector('[data-area-id="langeland"]')
         if (!municipality) throw new Error('Municipality not found')
 
         fireEvent.mouseEnter(municipality)
@@ -391,7 +391,7 @@ describe('Map', () => {
 
         const { container } = render(<Municipalities onMouseLeave={onMouseLeave} />)
 
-        const municipality = container.querySelector('#langeland')
+        const municipality = container.querySelector('[data-area-id="langeland"]')
         if (!municipality) throw new Error('Municipality not found')
 
         fireEvent.mouseLeave(municipality)
@@ -424,10 +424,12 @@ describe('Map', () => {
 
         const { container } = render(<Municipalities customizeAreas={customizeAreas} />)
 
-        const municipality = container.querySelector<HTMLElement>('#langeland')
+        const municipality = container.querySelector<HTMLElement>('[data-area-id="langeland"]')
         if (!municipality) throw new Error('Municipality not found')
 
-        const differentMunicipality = container.querySelector<HTMLElement>('#koebenhavn')
+        const differentMunicipality = container.querySelector<HTMLElement>(
+          '[data-area-id="koebenhavn"]'
+        )
         if (!differentMunicipality) throw new Error('Municipality not found')
 
         expect(municipality.style.fill).toBe('red')
