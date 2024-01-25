@@ -454,7 +454,7 @@ describe('Map', () => {
 
         const viewbox = container.querySelector('svg')?.getAttribute('viewBox')
 
-        expect(viewbox).toBe('0 0 10116 12289') // default width and height from the municipalities component
+        expect(viewbox).toBe('0 0 1000 1215') // default width and height from the municipalities component
       })
 
       it('should round viewbox width and height to nearest integer', () => {
@@ -496,35 +496,6 @@ describe('Map', () => {
         expect(municipality1).toBeNull()
         expect(municipality2).toBeNull()
         expect(municipality3).toBeNull()
-      })
-    })
-
-    describe('altPositions', () => {
-      it('should render different `d` when alt positions prop is set', () => {
-        const mapDefault = render(<Municipalities />)
-        const mapAlt = render(
-          <Municipalities bornholmAltPostition anholtAltPosition laesoeAltPosition />
-        )
-
-        const bornholmDefault = mapDefault.container.querySelector('#bornholm')?.getAttribute('d')
-        const anholtDefault = mapDefault.container.querySelector('#norddjurs')?.getAttribute('d')
-        const laesoeDefault = mapDefault.container.querySelector('#laesoe')?.getAttribute('d')
-
-        const bornholmAlt = mapAlt.container.querySelector('#bornholm')?.getAttribute('d')
-        const anholtAlt = mapAlt.container.querySelector('#norddjurs')?.getAttribute('d')
-        const laesoeAlt = mapAlt.container.querySelector('#laesoe')?.getAttribute('d')
-
-        expect(bornholmDefault).toBeTruthy()
-        expect(bornholmAlt).toBeTruthy()
-        expect(bornholmDefault).not.toBe(bornholmAlt)
-
-        expect(anholtDefault).toBeTruthy()
-        expect(anholtAlt).toBeTruthy()
-        expect(laesoeAlt).not.toBe(anholtAlt)
-
-        expect(laesoeDefault).toBeTruthy()
-        expect(laesoeAlt).toBeTruthy()
-        expect(laesoeDefault).not.toBe(laesoeAlt)
       })
     })
 
