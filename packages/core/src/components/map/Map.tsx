@@ -21,6 +21,9 @@ export type AreaType<T extends readonly Area[]> = {
   [K in keyof T[number]]: T[number][K]
 }
 
+const DEFAULT_VIEWBOX_WIDTH = 1000
+const DEFAULT_VIEWBOX_HEIGHT = 1215
+
 type ViewBox = {
   top?: number
   left?: number
@@ -58,8 +61,6 @@ export interface MapProps<Type extends Area> {
 
 interface PrivateMapProps<Type extends Area> extends MapProps<Type> {
   areas: readonly Type[]
-  defaultViewBoxWidth: number
-  defaultViewBoxHeight: number
 }
 
 const defaultProps: MapProps<Area> = {
@@ -190,8 +191,8 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
           viewBox={
             `${Math.round(props.viewBox?.left ?? 0)} ` +
             `${Math.round(props.viewBox?.top ?? 0)} ` +
-            `${Math.round(props.viewBox?.width ?? props.defaultViewBoxWidth)} ` +
-            `${Math.round(props.viewBox?.height ?? props.defaultViewBoxHeight)}`
+            `${Math.round(props.viewBox?.width ?? DEFAULT_VIEWBOX_WIDTH)} ` +
+            `${Math.round(props.viewBox?.height ?? DEFAULT_VIEWBOX_HEIGHT)}`
           }
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
