@@ -6,11 +6,6 @@ import { MunicipalityType, municipalities } from './data'
  */
 export default function Municipalities(props: MapProps<MunicipalityType>) {
   return (
-    <Map
-      areas={municipalities}
-      defaultViewBoxWidth={10116}
-      defaultViewBoxHeight={12289}
-      {...props}
-    />
+    <Map areas={municipalities} defaultViewBoxWidth={1000} defaultViewBoxHeight={1215} {...props} />
   )
 }

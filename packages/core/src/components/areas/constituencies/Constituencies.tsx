@@ -6,11 +6,6 @@ import { ConstituencyType, constituencies } from './data'
  */
 export default function Constituencies(props: MapProps<ConstituencyType>) {
   return (
-    <Map
-      areas={constituencies}
-      defaultViewBoxWidth={12155}
-      defaultViewBoxHeight={14763}
-      {...props}
-    />
+    <Map areas={constituencies} defaultViewBoxWidth={1000} defaultViewBoxHeight={1215} {...props} />
   )
 }

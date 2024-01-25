@@ -5,5 +5,5 @@ import { RegionType, regions } from './data'
  * Component displaying a map of Denmark with five regions.
  */
 export default function Regions(props: MapProps<RegionType>) {
-  return <Map areas={regions} defaultViewBoxWidth={13489} defaultViewBoxHeight={16389} {...props} />
+  return <Map areas={regions} defaultViewBoxWidth={1000} defaultViewBoxHeight={1215} {...props} />
 }
