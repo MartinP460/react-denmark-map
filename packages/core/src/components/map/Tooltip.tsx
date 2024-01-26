@@ -94,7 +94,7 @@ function Tooltip<Type extends Area>(
   const tooltip = customTooltip ? customTooltip : defaultTooltip
 
   return (
-    <div id="react-denmark-map-tooltip-wrapper" style={tooltipStyle}>
+    <div role="tooltip" id="react-denmark-map-tooltip-wrapper" style={tooltipStyle}>
       {hoveredArea && tooltip(hoveredArea)}
     </div>
   )
