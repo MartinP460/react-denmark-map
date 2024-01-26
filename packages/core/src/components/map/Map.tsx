@@ -63,7 +63,7 @@ interface PrivateMapProps<Type extends Area> extends MapProps<Type> {
   areas: readonly Type[]
 }
 
-const Map = <Type extends Area>({ ...props }: PrivateMapProps<Type>) => {
+const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
   test.rerenders()
   const {
     style = {},
