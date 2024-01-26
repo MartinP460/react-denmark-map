@@ -151,6 +151,7 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
       return (
         <path
           key={area.id}
+          aria-describedby="react-denmark-map-tooltip-wrapper"
           data-area-id={area.id}
           d={draw}
           onMouseEnter={handleMouseEnter}
