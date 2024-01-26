@@ -21,6 +21,9 @@ export type AreaType<T extends readonly Area[]> = {
   [K in keyof T[number]]: T[number][K]
 }
 
+const DEFAULT_VIEWBOX_WIDTH = 1000
+const DEFAULT_VIEWBOX_HEIGHT = 1215
+
 type ViewBox = {
   top?: number
   left?: number
@@ -58,8 +61,6 @@ export interface MapProps<Type extends Area> {
 
 interface PrivateMapProps<Type extends Area> extends MapProps<Type> {
   areas: readonly Type[]
-  defaultViewBoxWidth: number
-  defaultViewBoxHeight: number
 }
 
 const defaultProps: MapProps<Area> = {
@@ -79,7 +80,7 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
     const { onClick } = props
     if (!onClick) return
 
-    const area = props.areas.find((area) => area.id === event.currentTarget.id)
+    const area = props.areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
     area && onClick(area)
   }
 
@@ -87,7 +88,7 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
     const { onHover } = props
     if (!onHover) return
 
-    const area = props.areas.find((area) => area.id === event.currentTarget.id)
+    const area = props.areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
     area && onHover(area)
   }
 
@@ -97,7 +98,7 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
     const { onMouseEnter } = props
     if (!onMouseEnter) return
 
-    const area = props.areas.find((area) => area.id === event.currentTarget.id)
+    const area = props.areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
     area && onMouseEnter(area)
   }
 
@@ -107,7 +108,7 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
     const { onMouseLeave } = props
     if (!onMouseLeave) return
 
-    const area = props.areas.find((area) => area.id === event.currentTarget.id)
+    const area = props.areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
     area && onMouseLeave(area)
   }
 
@@ -150,10 +151,7 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
       return (
         <path
           key={area.id}
-          id={area.id}
-          data-name={area.name}
-          data-en_name={area.en_name}
-          data-display_name={area.display_name}
+          data-area-id={area.id}
           d={draw}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
@@ -186,16 +184,12 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
       <Zoompane zoomable={props.zoomable as boolean} CustomZoomControls={props.CustomZoomControls}>
         <svg
           id="react-denmark-map-svg"
-          version="1.1"
           viewBox={
             `${Math.round(props.viewBox?.left ?? 0)} ` +
             `${Math.round(props.viewBox?.top ?? 0)} ` +
-            `${Math.round(props.viewBox?.width ?? props.defaultViewBoxWidth)} ` +
-            `${Math.round(props.viewBox?.height ?? props.defaultViewBoxHeight)}`
+            `${Math.round(props.viewBox?.width ?? DEFAULT_VIEWBOX_WIDTH)} ` +
+            `${Math.round(props.viewBox?.height ?? DEFAULT_VIEWBOX_HEIGHT)}`
           }
-          xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-          xmlSpace="preserve"
           className={props.className}
           style={{
             fill: props.color,
