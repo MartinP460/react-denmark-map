@@ -63,15 +63,14 @@ interface PrivateMapProps<Type extends Area> extends MapProps<Type> {
   areas: readonly Type[]
 }
 
-const defaultProps: MapProps<Area> = {
-  style: {},
-  color: '#ccc',
-  showTooltip: true,
-  hoverable: true,
-  zoomable: true
-}
-
-function Map<Type extends Area>(props: PrivateMapProps<Type>) {
+const Map = <Type extends Area>({
+  style = {},
+  color = '#ccc',
+  showTooltip = true,
+  hoverable = true,
+  zoomable = true,
+  ...props
+}: PrivateMapProps<Type>) => {
   test.rerenders()
 
   const tooltip = useRef<TooltipMethods>()
@@ -116,7 +115,6 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
     const {
       areas,
       clickable,
-      hoverable,
       bornholmAltPostition,
       laesoeAltPosition,
       anholtAltPosition,
@@ -177,12 +175,12 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
       }}
     >
       <Tooltip
-        show={typeof props.showTooltip === 'undefined' ? true : props.showTooltip}
+        show={typeof showTooltip === 'undefined' ? true : showTooltip}
         areas={props.areas}
         customTooltip={props.customTooltip as (area: Area) => ReactNode}
         ref={tooltip}
       />
-      <Zoompane zoomable={props.zoomable as boolean} CustomZoomControls={props.CustomZoomControls}>
+      <Zoompane zoomable={zoomable as boolean} CustomZoomControls={props.CustomZoomControls}>
         <svg
           id="react-denmark-map-svg"
           viewBox={
@@ -193,12 +191,12 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
           }
           className={props.className}
           style={{
-            fill: props.color,
+            fill: color,
             fillRule: 'evenodd',
             clipRule: 'evenodd',
             strokeLinejoin: 'round',
             strokeMiterlimit: 2,
-            ...props.style
+            ...style
           }}
         >
           <g>{getAreas()}</g>
@@ -208,7 +206,4 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
   )
 }
 
-Map.defaultProps = defaultProps
-
-// @ts-expect-error Default props cause the type to be incorrect. Remove this line when we switch to default parameters.
 export default memo(Map) as typeof Map
