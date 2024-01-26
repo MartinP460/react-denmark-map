@@ -15,9 +15,9 @@ type ButtonProps = {
 }
 
 const variants = {
-  fill: 'bg-black text-white hover:opacity-80 border-black',
+  fill: 'bg-black text-white hover:opacity-80 border-black active:opacity-70',
   outline:
-    'bg-transparent text-black hover:bg-gray-100 hover:bg-opacity-50 border-gray-800 hover:border-gray-600'
+    'bg-transparent text-black hover:bg-gray-100 hover:bg-opacity-50 border-gray-800 hover:border-gray-600 active:bg-gray-200 active:bg-opacity-80'
 }
 
 export default function Button({
