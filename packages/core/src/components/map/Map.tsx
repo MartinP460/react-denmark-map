@@ -184,16 +184,12 @@ function Map<Type extends Area>(props: PrivateMapProps<Type>) {
       <Zoompane zoomable={props.zoomable as boolean} CustomZoomControls={props.CustomZoomControls}>
         <svg
           id="react-denmark-map-svg"
-          version="1.1"
           viewBox={
             `${Math.round(props.viewBox?.left ?? 0)} ` +
             `${Math.round(props.viewBox?.top ?? 0)} ` +
             `${Math.round(props.viewBox?.width ?? DEFAULT_VIEWBOX_WIDTH)} ` +
             `${Math.round(props.viewBox?.height ?? DEFAULT_VIEWBOX_HEIGHT)}`
           }
-          xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-          xmlSpace="preserve"
           className={props.className}
           style={{
             fill: props.color,
