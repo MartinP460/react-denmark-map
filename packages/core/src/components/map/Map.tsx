@@ -72,58 +72,59 @@ const Map = <Type extends Area>({
   ...props
 }: PrivateMapProps<Type>) => {
   test.rerenders()
+  const {
+    areas,
+    clickable,
+    bornholmAltPostition,
+    laesoeAltPosition,
+    anholtAltPosition,
+    viewBox,
+    CustomZoomControls,
+    className,
+    onMouseEnter,
+    onMouseLeave,
+    customTooltip,
+    customizeAreas,
+    onClick,
+    onHover,
+    filterAreas
+  } = props
 
   const tooltip = useRef<TooltipMethods>()
 
   const handleClick = (event: MouseEvent<SVGPathElement>) => {
-    const { onClick } = props
     if (!onClick) return
 
-    const area = props.areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
+    const area = areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
     area && onClick(area)
   }
 
   const handleHover = (event: MouseEvent<SVGPathElement>) => {
-    const { onHover } = props
     if (!onHover) return
 
-    const area = props.areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
+    const area = areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
     area && onHover(area)
   }
 
   const handleMouseEnter = (event: MouseEvent<SVGPathElement>) => {
     tooltip?.current?.handleMouseEnter(event)
 
-    const { onMouseEnter } = props
     if (!onMouseEnter) return
 
-    const area = props.areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
+    const area = areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
     area && onMouseEnter(area)
   }
 
   const handleMouseLeave = (event: MouseEvent<SVGPathElement>) => {
     tooltip?.current?.handleMouseLeave()
 
-    const { onMouseLeave } = props
     if (!onMouseLeave) return
 
-    const area = props.areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
+    const area = areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
     area && onMouseLeave(area)
   }
 
   const getAreas = () => {
-    const {
-      areas,
-      clickable,
-      bornholmAltPostition,
-      laesoeAltPosition,
-      anholtAltPosition,
-      customizeAreas,
-      onClick,
-      onHover,
-      filterAreas
-    } = props
-
     return areas.map((area) => {
       if (filterAreas && !filterAreas(area)) return null
 
@@ -176,20 +177,20 @@ const Map = <Type extends Area>({
     >
       <Tooltip
         show={typeof showTooltip === 'undefined' ? true : showTooltip}
-        areas={props.areas}
-        customTooltip={props.customTooltip as (area: Area) => ReactNode}
+        areas={areas}
+        customTooltip={customTooltip as (area: Area) => ReactNode}
         ref={tooltip}
       />
-      <Zoompane zoomable={zoomable as boolean} CustomZoomControls={props.CustomZoomControls}>
+      <Zoompane zoomable={zoomable as boolean} CustomZoomControls={CustomZoomControls}>
         <svg
           id="react-denmark-map-svg"
           viewBox={
-            `${Math.round(props.viewBox?.left ?? 0)} ` +
-            `${Math.round(props.viewBox?.top ?? 0)} ` +
-            `${Math.round(props.viewBox?.width ?? DEFAULT_VIEWBOX_WIDTH)} ` +
-            `${Math.round(props.viewBox?.height ?? DEFAULT_VIEWBOX_HEIGHT)}`
+            `${Math.round(viewBox?.left ?? 0)} ` +
+            `${Math.round(viewBox?.top ?? 0)} ` +
+            `${Math.round(viewBox?.width ?? DEFAULT_VIEWBOX_WIDTH)} ` +
+            `${Math.round(viewBox?.height ?? DEFAULT_VIEWBOX_HEIGHT)}`
           }
-          className={props.className}
+          className={className}
           style={{
             fill: color,
             fillRule: 'evenodd',
