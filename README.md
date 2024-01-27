@@ -17,6 +17,7 @@
   - [Customizing areas](#customizing-areas)
   - [Customizing the tooltip](#customizing-the-tooltip)
   - [Click and hover events](#click-and-hover-events)
+  - [Zooming](#zooming)
   - [Styling](#styling)
 - [Typescript](#typescript)
 - [Performance](#performance)
@@ -239,6 +240,27 @@ const App = () => {
 }
 ```
 
+### Zooming
+
+The `CustomZoomControls` prop allows you to customize the default zoom controls.
+
+```jsx
+import { Municipalities } from 'react-denmark-map'
+
+const CustomZoomControls = ({ onZoomIn, onZoomOut }) => (
+  <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <button onClick={() => onZoomIn()}>+</button>
+    <button onClick={() => onZoomOut()}>–</button>
+  </div>
+)
+
+const App = () => {
+  return <Municipalities CustomZoomControls={CustomZoomControls} />
+}
+```
+
+Pass the prop `zoomable={false}` to disable zooming (and thus not render zoom controls).
+
 ### Styling
 
 #### Positioning
@@ -354,10 +376,12 @@ React Denmark Map exports several components, each being a map of Denmark with d
 | `color`               | The default color of each municipality.                                                                 | CSSProperties["fill"]                                                         | #ccc                                           |
 | `clickable`           | Whether the clickable styles should be applied to the `<path>` element (the area).                      | boolean                                                                       | false                                          |
 | `hoverable`           | Whether the hoverable styles should be applied to the `<path>` element (the area).                      | boolean                                                                       | true                                           |
-| `showTooltip`         | Whether the tooltip should be shown.                                                                    | boolean                                                                       | true                                           |
+| `showTooltip`         | Whether to render the tooltip.                                                                          | boolean                                                                       | true                                           |
 | `bornholmAltPosition` | Whether to render Bornholm closer to Zealand in the `Municipalities` component.\*\*                     | boolean                                                                       | false                                          |
 | `laesoeAltPosition`   | Whether to render Læsø slightly closer to Jylland in the `Municipalities` component.                    | boolean                                                                       | false                                          |
 | `anholtAltPosition`   | Whether to render Bornholm closer to Zealand in the `Municipalities` component.                         | boolean                                                                       | false                                          |
+| `zoomable`            | Whether you should be able to zoom on the map.                                                          | boolean                                                                       | true                                           |
+| `CustomZoomControls`  | A React component for custom zoom controls.                                                             | ComponentType<{ onZoomIn(): void; onZoomOut(): void }>                        |                                                |
 | `customTooltip`       | A function that returns a custom tooltip.                                                               | (area: AreaType<sup>\*\*\*</sup>) => ReactNode                                |                                                |
 | `customizeAreas`      | A function that is invoked for every area and returns an object to style the area.                      | (area: AreaType) => { className?: string, style? CSSProperties } \| undefined |                                                |
 | `filterAreas`         | A function that is invoked for every area that avoids rendering the area if the function returns false. | (area: AreaType) => boolean                                                   |                                                |
@@ -404,7 +428,7 @@ The types corresponding to each component are:
 
 Using the `Denmark` component means that there's only one path element, so DenmarkType describes just that one area.
 
-All entries for the areas can be found under 'src/components/_[area]_/data.ts'.
+All entries for the areas can be found under 'packages/core/src/components/_[area]_/data.ts'.
 
 ## License
 
