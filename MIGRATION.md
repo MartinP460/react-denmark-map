@@ -12,7 +12,7 @@ Finally, all map SVG's are now ~30% smaller which should improve load times and 
 
 ### Breaking changes
 
-1. **Positioning**. If you used the `className` or `style` properties to adjust the position of the map, you should instead wrap `<Map />` in a seperate element and position that. This was always the recommended approach but the ability to zoom fully breaks the ability to zoom.
+1. **Positioning**. If you used the `className` or `style` properties to adjust the position of the map, you should instead wrap `<Map />` in a seperate element and position that. This was always the recommended approach but the ability to zoom breaks positioning using this method.
 2. **Viewbox**. All maps now have the same SVG viewbox dimensions of 1000 x 1215 so you should use these dimensions to customize the viewbox.
 3. **Alt positions**. Removed all `altPosition-` props. These props rendered some islands closer to the mainland.
 
