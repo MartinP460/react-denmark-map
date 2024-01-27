@@ -9,6 +9,25 @@
   </p>
 </p>
 
+## Table of contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Basic usage](#basic-usage)
+  - [Customizing areas](#customizing-areas)
+  - [Customizing the tooltip](#customizing-the-tooltip)
+  - [Click and hover events](#click-and-hover-events)
+  - [Styling](#styling)
+- [Typescript](#typescript)
+- [Performance](#performance)
+- [API](#api)
+  - [Components](#components)
+  - [Props](#props)
+  - [Types](#types)
+- [Workflow](#workflow)
+- [License](#license)
+- [Contributing](#contributing)
+
 ## Installation
 
 ```
@@ -33,39 +52,75 @@ const App = () => {
 }
 ```
 
-### With `onClick` prop
+### Customizing areas
 
-An event handler that is called when an area is clicked. It is called with a parameter containing information about the area clicked. See "API" for the full type.
-
-```jsx
-import { Municipalities } from 'react-denmark-map'
-
-const App = () => {
-  return (
-    <Municipalities
-      onClick={(municipality) => console.log(`Clicked: ${municipality.display_name}`)}
-    />
-  )
-}
-```
-
-### With `onHover` prop
-
-An event handler that is called when an area is hovered on.
+`customizeAreas` is a prop that takes a function that returns an object containing a className and/or a style object. The className and style object are applied directly to the underlying `<path>` elements (i.e. the area) when the component is mounted. This allows you to easily style each area independently. For example, if you want to display an area with a higher population you might give that area a darker shade of blue and areas with a lower population you give a lighter shade of blue (see next example).
 
 ```jsx
 import { Municipalities } from 'react-denmark-map'
 
 const App = () => {
-  return (
-    <Municipalities
-      onHover={(municipality) => console.log(`Hovered: ${municipality.display_name}`)}
-    />
-  )
+  const customizeMunicipalities = (municipality) => {
+    if (municipality.name === 'københavn') {
+      return {
+        className: 'københavn',
+        style: {
+          fill: 'red'
+        }
+      }
+    }
+  }
+
+  return <Municipalities customizeAreas={customizeMunicipalities} />
 }
 ```
 
-### With custom tooltip
+Similar to styling the tooltip, you can conditionally style each area with external data. E.g. an array consisting of objects with the type
+
+```
+{ id: string; population: number }
+```
+
+where `id` is the name of the municipality and `population` is data about the area, we can make municipalities with a population less than 40.000 people a light blue and municipalities with a higher population a darker blue:
+
+```jsx
+import { Municipalities } from 'react-denmark-map'
+
+const data = [
+  {
+    id: 'assens',
+    population: 40972
+  }
+  // ...
+]
+
+const App = () => {
+  const customizeMunicipalities = (municipality) => {
+    const result = data.find((item) => item.id === municipality.name)
+
+    if (!result) return
+
+    if (result.population < 40000) {
+      return {
+        style: {
+          fill: 'skyblue'
+        }
+      }
+    }
+    return {
+      style: {
+        fill: 'royalblue'
+      }
+    }
+  }
+
+  return <Municipalities customizeAreas={customizeMunicipalities} />
+}
+```
+
+Instead of municipalities, these areas could also be each region or island, depending on the component used. See "API" for full reference.
+
+### Customizing the tooltip
 
 `customTooltip` is a prop that takes a function and returns a JSX element. The tooltip is displayed when hovering an area.
 
@@ -133,73 +188,56 @@ const App = () => {
 }
 ```
 
-### With custom areas
+### Click and hover events
 
-`customizeAreas` is a prop that takes a function that returns an object containing a className and/or a style object. The className and style object are applied directly to the underlying `<path>` elements (i.e. the area) when the component is mounted. This allows you to easily style each area independently. For example, if you want to display an area with a higher population you might give that area a darker shade of blue and areas with a lower population you give a lighter shade of blue (see next example).
+#### `onClick` event handler
+
+An event handler that is called when an area is clicked.
 
 ```jsx
 import { Municipalities } from 'react-denmark-map'
 
 const App = () => {
-  const customizeMunicipalities = (municipality) => {
-    if (municipality.name === 'københavn') {
-      return {
-        className: 'københavn',
-        style: {
-          fill: 'red'
-        }
-      }
-    }
-  }
-
-  return <Municipalities customizeAreas={customizeMunicipalities} />
+  return (
+    <Municipalities
+      onClick={(municipality) => console.log(`Clicked: ${municipality.display_name}`)}
+    />
+  )
 }
 ```
 
-Similar to styling the tooltip, you can conditionally style each area with external data. E.g. an array consisting of objects with the type
+#### `onHover` event handler
 
-```
-{ id: string; population: number }
-```
-
-where `id` is the name of the municipality and `population` is data about the area, we can make municipalities with a population less than 40.000 people a light blue and municipalities with a higher population a darker blue:
+An event handler that is called when an area is hovered on.
 
 ```jsx
 import { Municipalities } from 'react-denmark-map'
 
-const data = [
-  {
-    id: 'assens',
-    population: 40972
-  }
-  // ...
-]
-
 const App = () => {
-  const customizeMunicipalities = (municipality) => {
-    const result = data.find((item) => item.id === municipality.name)
-
-    if (!result) return
-
-    if (result.population < 40000) {
-      return {
-        style: {
-          fill: 'skyblue'
-        }
-      }
-    }
-    return {
-      style: {
-        fill: 'royalblue'
-      }
-    }
-  }
-
-  return <Municipalities customizeAreas={customizeMunicipalities} />
+  return (
+    <Municipalities
+      onHover={(municipality) => console.log(`Hovered: ${municipality.display_name}`)}
+    />
+  )
 }
 ```
 
-Instead of municipalities, these areas could also be each region or island, depending on the component used. See "API" for full reference.
+#### `onMouseEnter` and `onMouseLeave` event handlers
+
+Event handlers that are called when areas are entered and left by the cursor, respectively. `onHover` is the same as `onMouseEnter`.
+
+```jsx
+import { Municipalities } from 'react-denmark-map'
+
+const App = () => {
+  return (
+    <Municipalities
+      onMouseEnter={(municipality) => console.log(`Mouse entered: ${municipality.display_name}`)}
+      onMouseLeave={(municipality) => console.log(`Mouse left: ${municipality.display_name}`)}
+    />
+  )
+}
+```
 
 ### Styling
 
@@ -278,8 +316,6 @@ If you want to make sure that each version of the map rerenders as few times as 
 
 ```jsx
 const App = () => {
-  const [state, setState] = useState(0)
-
   const style = useMemo(() => ({ color: 'red' }), [])
 
   const customizeAreas = useCallback(() => {
@@ -290,16 +326,9 @@ const App = () => {
     }
   }, [])
 
-  return (
-    <>
-      <button onClick={() => setState(state + 1)}></button>
-      <Municipalities customizeAreas={customizeAreas} style={style} />
-    </>
-  )
+  return <Municipalities customizeAreas={customizeAreas} style={style} />
 }
 ```
-
-The result is that the map won't be rerendered when updating the unrelated state.
 
 ## API
 
