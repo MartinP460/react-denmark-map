@@ -49,7 +49,7 @@ export interface MapProps<Type extends Area> {
    * @param onZoomIn Callback for zooming in.
    * @param onZoomOut Callback for zooming out.
    */
-  CustomZoomControls?: ComponentType<{ onZoomIn(): void; onZoomOut(): void }>
+  customZoomControls?: ComponentType<{ onZoomIn(): void; onZoomOut(): void }>
   customTooltip?: (area: Type) => ReactNode
   onClick?: (area: Type) => void
   onHover?: (area: Type) => void
@@ -77,7 +77,7 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
     laesoeAltPosition,
     anholtAltPosition,
     viewBox,
-    CustomZoomControls,
+    customZoomControls,
     className,
     onMouseEnter,
     onMouseLeave,
@@ -179,7 +179,7 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
         customTooltip={customTooltip as (area: Area) => ReactNode}
         ref={tooltip}
       />
-      <Zoompane zoomable={zoomable as boolean} CustomZoomControls={CustomZoomControls}>
+      <Zoompane zoomable={zoomable as boolean} customZoomControls={customZoomControls}>
         <svg
           id="react-denmark-map-svg"
           viewBox={

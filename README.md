@@ -234,7 +234,7 @@ const CustomZoomControls = ({ onZoomIn, onZoomOut }) => (
 )
 
 const App = () => {
-  return <Municipalities CustomZoomControls={CustomZoomControls} />
+  return <Municipalities customZoomControls={CustomZoomControls} />
 }
 ```
 
@@ -275,6 +275,7 @@ Alternatively, you can apply styles via CSS selectors. Some tags are available t
 - `react-denmark-map-svg` is the `svg` element which contains the path of each area.
 - `react-denmark-map` is the top-most `figure` element and the parent of `svg`.
 - `react-denmark-map-tooltip` is the default tooltip `div` element.
+- `react-denmark-map-zoom-controls` is the parent `div` element to the two buttons constituting the default zoom controls.
 
 ## Typescript
 
@@ -347,7 +348,7 @@ React Denmark Map exports several components, each being a map of Denmark with d
 | `laesoeAltPosition`   | Whether to render Læsø slightly closer to Jutland in the `Municipalities` component.                    | boolean                                                                       | false                                          |
 | `anholtAltPosition`   | Whether to render Anholt closer to Jutland in the `Municipalities` component.                           | boolean                                                                       | false                                          |
 | `zoomable`            | Whether you should be able to zoom on the map.                                                          | boolean                                                                       | true                                           |
-| `CustomZoomControls`  | A React component for custom zoom controls.                                                             | ComponentType<{ onZoomIn(): void; onZoomOut(): void }>                        |                                                |
+| `customZoomControls`  | A React component for custom zoom controls.                                                             | ComponentType<{ onZoomIn(): void; onZoomOut(): void }>                        |                                                |
 | `customTooltip`       | A function that returns a custom tooltip.                                                               | (area: AreaType<sup>\*\*\*</sup>) => ReactNode                                |                                                |
 | `customizeAreas`      | A function that is invoked for every area and returns an object to style the area.                      | (area: AreaType) => { className?: string, style? CSSProperties } \| undefined |                                                |
 | `filterAreas`         | A function that is invoked for every area that avoids rendering the area if the function returns false. | (area: AreaType) => boolean                                                   |                                                |

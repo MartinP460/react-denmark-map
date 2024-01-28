@@ -374,10 +374,10 @@ export const WithFilterAreas: Story = {
 
 export const WithCustomZoomControls: Story = {
   args: {
-    CustomZoomControls: ({ onZoomIn, onZoomOut }) => (
+    customZoomControls: ({ onZoomIn, onZoomOut }) => (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <button onClick={() => onZoomIn()}>+</button>
-        <button onClick={() => onZoomOut()}>–</button>
+        <button onClick={onZoomIn}>+</button>
+        <button onClick={onZoomOut}>–</button>
       </div>
     )
   }
