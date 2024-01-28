@@ -54,7 +54,7 @@ const App = () => {
 
 ### Customizing areas
 
-The `customizeAreas` prop is invoked for each area and applies a className and/or style.
+The `customizeAreas` prop is invoked for each area and applies a className and/or style object.
 
 ```jsx
 import { Municipalities } from 'react-denmark-map'
@@ -75,7 +75,7 @@ const App = () => {
 }
 ```
 
-Below is an example of how you can conditionally style each area with external data. Here, `id` is the name of the municipality and `population` is data about the area, we can make municipalities with a population less than 40.000 people a light blue and municipalities with a higher population a darker blue.
+Below is an example of how you can conditionally style each area with external data. Here, `id` is the name of the municipality and `population` is data about the area. We can make municipalities with a population less than 40.000 people a light blue color and municipalities with a higher population a darker blue color.
 
 ```jsx
 import { Municipalities } from 'react-denmark-map'
@@ -112,7 +112,7 @@ const App = () => {
 }
 ```
 
-Instead of municipalities, these areas could also be each region or island, depending on the component used. See "API" for full reference.
+Instead of municipalities, these areas could also be each region or island, depending on the component used. See ["API"](#components) for full reference.
 
 ### Customizing the tooltip
 
@@ -228,8 +228,8 @@ import { Municipalities } from 'react-denmark-map'
 
 const CustomZoomControls = ({ onZoomIn, onZoomOut }) => (
   <div style={{ display: 'flex', flexDirection: 'column' }}>
-    <button onClick={() => onZoomIn()}>+</button>
-    <button onClick={() => onZoomOut()}>–</button>
+    <button onClick={onZoomIn}>+</button>
+    <button onClick={onZoomOut}>–</button>
   </div>
 )
 
@@ -246,7 +246,7 @@ Pass the prop `zoomable={false}` to disable zooming (and thus not render zoom co
 
 It's strongly recommended that you wrap the map in an element and position that according to your needs. Applying a max width and a margin will center the map and preserve it's dimensions across screen sizes.
 
-```jsx
+```html
 <div style={{ maxWidth: '600px', margin: '0 auto' }}>
   <Municipalities />
 </div>
@@ -270,7 +270,7 @@ const App = () => {
 - `clickable` specifies whether `cursor: pointer` should be applied when hovering. True if `onClick` is passed.
 - `hoverable` specifies whether hover styles should be applied when hovering. True by default.
 
-Alternatively, you can apply styles to some of the components' HTML tags. Some tags are available through their HTML `id` attribute.
+Alternatively, you can apply styles via CSS selectors. Some tags are available through their HTML `id` attribute.
 
 - `react-denmark-map-svg` is the `svg` element which contains the path of each area.
 - `react-denmark-map` is the top-most `figure` element and the parent of `svg`.
@@ -344,8 +344,8 @@ React Denmark Map exports several components, each being a map of Denmark with d
 | `hoverable`           | Whether the hoverable styles should be applied to the `<path>` element (the area).                      | boolean                                                                       | true                                           |
 | `showTooltip`         | Whether to render the tooltip.                                                                          | boolean                                                                       | true                                           |
 | `bornholmAltPosition` | Whether to render Bornholm closer to Zealand in the `Municipalities` component.\*\*                     | boolean                                                                       | false                                          |
-| `laesoeAltPosition`   | Whether to render Læsø slightly closer to Jylland in the `Municipalities` component.                    | boolean                                                                       | false                                          |
-| `anholtAltPosition`   | Whether to render Bornholm closer to Zealand in the `Municipalities` component.                         | boolean                                                                       | false                                          |
+| `laesoeAltPosition`   | Whether to render Læsø slightly closer to Jutland in the `Municipalities` component.                    | boolean                                                                       | false                                          |
+| `anholtAltPosition`   | Whether to render Anholt closer to Jutland in the `Municipalities` component.                           | boolean                                                                       | false                                          |
 | `zoomable`            | Whether you should be able to zoom on the map.                                                          | boolean                                                                       | true                                           |
 | `CustomZoomControls`  | A React component for custom zoom controls.                                                             | ComponentType<{ onZoomIn(): void; onZoomOut(): void }>                        |                                                |
 | `customTooltip`       | A function that returns a custom tooltip.                                                               | (area: AreaType<sup>\*\*\*</sup>) => ReactNode                                |                                                |
