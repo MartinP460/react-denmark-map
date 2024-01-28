@@ -221,7 +221,7 @@ const App = () => {
 
 ### Zooming
 
-The `customZoomControls` prop allows you to customize the default zoom controls.
+The `customZoomControls` prop allows you to pass your own zoom controls.
 
 ```jsx
 import { Municipalities } from 'react-denmark-map'
