@@ -510,7 +510,7 @@ describe('Map', () => {
       })
     })
 
-    describe('CustomZoomControls', () => {
+    describe('customZoomControls', () => {
       it('should render custom zoom controls', () => {
         const CustomZoomControls = ({
           onZoomIn,
