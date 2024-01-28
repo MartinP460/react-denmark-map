@@ -25,7 +25,6 @@
   - [Components](#components)
   - [Props](#props)
   - [Types](#types)
-- [Workflow](#workflow)
 - [License](#license)
 - [Contributing](#contributing)
 
