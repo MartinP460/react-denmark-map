@@ -41,7 +41,7 @@ yarn add react-denmark-map
 
 ## Usage
 
-_Examples use the `Municipalities` component, although the props are the same for every component. See "API" for all available components._
+_Examples use the `Municipalities` component, although the props are the same for every component. See ["API"](#components) for all available components._
 
 ### Basic usage
 
@@ -55,7 +55,7 @@ const App = () => {
 
 ### Customizing areas
 
-`customizeAreas` is a prop that takes a function that returns an object containing a className and/or a style object. The className and style object are applied directly to the underlying `<path>` elements (i.e. the area) when the component is mounted. This allows you to easily style each area independently. For example, if you want to display an area with a higher population you might give that area a darker shade of blue and areas with a lower population you give a lighter shade of blue (see next example).
+The `customizeAreas` prop is invoked for each area and applies a className and/or style.
 
 ```jsx
 import { Municipalities } from 'react-denmark-map'
@@ -76,13 +76,7 @@ const App = () => {
 }
 ```
 
-Similar to styling the tooltip, you can conditionally style each area with external data. E.g. an array consisting of objects with the type
-
-```
-{ id: string; population: number }
-```
-
-where `id` is the name of the municipality and `population` is data about the area, we can make municipalities with a population less than 40.000 people a light blue and municipalities with a higher population a darker blue:
+Below is an example of how you can conditionally style each area with external data. Here, `id` is the name of the municipality and `population` is data about the area, we can make municipalities with a population less than 40.000 people a light blue and municipalities with a higher population a darker blue.
 
 ```jsx
 import { Municipalities } from 'react-denmark-map'
@@ -142,13 +136,7 @@ const App = () => {
 }
 ```
 
-You can easily display external data about the area on the tooltip. E.g. an array consisting of objects with the type
-
-```
-{ id: string; population: number }
-```
-
-where `id` is the name of the municipality and `population` is data about the area, where we want to display data about the population of the area in the tooltip. This can be achieved as such:
+You can easily display external data about the area on the tooltip. In this example, `id` is the name of the municipality and `population` is data about the area, where we want to display data about the population of the area in the tooltip.
 
 ```jsx
 import { Municipalities } from 'react-denmark-map'
@@ -179,15 +167,7 @@ const App = () => {
 
 The first parameter / the area parameter of the `customTooltip` function (here named `municipality`) contains several fields that can be used to identify the correct area. See "API" for full reference.
 
-The tooltip is shown by default, but you can disable the tooltip by toggling `showTooltip`:
-
-```jsx
-import { Municipalities } from 'react-denmark-map'
-
-const App = () => {
-  return <Municipalities showTooltip={false} />
-}
-```
+Disable the tooltip by passing `showTooltip={false}` as a prop.
 
 ### Click and hover events
 
@@ -275,7 +255,7 @@ It's strongly recommended that you wrap the map in an element and position that 
 
 #### Appearance
 
-The exported components also support a number of different ways of styling the map:
+The exported components also support a number of different ways of styling the map.
 
 ```jsx
 import { Municipalities } from 'react-denmark-map'
@@ -285,36 +265,23 @@ const App = () => {
 }
 ```
 
-These props are:
-
 - `className` is a string which is applied directly to the SVG element.
 - `style` is an object of CSS properties which is applied directly to the SVG element.
 - `color` is the default color applied to each area of the map.
+- `clickable` specifies whether `cursor: pointer` should be applied when hovering. True if `onClick` is passed.
+- `hoverable` specifies whether hover styles should be applied when hovering. True by default.
 
-In addition to the props mentioned above, the `clickable` and `hoverable` props are booleans used to toggle hover styles on each `<path>` element / area. They are purely decorational.
+Alternatively, you can apply styles to some of the components' HTML tags. Some tags are available through their HTML `id` attribute.
 
-```jsx
-import { Municipalities } from 'react-denmark-map'
-
-const App = () => {
-  return <Municipalities clickable={false} hoverable={false} />
-}
-```
-
-`clickable` is off (false) by default and is enabled by default if the `onClick` prop is provided, and when enabled slightly darkens the hovered area and sets the cursor to pointer. `hoverable` is on (true) by default and slightly darks the hovered area when enabled.
-
-Alternatively, you can apply styles to some of the components' HTML tags. Some tags are available through their ID attribute.
-
-- `svg` is the element which contains the paths of each area. It has the id `react-denmark-map-svg`.
-- `figure` is the top-most element an the parent of `svg` and has the id `react-denmark-map`.
-- The default tooltip is a `div` element and has the id `react-denmark-map-tooltip`.
-- The parent element of the tooltip is a div that has the id `react-denmark-map-tooltip-wrapper`. It's recommended to _not_ use this to style the tooltip, since it is used solely for positioning and uses inline styles.
+- `react-denmark-map-svg` is the `svg` element which contains the path of each area.
+- `react-denmark-map` is the top-most `figure` element and the parent of `svg`.
+- `react-denmark-map-tooltip` is the default tooltip `div` element.
 
 ## Typescript
 
 React Denmark Map is written in Typescript.
 
-You may also want to apply types to function arguments i.e. when writing the function to be given to the `customizeAreas` prop. In that case, React Denmark Map exports the type used as an argument as `*Type`, e.g. for the `Municipalities` component:
+You may also want to apply types to function arguments i.e. when writing the function to be given to the `customizeAreas` prop. In that case, React Denmark Map exports the type used as an argument as `*Type`, e.g. for the `Municipalities` component.
 
 ```jsx
 import { Municipalities, MunicipalityType } from 'react-denmark-map'
