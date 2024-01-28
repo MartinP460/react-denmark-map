@@ -529,7 +529,7 @@ describe('Map', () => {
           </div>
         )
 
-        const { container } = render(<Municipalities CustomZoomControls={CustomZoomControls} />)
+        const { container } = render(<Municipalities customZoomControls={CustomZoomControls} />)
 
         const zoomInButton = container.querySelector('#zoom-in')
         const zoomOutButton = container.querySelector('#zoom-out')
