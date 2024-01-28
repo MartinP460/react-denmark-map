@@ -377,7 +377,7 @@ type AreaType = {
   code: string // the municipality or region code (e.g. 482 or 1083)
   en_term: string // the term used to describe the area in English (e.g. jyllland = jutland)
   region: RegionType // the region that a municipality is located in (e.g. fanø -> syddanmark)
-  altD?: string // a possible alternative path for the area in the map
+  altD: string // a possible alternative path for the area in the map
 }
 ```
 
