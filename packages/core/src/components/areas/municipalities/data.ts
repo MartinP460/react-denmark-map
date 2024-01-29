@@ -8,6 +8,7 @@ export const regions = {
     name: 'syddanmark',
     asciiName: 'syddanmark',
     display_name: 'Syddanmark',
+    en_term: 'southern denmark',
     code: '1083'
   },
   sjaelland: {
@@ -15,6 +16,7 @@ export const regions = {
     name: 'sjælland',
     asciiName: 'sjaelland',
     display_name: 'Sjælland',
+    en_term: 'zealand',
     code: '1085'
   },
   midtjylland: {
@@ -22,6 +24,7 @@ export const regions = {
     name: 'midtjylland',
     asciiName: 'midtjylland',
     display_name: 'Midtjylland',
+    en_term: 'central denmark',
     code: '1082'
   },
   nordjylland: {
@@ -29,6 +32,7 @@ export const regions = {
     name: 'nordjylland',
     asciiName: 'nordjylland',
     display_name: 'Nordjylland',
+    en_term: 'north denmark',
     code: '1081'
   },
   hovedstaden: {
@@ -36,6 +40,7 @@ export const regions = {
     name: 'hovedstaden',
     asciiName: 'hovedstaden',
     display_name: 'Hovedstaden',
+    en_term: 'capital',
     code: '1084'
   }
 } as const
