@@ -295,7 +295,7 @@ describe('Map', () => {
           expect.objectContaining({
             id: 'langeland',
             name: 'langeland',
-            en_name: 'langeland',
+            asciiName: 'langeland',
             display_name: 'Langeland',
             code: '482'
           })
@@ -331,7 +331,7 @@ describe('Map', () => {
           expect.objectContaining({
             id: 'langeland',
             name: 'langeland',
-            en_name: 'langeland',
+            asciiName: 'langeland',
             display_name: 'Langeland',
             code: '482'
           })
@@ -377,7 +377,7 @@ describe('Map', () => {
           expect.objectContaining({
             id: 'langeland',
             name: 'langeland',
-            en_name: 'langeland',
+            asciiName: 'langeland',
             display_name: 'Langeland',
             code: '482'
           })
@@ -401,7 +401,7 @@ describe('Map', () => {
           expect.objectContaining({
             id: 'langeland',
             name: 'langeland',
-            en_name: 'langeland',
+            asciiName: 'langeland',
             display_name: 'Langeland',
             code: '482'
           })

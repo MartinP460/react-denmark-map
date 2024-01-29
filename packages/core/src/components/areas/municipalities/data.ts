@@ -6,36 +6,41 @@ export const regions = {
   syddanmark: {
     id: 'syddanmark',
     name: 'syddanmark',
-    en_name: 'syddanmark',
+    asciiName: 'syddanmark',
     display_name: 'Syddanmark',
+    en_term: 'southern denmark',
     code: '1083'
   },
   sjaelland: {
     id: 'sjaelland',
     name: 'sjælland',
-    en_name: 'sjaelland',
+    asciiName: 'sjaelland',
     display_name: 'Sjælland',
+    en_term: 'zealand',
     code: '1085'
   },
   midtjylland: {
     id: 'midtjylland',
     name: 'midtjylland',
-    en_name: 'midtjylland',
+    asciiName: 'midtjylland',
     display_name: 'Midtjylland',
+    en_term: 'central denmark',
     code: '1082'
   },
   nordjylland: {
     id: 'nordjylland',
     name: 'nordjylland',
-    en_name: 'nordjylland',
+    asciiName: 'nordjylland',
     display_name: 'Nordjylland',
+    en_term: 'north denmark',
     code: '1081'
   },
   hovedstaden: {
     id: 'hovedstaden',
     name: 'hovedstaden',
-    en_name: 'hovedstaden',
+    asciiName: 'hovedstaden',
     display_name: 'Hovedstaden',
+    en_term: 'capital',
     code: '1084'
   }
 } as const
@@ -44,7 +49,7 @@ export const municipalities = [
   {
     id: 'langeland',
     name: 'langeland',
-    en_name: 'langeland',
+    asciiName: 'langeland',
     display_name: 'Langeland',
     code: '482',
     region: regions.syddanmark,
@@ -53,7 +58,7 @@ export const municipalities = [
   {
     id: 'aabenraa',
     name: 'aabenraa',
-    en_name: 'aabenraa',
+    asciiName: 'aabenraa',
     display_name: 'Aabenraa',
     code: '580',
     region: regions.syddanmark,
@@ -62,7 +67,7 @@ export const municipalities = [
   {
     id: 'aeroe',
     name: 'ærø',
-    en_name: 'aeroe',
+    asciiName: 'aeroe',
     display_name: 'Ærø',
     code: '492',
     region: regions.syddanmark,
@@ -71,7 +76,7 @@ export const municipalities = [
   {
     id: 'soenderborg',
     name: 'sønderborg',
-    en_name: 'soenderborg',
+    asciiName: 'soenderborg',
     display_name: 'Sønderborg',
     code: '540',
     region: regions.syddanmark,
@@ -80,7 +85,7 @@ export const municipalities = [
   {
     id: 'svendborg',
     name: 'svendborg',
-    en_name: 'svendborg',
+    asciiName: 'svendborg',
     display_name: 'Svendborg',
     code: '479',
     region: regions.syddanmark,
@@ -89,7 +94,7 @@ export const municipalities = [
   {
     id: 'faaborg-midtfyn',
     name: 'faaborg-midtfyn',
-    en_name: 'faaborg-midtfyn',
+    asciiName: 'faaborg-midtfyn',
     display_name: 'Faaborg-midtfyn',
     code: '430',
     region: regions.syddanmark,
@@ -98,7 +103,7 @@ export const municipalities = [
   {
     id: 'toender',
     name: 'tønder',
-    en_name: 'toender',
+    asciiName: 'toender',
     display_name: 'Tønder',
     code: '550',
     region: regions.syddanmark,
@@ -107,7 +112,7 @@ export const municipalities = [
   {
     id: 'haderslev',
     name: 'haderslev',
-    en_name: 'haderslev',
+    asciiName: 'haderslev',
     display_name: 'Haderslev',
     code: '510',
     region: regions.syddanmark,
@@ -116,7 +121,7 @@ export const municipalities = [
   {
     id: 'assens',
     name: 'assens',
-    en_name: 'assens',
+    asciiName: 'assens',
     display_name: 'Assens',
     code: '420',
     region: regions.syddanmark,
@@ -125,7 +130,7 @@ export const municipalities = [
   {
     id: 'nyborg',
     name: 'nyborg',
-    en_name: 'nyborg',
+    asciiName: 'nyborg',
     display_name: 'Nyborg',
     code: '450',
     region: regions.syddanmark,
@@ -134,7 +139,7 @@ export const municipalities = [
   {
     id: 'esbjerg',
     name: 'esbjerg',
-    en_name: 'esbjerg',
+    asciiName: 'esbjerg',
     display_name: 'Esbjerg',
     code: '561',
     region: regions.syddanmark,
@@ -143,7 +148,7 @@ export const municipalities = [
   {
     id: 'vejen',
     name: 'vejen',
-    en_name: 'vejen',
+    asciiName: 'vejen',
     display_name: 'Vejen',
     code: '575',
     region: regions.syddanmark,
@@ -152,7 +157,7 @@ export const municipalities = [
   {
     id: 'odense',
     name: 'odense',
-    en_name: 'odense',
+    asciiName: 'odense',
     display_name: 'Odense',
     code: '461',
     region: regions.syddanmark,
@@ -161,7 +166,7 @@ export const municipalities = [
   {
     id: 'kolding',
     name: 'kolding',
-    en_name: 'kolding',
+    asciiName: 'kolding',
     display_name: 'Kolding',
     code: '621',
     region: regions.syddanmark,
@@ -170,7 +175,7 @@ export const municipalities = [
   {
     id: 'kerteminde',
     name: 'kerteminde',
-    en_name: 'kerteminde',
+    asciiName: 'kerteminde',
     display_name: 'Kerteminde',
     code: '440',
     region: regions.syddanmark,
@@ -179,7 +184,7 @@ export const municipalities = [
   {
     id: 'fanoe',
     name: 'fanø',
-    en_name: 'fanoe',
+    asciiName: 'fanoe',
     display_name: 'Fanø',
     code: '563',
     region: regions.syddanmark,
@@ -188,7 +193,7 @@ export const municipalities = [
   {
     id: 'middelfart',
     name: 'middelfart',
-    en_name: 'middelfart',
+    asciiName: 'middelfart',
     display_name: 'Middelfart',
     code: '410',
     region: regions.syddanmark,
@@ -197,7 +202,7 @@ export const municipalities = [
   {
     id: 'nordfyn',
     name: 'nordfyn',
-    en_name: 'nordfyn',
+    asciiName: 'nordfyn',
     display_name: 'Nordfyn',
     code: '480',
     region: regions.syddanmark,
@@ -206,7 +211,7 @@ export const municipalities = [
   {
     id: 'varde',
     name: 'varde',
-    en_name: 'varde',
+    asciiName: 'varde',
     display_name: 'Varde',
     code: '573',
     region: regions.syddanmark,
@@ -215,7 +220,7 @@ export const municipalities = [
   {
     id: 'fredericia',
     name: 'fredericia',
-    en_name: 'fredericia',
+    asciiName: 'fredericia',
     display_name: 'Fredericia',
     code: '607',
     region: regions.syddanmark,
@@ -224,7 +229,7 @@ export const municipalities = [
   {
     id: 'vejle',
     name: 'vejle',
-    en_name: 'vejle',
+    asciiName: 'vejle',
     display_name: 'Vejle',
     code: '630',
     region: regions.syddanmark,
@@ -233,7 +238,7 @@ export const municipalities = [
   {
     id: 'billund',
     name: 'billund',
-    en_name: 'billund',
+    asciiName: 'billund',
     display_name: 'Billund',
     code: '530',
     region: regions.syddanmark,
@@ -242,7 +247,7 @@ export const municipalities = [
   {
     id: 'hedensted',
     name: 'hedensted',
-    en_name: 'hedensted',
+    asciiName: 'hedensted',
     display_name: 'Hedensted',
     code: '766',
     region: regions.midtjylland,
@@ -251,7 +256,7 @@ export const municipalities = [
   {
     id: 'ringkoebing-skjern',
     name: 'ringkøbing-skjern',
-    en_name: 'ringkoebing-skjern',
+    asciiName: 'ringkoebing-skjern',
     display_name: 'Ringkøbing-Skjern',
     code: '760',
     region: regions.midtjylland,
@@ -260,7 +265,7 @@ export const municipalities = [
   {
     id: 'horsens',
     name: 'horsens',
-    en_name: 'horsens',
+    asciiName: 'horsens',
     display_name: 'Horsens',
     code: '615',
     region: regions.midtjylland,
@@ -269,7 +274,7 @@ export const municipalities = [
   {
     id: 'ikast-brande',
     name: 'ikast-brande',
-    en_name: 'ikast-brande',
+    asciiName: 'ikast-brande',
     display_name: 'Ikast-Brande',
     code: '756',
     region: regions.midtjylland,
@@ -278,7 +283,7 @@ export const municipalities = [
   {
     id: 'odder',
     name: 'odder',
-    en_name: 'odder',
+    asciiName: 'odder',
     display_name: 'Odder',
     code: '727',
     region: regions.midtjylland,
@@ -287,7 +292,7 @@ export const municipalities = [
   {
     id: 'herning',
     name: 'herning',
-    en_name: 'herning',
+    asciiName: 'herning',
     display_name: 'Herning',
     code: '657',
     region: regions.midtjylland,
@@ -296,7 +301,7 @@ export const municipalities = [
   {
     id: 'samsoe',
     name: 'samsø',
-    en_name: 'samsoe',
+    asciiName: 'samsoe',
     display_name: 'Samsø',
     code: '741',
     region: regions.midtjylland,
@@ -305,7 +310,7 @@ export const municipalities = [
   {
     id: 'skanderborg',
     name: 'skanderborg',
-    en_name: 'skanderborg',
+    asciiName: 'skanderborg',
     display_name: 'Skanderborg',
     code: '746',
     region: regions.midtjylland,
@@ -314,7 +319,7 @@ export const municipalities = [
   {
     id: 'silkeborg',
     name: 'silkeborg',
-    en_name: 'silkeborg',
+    asciiName: 'silkeborg',
     display_name: 'Silkeborg',
     code: '740',
     region: regions.midtjylland,
@@ -323,7 +328,7 @@ export const municipalities = [
   {
     id: 'aarhus',
     name: 'århus',
-    en_name: 'aarhus',
+    asciiName: 'aarhus',
     display_name: 'Århus',
     code: '751',
     region: regions.midtjylland,
@@ -332,7 +337,7 @@ export const municipalities = [
   {
     id: 'syddjurs',
     name: 'syddjurs',
-    en_name: 'syddjurs',
+    asciiName: 'syddjurs',
     display_name: 'Syddjurs',
     code: '706',
     region: regions.midtjylland,
@@ -341,7 +346,7 @@ export const municipalities = [
   {
     id: 'favrskov',
     name: 'favrskov',
-    en_name: 'favrskov',
+    asciiName: 'favrskov',
     display_name: 'Favrskov',
     code: '710',
     region: regions.midtjylland,
@@ -350,7 +355,7 @@ export const municipalities = [
   {
     id: 'holstebro',
     name: 'holstebro',
-    en_name: 'holstebro',
+    asciiName: 'holstebro',
     display_name: 'Holstebro',
     code: '661',
     region: regions.midtjylland,
@@ -359,7 +364,7 @@ export const municipalities = [
   {
     id: 'viborg',
     name: 'viborg',
-    en_name: 'viborg',
+    asciiName: 'viborg',
     display_name: 'Viborg',
     code: '791',
     region: regions.midtjylland,
@@ -368,7 +373,7 @@ export const municipalities = [
   {
     id: 'norddjurs',
     name: 'norddjurs',
-    en_name: 'norddjurs',
+    asciiName: 'norddjurs',
     display_name: 'Norddjurs',
     code: '707',
     region: regions.midtjylland,
@@ -377,7 +382,7 @@ export const municipalities = [
   {
     id: 'lemvig',
     name: 'lemvig',
-    en_name: 'lemvig',
+    asciiName: 'lemvig',
     display_name: 'Lemvig',
     code: '665',
     region: regions.midtjylland,
@@ -386,7 +391,7 @@ export const municipalities = [
   {
     id: 'randers',
     name: 'randers',
-    en_name: 'randers',
+    asciiName: 'randers',
     display_name: 'Randers',
     code: '730',
     region: regions.midtjylland,
@@ -395,7 +400,7 @@ export const municipalities = [
   {
     id: 'skive',
     name: 'skive',
-    en_name: 'skive',
+    asciiName: 'skive',
     display_name: 'Skive',
     code: '779',
     region: regions.midtjylland,
@@ -404,7 +409,7 @@ export const municipalities = [
   {
     id: 'struer',
     name: 'struer',
-    en_name: 'struer',
+    asciiName: 'struer',
     display_name: 'Struer',
     code: '671',
     region: regions.midtjylland,
@@ -413,7 +418,7 @@ export const municipalities = [
   {
     id: 'mariagerfjord',
     name: 'mariagerfjord',
-    en_name: 'mariagerfjord',
+    asciiName: 'mariagerfjord',
     display_name: 'Mariagerfjord',
     code: '846',
     region: regions.nordjylland,
@@ -422,7 +427,7 @@ export const municipalities = [
   {
     id: 'vesthimmerlands',
     name: 'vesthimmerlands',
-    en_name: 'vesthimmerlands',
+    asciiName: 'vesthimmerlands',
     display_name: 'Vesthimmerlands',
     code: '820',
     region: regions.nordjylland,
@@ -431,7 +436,7 @@ export const municipalities = [
   {
     id: 'rebild',
     name: 'rebild',
-    en_name: 'rebild',
+    asciiName: 'rebild',
     display_name: 'Rebild',
     code: '840',
     region: regions.nordjylland,
@@ -440,7 +445,7 @@ export const municipalities = [
   {
     id: 'thisted',
     name: 'thisted',
-    en_name: 'thisted',
+    asciiName: 'thisted',
     display_name: 'Thisted',
     code: '787',
     region: regions.nordjylland,
@@ -449,7 +454,7 @@ export const municipalities = [
   {
     id: 'morsoe',
     name: 'morsø',
-    en_name: 'morsoe',
+    asciiName: 'morsoe',
     display_name: 'Morsø',
     code: '773',
     region: regions.nordjylland,
@@ -458,7 +463,7 @@ export const municipalities = [
   {
     id: 'aalborg',
     name: 'aalborg',
-    en_name: 'aalborg',
+    asciiName: 'aalborg',
     display_name: 'Aalborg',
     code: '851',
     region: regions.nordjylland,
@@ -467,7 +472,7 @@ export const municipalities = [
   {
     id: 'jammerbugt',
     name: 'jammerbugt',
-    en_name: 'jammerbugt',
+    asciiName: 'jammerbugt',
     display_name: 'Jammerbugt',
     code: '849',
     region: regions.nordjylland,
@@ -476,7 +481,7 @@ export const municipalities = [
   {
     id: 'broenderslev',
     name: 'brønderslev',
-    en_name: 'broenderslev',
+    asciiName: 'broenderslev',
     display_name: 'Brønderslev',
     code: '810',
     region: regions.nordjylland,
@@ -485,7 +490,7 @@ export const municipalities = [
   {
     id: 'frederikshavn',
     name: 'frederikshavn',
-    en_name: 'frederikshavn',
+    asciiName: 'frederikshavn',
     display_name: 'Frederikshavn',
     code: '813',
     region: regions.nordjylland,
@@ -494,7 +499,7 @@ export const municipalities = [
   {
     id: 'laesoe',
     name: 'læsø',
-    en_name: 'laesoe',
+    asciiName: 'laesoe',
     display_name: 'Læsø',
     code: '825',
     region: regions.nordjylland,
@@ -503,7 +508,7 @@ export const municipalities = [
   {
     id: 'hjoerring',
     name: 'hjørring',
-    en_name: 'hjoerring',
+    asciiName: 'hjoerring',
     display_name: 'Hjørring',
     code: '860',
     region: regions.nordjylland,
@@ -512,7 +517,7 @@ export const municipalities = [
   {
     id: 'guldborgsund',
     name: 'guldborgsund',
-    en_name: 'guldborgsund',
+    asciiName: 'guldborgsund',
     display_name: 'Guldborgsund',
     code: '376',
     region: regions.sjaelland,
@@ -521,7 +526,7 @@ export const municipalities = [
   {
     id: 'lolland',
     name: 'lolland',
-    en_name: 'lolland',
+    asciiName: 'lolland',
     display_name: 'Lolland',
     code: '360',
     region: regions.sjaelland,
@@ -530,7 +535,7 @@ export const municipalities = [
   {
     id: 'vordingborg',
     name: 'vordingborg',
-    en_name: 'vordingborg',
+    asciiName: 'vordingborg',
     display_name: 'Vordingborg',
     code: '390',
     region: regions.sjaelland,
@@ -539,7 +544,7 @@ export const municipalities = [
   {
     id: 'naestved',
     name: 'næstved',
-    en_name: 'naestved',
+    asciiName: 'naestved',
     display_name: 'Næstved',
     code: '370',
     region: regions.sjaelland,
@@ -548,7 +553,7 @@ export const municipalities = [
   {
     id: 'faxe',
     name: 'faxe',
-    en_name: 'faxe',
+    asciiName: 'faxe',
     display_name: 'Faxe',
     code: '320',
     region: regions.sjaelland,
@@ -557,7 +562,7 @@ export const municipalities = [
   {
     id: 'slagelse',
     name: 'slagelse',
-    en_name: 'slagelse',
+    asciiName: 'slagelse',
     display_name: 'Slagelse',
     code: '330',
     region: regions.sjaelland,
@@ -566,7 +571,7 @@ export const municipalities = [
   {
     id: 'stevns',
     name: 'stevns',
-    en_name: 'stevns',
+    asciiName: 'stevns',
     display_name: 'Stevns',
     code: '336',
     region: regions.sjaelland,
@@ -575,7 +580,7 @@ export const municipalities = [
   {
     id: 'ringsted',
     name: 'ringsted',
-    en_name: 'ringsted',
+    asciiName: 'ringsted',
     display_name: 'Ringsted',
     code: '329',
     region: regions.sjaelland,
@@ -584,7 +589,7 @@ export const municipalities = [
   {
     id: 'soroe',
     name: 'sorø',
-    en_name: 'soroe',
+    asciiName: 'soroe',
     display_name: 'Sorø',
     code: '340',
     region: regions.sjaelland,
@@ -593,7 +598,7 @@ export const municipalities = [
   {
     id: 'koege',
     name: 'køge',
-    en_name: 'koege',
+    asciiName: 'koege',
     display_name: 'Køge',
     code: '259',
     region: regions.sjaelland,
@@ -602,7 +607,7 @@ export const municipalities = [
   {
     id: 'kalundborg',
     name: 'kalundborg',
-    en_name: 'kalundborg',
+    asciiName: 'kalundborg',
     display_name: 'Kalundborg',
     code: '326',
     region: regions.sjaelland,
@@ -611,7 +616,7 @@ export const municipalities = [
   {
     id: 'solroed',
     name: 'solrød',
-    en_name: 'solroed',
+    asciiName: 'solroed',
     display_name: 'Solrød',
     code: '269',
     region: regions.sjaelland,
@@ -620,7 +625,7 @@ export const municipalities = [
   {
     id: 'lejre',
     name: 'lejre',
-    en_name: 'lejre',
+    asciiName: 'lejre',
     display_name: 'Lejre',
     code: '350',
     region: regions.sjaelland,
@@ -629,7 +634,7 @@ export const municipalities = [
   {
     id: 'roskilde',
     name: 'roskilde',
-    en_name: 'roskilde',
+    asciiName: 'roskilde',
     display_name: 'Roskilde',
     code: '265',
     region: regions.sjaelland,
@@ -638,7 +643,7 @@ export const municipalities = [
   {
     id: 'greve',
     name: 'greve',
-    en_name: 'greve',
+    asciiName: 'greve',
     display_name: 'Greve',
     code: '253',
     region: regions.sjaelland,
@@ -647,7 +652,7 @@ export const municipalities = [
   {
     id: 'dragoer',
     name: 'dragør',
-    en_name: 'dragoer',
+    asciiName: 'dragoer',
     display_name: 'Dragør',
     code: '155',
     region: regions.hovedstaden,
@@ -656,7 +661,7 @@ export const municipalities = [
   {
     id: 'taarnby',
     name: 'tårnby',
-    en_name: 'taarnby',
+    asciiName: 'taarnby',
     display_name: 'Tårnby',
     code: '185',
     region: regions.hovedstaden,
@@ -665,7 +670,7 @@ export const municipalities = [
   {
     id: 'ishoej',
     name: 'ishøj',
-    en_name: 'ishoej',
+    asciiName: 'ishoej',
     display_name: 'Ishøj',
     code: '183',
     region: regions.hovedstaden,
@@ -674,7 +679,7 @@ export const municipalities = [
   {
     id: 'hoeje-taastrup',
     name: 'høje-taastrup',
-    en_name: 'hoeje-taastrup',
+    asciiName: 'hoeje-taastrup',
     display_name: 'Høje Taastrup',
     code: '169',
     region: regions.hovedstaden,
@@ -683,7 +688,7 @@ export const municipalities = [
   {
     id: 'hvidovre',
     name: 'hvidovre',
-    en_name: 'hvidovre',
+    asciiName: 'hvidovre',
     display_name: 'Hvidovre',
     code: '167',
     region: regions.hovedstaden,
@@ -692,7 +697,7 @@ export const municipalities = [
   {
     id: 'broendby',
     name: 'brøndby',
-    en_name: 'broendby',
+    asciiName: 'broendby',
     display_name: 'Brøndby',
     code: '153',
     region: regions.hovedstaden,
@@ -701,7 +706,7 @@ export const municipalities = [
   {
     id: 'vallensbaek',
     name: 'vallensbæk',
-    en_name: 'vallensbaek',
+    asciiName: 'vallensbaek',
     display_name: 'Vallensbæk',
     code: '187',
     region: regions.hovedstaden,
@@ -710,7 +715,7 @@ export const municipalities = [
   {
     id: 'albertslund',
     name: 'albertslund',
-    en_name: 'albertslund',
+    asciiName: 'albertslund',
     display_name: 'Albertslund',
     code: '165',
     region: regions.hovedstaden,
@@ -719,7 +724,7 @@ export const municipalities = [
   {
     id: 'koebenhavn',
     name: 'københavn',
-    en_name: 'koebenhavn',
+    asciiName: 'koebenhavn',
     display_name: 'København',
     code: '101',
     region: regions.hovedstaden,
@@ -728,7 +733,7 @@ export const municipalities = [
   {
     id: 'glostrup',
     name: 'glostrup',
-    en_name: 'glostrup',
+    asciiName: 'glostrup',
     display_name: 'Glostrup',
     code: '161',
     region: regions.hovedstaden,
@@ -737,7 +742,7 @@ export const municipalities = [
   {
     id: 'frederiksberg',
     name: 'frederiksberg',
-    en_name: 'frederiksberg',
+    asciiName: 'frederiksberg',
     display_name: 'Frederiksberg',
     code: '147',
     region: regions.hovedstaden,
@@ -746,7 +751,7 @@ export const municipalities = [
   {
     id: 'roedovre',
     name: 'rødovre',
-    en_name: 'roedovre',
+    asciiName: 'roedovre',
     display_name: 'Rødovre',
     code: '175',
     region: regions.hovedstaden,
@@ -755,7 +760,7 @@ export const municipalities = [
   {
     id: 'egedal',
     name: 'egedal',
-    en_name: 'egedal',
+    asciiName: 'egedal',
     display_name: 'Egedal',
     code: '240',
     region: regions.hovedstaden,
@@ -764,7 +769,7 @@ export const municipalities = [
   {
     id: 'ballerup',
     name: 'ballerup',
-    en_name: 'ballerup',
+    asciiName: 'ballerup',
     display_name: 'Ballerup',
     code: '151',
     region: regions.hovedstaden,
@@ -773,7 +778,7 @@ export const municipalities = [
   {
     id: 'herlev',
     name: 'herlev',
-    en_name: 'herlev',
+    asciiName: 'herlev',
     display_name: 'Herlev',
     code: '163',
     region: regions.hovedstaden,
@@ -782,7 +787,7 @@ export const municipalities = [
   {
     id: 'gladsaxe',
     name: 'gladsaxe',
-    en_name: 'gladsaxe',
+    asciiName: 'gladsaxe',
     display_name: 'Gladsaxe',
     code: '159',
     region: regions.hovedstaden,
@@ -791,7 +796,7 @@ export const municipalities = [
   {
     id: 'odsherred',
     name: 'odsherred',
-    en_name: 'odsherred',
+    asciiName: 'odsherred',
     display_name: 'Odsherred',
     code: '306',
     region: regions.sjaelland,
@@ -800,7 +805,7 @@ export const municipalities = [
   {
     id: 'gentofte',
     name: 'gentofte',
-    en_name: 'gentofte',
+    asciiName: 'gentofte',
     display_name: 'Gentofte',
     code: '157',
     region: regions.hovedstaden,
@@ -809,7 +814,7 @@ export const municipalities = [
   {
     id: 'holbaek',
     name: 'holbæk',
-    en_name: 'holbaek',
+    asciiName: 'holbaek',
     display_name: 'Holbæk',
     code: '316',
     region: regions.sjaelland,
@@ -818,7 +823,7 @@ export const municipalities = [
   {
     id: 'furesoe',
     name: 'furesø',
-    en_name: 'furesoe',
+    asciiName: 'furesoe',
     display_name: 'Furesø',
     code: '190',
     region: regions.hovedstaden,
@@ -827,7 +832,7 @@ export const municipalities = [
   {
     id: 'lyngby-taarbaek',
     name: 'lyngby-taarbæk',
-    en_name: 'lyngby-taarbaek',
+    asciiName: 'lyngby-taarbaek',
     display_name: 'Lyngby-Taarbæk',
     code: '173',
     region: regions.hovedstaden,
@@ -836,7 +841,7 @@ export const municipalities = [
   {
     id: 'frederikssund',
     name: 'frederikssund',
-    en_name: 'frederikssund',
+    asciiName: 'frederikssund',
     display_name: 'Frederikssund',
     code: '250',
     region: regions.hovedstaden,
@@ -845,7 +850,7 @@ export const municipalities = [
   {
     id: 'alleroed',
     name: 'allerød',
-    en_name: 'alleroed',
+    asciiName: 'alleroed',
     display_name: 'Allerød',
     code: '201',
     region: regions.hovedstaden,
@@ -854,7 +859,7 @@ export const municipalities = [
   {
     id: 'rudersdal',
     name: 'rudersdal',
-    en_name: 'rudersdal',
+    asciiName: 'rudersdal',
     display_name: 'Rudersdal',
     code: '230',
     region: regions.hovedstaden,
@@ -863,7 +868,7 @@ export const municipalities = [
   {
     id: 'hilleroed',
     name: 'hillerød',
-    en_name: 'hilleroed',
+    asciiName: 'hilleroed',
     display_name: 'Hillerød',
     code: '219',
     region: regions.hovedstaden,
@@ -872,7 +877,7 @@ export const municipalities = [
   {
     id: 'hoersholm',
     name: 'hørsholm',
-    en_name: 'hoersholm',
+    asciiName: 'hoersholm',
     display_name: 'Hørsholm',
     code: '223',
     region: regions.hovedstaden,
@@ -881,7 +886,7 @@ export const municipalities = [
   {
     id: 'gribskov',
     name: 'gribskov',
-    en_name: 'gribskov',
+    asciiName: 'gribskov',
     display_name: 'Gribskov',
     code: '270',
     region: regions.hovedstaden,
@@ -890,7 +895,7 @@ export const municipalities = [
   {
     id: 'halsnaes',
     name: 'halsnæs',
-    en_name: 'halsnaes',
+    asciiName: 'halsnaes',
     display_name: 'Halsnæs',
     code: '260',
     region: regions.hovedstaden,
@@ -899,7 +904,7 @@ export const municipalities = [
   {
     id: 'fredensborg',
     name: 'fredensborg',
-    en_name: 'fredensborg',
+    asciiName: 'fredensborg',
     display_name: 'Fredensborg',
     code: '210',
     region: regions.hovedstaden,
@@ -908,7 +913,7 @@ export const municipalities = [
   {
     id: 'helsingoer',
     name: 'helsingør',
-    en_name: 'helsingoer',
+    asciiName: 'helsingoer',
     display_name: 'Helsingør',
     code: '217',
     region: regions.hovedstaden,
@@ -917,7 +922,7 @@ export const municipalities = [
   {
     id: 'bornholm',
     name: 'bornholm',
-    en_name: 'bornholm',
+    asciiName: 'bornholm',
     display_name: 'Bornholm',
     code: '400',
     region: regions.hovedstaden,

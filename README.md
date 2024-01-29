@@ -371,7 +371,7 @@ Each area has at least the first 5 properties and potentially more.
 type AreaType = {
   id: string // the name of the area with substitutes for Danish letters (e.g. 'fanoe')
   name: string // the name of the area with Danish letters (e.g. 'fanø')
-  en_name: string // same as 'id'
+  asciiName: string // same as 'id'
   display_name: string // the local name of the area capitalized (e.g. 'Høje Taastrup')
   d: string // the path of the area applied to the <path> element
   code: string // the municipality or region code (e.g. 482 or 1083)
@@ -383,15 +383,15 @@ type AreaType = {
 
 The types corresponding to each component are:
 
-| Component                    | Name of exported type | Included in type                                           |
-| ---------------------------- | --------------------- | ---------------------------------------------------------- |
-| `Municipalities`             | MunicipalityType      | { id, name, en_name, display_name, d, code, region, altD } |
-| `Constituencies`<sup>\*<sup> | ConstituencyType      | { id, name, en_name, display_name, d }                     |
-| `Regions`                    | RegionType            | { id, name, en_name, display_name, d, code }               |
-| `Islands`                    | IslandType            | { id, name, en_name, display_name, d, en_term }            |
-| `Denmark`                    | DenmarkType           | { id, name, en_name, display_name, d, en_term }            |
+| Component                    | Name of exported type | Included in type                                             |
+| ---------------------------- | --------------------- | ------------------------------------------------------------ |
+| `Municipalities`             | MunicipalityType      | { id, name, asciiName, display_name, d, code, region, altD } |
+| `Constituencies`<sup>\*<sup> | ConstituencyType      | { id, name, asciiName, display_name, d }                     |
+| `Regions`                    | RegionType            | { id, name, asciiName, display_name, d, code }               |
+| `Islands`                    | IslandType            | { id, name, asciiName, display_name, d, en_term }            |
+| `Denmark`                    | DenmarkType           | { id, name, asciiName, display_name, d, en_term }            |
 
-\*: When filtering using any of the strings in the ConstituencyType be aware that the constituencies (danish: "storkredse"), e.g. "sydjyllands storkreds", have the word "storkreds" omitted in the properties `id`, `name` and `en_name`. Thus, "sydjyllands storkreds" is just "sydjyllands" and so on.
+\*: When filtering using any of the strings in the ConstituencyType be aware that the constituencies (danish: "storkredse"), e.g. "sydjyllands storkreds", have the word "storkreds" omitted in the properties `id`, `name` and `asciiName`. Thus, "sydjyllands storkreds" is just "sydjyllands" and so on.
 
 Using the `Denmark` component means that there's only one path element, so DenmarkType describes just that one area.
 
