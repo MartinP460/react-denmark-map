@@ -8,7 +8,7 @@ import '../../styles.css'
 export type Area = {
   id: string
   name: string
-  en_name: string
+  asciiName: string
   display_name: string
   d: string
   en_term?: string
