@@ -32,12 +32,29 @@ type ViewBox = {
 }
 
 export interface MapProps<Type extends Area> {
+  /** Applies a custom SVG viewbox to the element. Useful for fixed zooming.
+   * @default
+   * { top: 0, left: 0, width: 1000, height: 1215 }
+   *
+   * @example
+   * ```jsx
+   * <Municipalities viewBox={{ top: 0, left: 0, width: 1000, height: 1215 }} />
+   * ```
+   */
   viewBox?: ViewBox
+  /** Applies a className to the underlying SVG element. */
   className?: string
+  /** Applies custom style to the underlying SVG element. */
   style?: CSSProperties
+  /** Applies a default color to each area.
+   * @default #ccc
+   */
   color?: CSSProperties['fill']
+  /** Controls whether the tooltip should be shown. True by default. */
   showTooltip?: boolean
+  /** Controls whether "clickable" styles should be applied to each area, namely "cursor: pointer;". */
   clickable?: boolean
+  /** Controls whether "hoverable" styles should be applied to each area, namely the opacity. */
   hoverable?: boolean
   bornholmAltPostition?: boolean
   laesoeAltPosition?: boolean
@@ -48,14 +65,125 @@ export interface MapProps<Type extends Area> {
    *
    * @param onZoomIn Callback for zooming in.
    * @param onZoomOut Callback for zooming out.
+   * @example
+   * ```jsx
+   * const CustomZoomControls = ({ onZoomIn, onZoomOut }) => (
+   *   <div>
+   *     <button onClick={onZoomIn}>+</button>
+   *     <button onClick={onZoomOut}>-</button>
+   *   </div>
+   * )
+   *
+   * const App = () => (
+   *   <Municipalities customZoomControls={CustomZoomControls} />
+   * )
+   * ```
    */
   customZoomControls?: ComponentType<{ onZoomIn(): void; onZoomOut(): void }>
+  /** Component for displaying a custom tooltip.
+   *
+   * @param area The area that the tooltip is being displayed for.
+   * @example
+   * ```jsx
+   * const App = () => {
+   *   const customTooltip = (area) => (
+   *    <div>
+   *      <p>{area.displayName}</p>
+   *    </div>
+   *   )
+   *
+   *   return (
+   *    <Municipalities customTooltip={customTooltip} />
+   *   )
+   * }
+   * ```
+   */
   customTooltip?: (area: Type) => ReactNode
+  /** Custom event handler for handling clicks on a particular area.
+   *
+   * @param area The area that was clicked.
+   * @example
+   * ```jsx
+   * const App = () => {
+   *   const onClick = (area) => {
+   *     console.log(area)
+   *   }
+   *
+   *   return (
+   *    <Municipalities onClick={onClick} />
+   *   )
+   * }
+   * ```
+   */
   onClick?: (area: Type) => void
+  /** Custom event handler for handling hover events on a particular area.
+   *
+   * @param area The area that was hovered.
+   * @example
+   * ```jsx
+   * const App = () => {
+   *   const onHover = (area) => {
+   *     console.log(area)
+   *   }
+   *
+   *   return (
+   *    <Municipalities onHover={onHover} />
+   *   )
+   * }
+   * ```
+   */
   onHover?: (area: Type) => void
+  /** Custom event handler for mouse-enter events on a particular area. Same as `onHover`.
+   *
+   * @param area The area that the mouse entered.
+   */
   onMouseEnter?: (area: Type) => void
+  /** Custom event handler for mouse-leave events on a particular area.
+   *
+   * @param area The area that the mouse entered.
+   */
   onMouseLeave?: (area: Type) => void
+  /** Function used to style each area.
+   *
+   * @param area The area to be customized.
+   * @returns An object containing the `className` and/or `style` to be applied to the area.
+   * @example
+   * ```jsx
+   * const App = () => {
+   *   const customizeAreas = (area) => {
+   *     if (area.region.name === 'hovedstaden') {
+   *       return {
+   *         className: 'fill-red-500',
+   *       }
+   *     }
+   *   }
+   *
+   *   return (
+   *    <Municipalities customizeAreas={customizeAreas} />
+   *   )
+   * }
+   * ```
+   */
   customizeAreas?: (area: Type) => { className?: string; style?: CSSProperties } | undefined
+  /** Function used to filter areas and thus not render them.
+   *
+   * @param area The area to be filtered (or preserved).
+   * @returns A boolean indicating whether the area should be rendered or not. Avoids rendering the area if the function returns false.
+   * @example
+   * ```jsx
+   * const App = () => {
+   *   const filterAreas = (area) => {
+   *     if (area.region.name === 'hovedstaden') {
+   *       return false
+   *     }
+   *   }
+   *
+   *   return (
+   *    <Municipalities filterAreas={filterAreas} />
+   *   )
+   * }
+   * ```
+   */
   filterAreas?: (area: Type) => boolean
 }
 
@@ -65,26 +193,27 @@ interface PrivateMapProps<Type extends Area> extends MapProps<Type> {
 
 const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
   test.rerenders()
+
   const {
+    viewBox,
+    className,
     style = {},
     color = '#ccc',
     showTooltip = true,
-    hoverable = true,
-    zoomable = true,
-    areas,
-    clickable,
     bornholmAltPostition,
     laesoeAltPosition,
     anholtAltPosition,
-    viewBox,
+    clickable,
+    hoverable = true,
+    zoomable = true,
+    areas,
     customZoomControls,
-    className,
-    onMouseEnter,
-    onMouseLeave,
     customTooltip,
-    customizeAreas,
     onClick,
     onHover,
+    onMouseEnter,
+    onMouseLeave,
+    customizeAreas,
     filterAreas
   } = props
 
