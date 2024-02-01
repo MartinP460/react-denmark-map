@@ -102,6 +102,7 @@ export interface MapProps<Type extends Area> {
   /** Custom event handler for handling clicks on a particular area.
    *
    * @param area The area that was clicked.
+   * @returns JSX to be rendered as the tooltip.
    * @example
    * ```jsx
    * const App = () => {
