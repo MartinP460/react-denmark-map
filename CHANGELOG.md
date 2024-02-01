@@ -14,19 +14,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Prop: `zoomable`. Whether to have the map be zoomable and subsequently if zoom controls should be rendered.
 - Added JSDoc comments to all props.
 - Added English terms for regions.
-- Accessibility attribute to the tooltip.
+- Added accessibility attribute to the tooltip.
+- Added a new logo.
 - Added the demo Next.js project to the same repository as the package.
+- Added a homepage to the demo.
 
 ### Changed
 
+- Changed path definitions for each area in all renditions of the map, resulting in a ~30% decrease in the overall SVG size.
 - Changed the name of fields in the area types as follows:
   - `en_name` -> `asciiName`
   - `display_name` -> `displayName`
   - `en_term` -> `enTerm`
-- Changed path definitions for each area in all renditions of the map, resulting in a ~30% decrease in the overall SVG size.
 - Improved typing by providing explicit constant values for fields in each area.
+- Updated the documentation to account for the new changes.
 - Updated dev dependencies.
-- Moved to Turborepo.
+- Started using Turborepo for seperation of packages and apps.
 
 ### Removed
 
