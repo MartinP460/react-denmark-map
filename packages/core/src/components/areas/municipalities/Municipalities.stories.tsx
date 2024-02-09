@@ -327,7 +327,7 @@ export const WithCustomTooltip: Story = {
             padding: '6px 12px'
           }}
         >
-          <p style={{ fontWeight: 'bold', margin: '0px' }}>{municipality.display_name}</p>
+          <p style={{ fontWeight: 'bold', margin: '0px' }}>{municipality.displayName}</p>
           <p style={{ margin: '2px 0 0' }}>Average: {result?.average ? result.average : 'N/A'}</p>
         </div>
       )

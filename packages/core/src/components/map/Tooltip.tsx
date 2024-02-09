@@ -86,7 +86,7 @@ function Tooltip<Type extends Area>(
   const defaultTooltip = (area: Area) => {
     return (
       <div id="react-denmark-map-tooltip" className="react-denmark-map-tooltip">
-        <p>{area.display_name}</p>
+        <p>{area.displayName}</p>
       </div>
     )
   }

@@ -18,7 +18,7 @@ export default function MunicipalitiesExample() {
 
     return (
       <div className="bg-white rounded p-1 text-sm shadow-lg border">
-        <p className="font-bold">{municipality.display_name}</p>
+        <p className="font-bold">{municipality.displayName}</p>
         <p>{`Population: ${
           result?.population ? result.population.toLocaleString('en') : 'N/A'
         }`}</p>

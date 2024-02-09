@@ -16,8 +16,8 @@ Finally, all map SVG's are now ~30% smaller which should improve load times and 
 2. **Viewbox**. All maps now have the same SVG viewbox dimensions of 1000 x 1215 so you should use these dimensions to customize the viewbox.
 3. **Renamed area fields**. Some keys in the area object have been renamed. These are specifically:
    - `en_name` -> `asciiName`
-   - `display_name` -> `displayName`
-   - `en_term` -> `enTerm`
+   - `displayName` -> `displayName`
+   - `enTerm` -> `enTerm`
 4. **Alt positions**. Removed all `altPosition-` props. These props rendered some islands closer to the mainland.
 
 You can find more information about the changes by reading the updated documentation. Thank you for using react-denmark-map! 🇩🇰

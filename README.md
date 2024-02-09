@@ -125,7 +125,7 @@ const App = () => {
   const customTooltip = (municipality) => {
     return (
       <div className="tooltip">
-        <p>Name: {municipality.display_name}</p>
+        <p>Name: {municipality.displayName}</p>
         <p>Municipality code: {municipality.code}</p>
       </div>
     )
@@ -154,7 +154,7 @@ const App = () => {
 
     return (
       <div>
-        <p>{municipality.display_name}</p>
+        <p>{municipality.displayName}</p>
         <p>Population: {result?.population ? result.population : 'N/A'}</p>
       </div>
     )
@@ -180,7 +180,7 @@ import { Municipalities } from 'react-denmark-map'
 const App = () => {
   return (
     <Municipalities
-      onClick={(municipality) => console.log(`Clicked: ${municipality.display_name}`)}
+      onClick={(municipality) => console.log(`Clicked: ${municipality.displayName}`)}
     />
   )
 }
@@ -196,7 +196,7 @@ import { Municipalities } from 'react-denmark-map'
 const App = () => {
   return (
     <Municipalities
-      onHover={(municipality) => console.log(`Hovered: ${municipality.display_name}`)}
+      onHover={(municipality) => console.log(`Hovered: ${municipality.displayName}`)}
     />
   )
 }
@@ -212,8 +212,8 @@ import { Municipalities } from 'react-denmark-map'
 const App = () => {
   return (
     <Municipalities
-      onMouseEnter={(municipality) => console.log(`Mouse entered: ${municipality.display_name}`)}
-      onMouseLeave={(municipality) => console.log(`Mouse left: ${municipality.display_name}`)}
+      onMouseEnter={(municipality) => console.log(`Mouse entered: ${municipality.displayName}`)}
+      onMouseLeave={(municipality) => console.log(`Mouse left: ${municipality.displayName}`)}
     />
   )
 }
@@ -372,10 +372,10 @@ type AreaType = {
   id: string // the name of the area with substitutes for Danish letters (e.g. 'fanoe')
   name: string // the name of the area with Danish letters (e.g. 'fanø')
   asciiName: string // same as 'id'
-  display_name: string // the local name of the area capitalized (e.g. 'Høje Taastrup')
+  displayName: string // the local name of the area capitalized (e.g. 'Høje Taastrup')
   d: string // the path of the area applied to the <path> element
   code: string // the municipality or region code (e.g. 482 or 1083)
-  en_term: string // the term used to describe the area in English (e.g. jyllland = jutland)
+  enTerm: string // the term used to describe the area in English (e.g. jyllland = jutland)
   region: RegionType // the region that a municipality is located in (e.g. fanø -> syddanmark)
   altD: string // a possible alternative path for the area in the map
 }
@@ -383,13 +383,13 @@ type AreaType = {
 
 The types corresponding to each component are:
 
-| Component                    | Name of exported type | Included in type                                             |
-| ---------------------------- | --------------------- | ------------------------------------------------------------ |
-| `Municipalities`             | MunicipalityType      | { id, name, asciiName, display_name, d, code, region, altD } |
-| `Constituencies`<sup>\*<sup> | ConstituencyType      | { id, name, asciiName, display_name, d }                     |
-| `Regions`                    | RegionType            | { id, name, asciiName, display_name, d, code }               |
-| `Islands`                    | IslandType            | { id, name, asciiName, display_name, d, en_term }            |
-| `Denmark`                    | DenmarkType           | { id, name, asciiName, display_name, d, en_term }            |
+| Component                    | Name of exported type | Included in type                                            |
+| ---------------------------- | --------------------- | ----------------------------------------------------------- |
+| `Municipalities`             | MunicipalityType      | { id, name, asciiName, displayName, d, code, region, altD } |
+| `Constituencies`<sup>\*<sup> | ConstituencyType      | { id, name, asciiName, displayName, d }                     |
+| `Regions`                    | RegionType            | { id, name, asciiName, displayName, d, code }               |
+| `Islands`                    | IslandType            | { id, name, asciiName, displayName, d, enTerm }             |
+| `Denmark`                    | DenmarkType           | { id, name, asciiName, displayName, d, enTerm }             |
 
 \*: When filtering using any of the strings in the ConstituencyType be aware that the constituencies (danish: "storkredse"), e.g. "sydjyllands storkreds", have the word "storkreds" omitted in the properties `id`, `name` and `asciiName`. Thus, "sydjyllands storkreds" is just "sydjyllands" and so on.
 

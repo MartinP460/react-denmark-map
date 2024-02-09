@@ -24,8 +24,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed path definitions for each area in all renditions of the map, resulting in a ~30% decrease in the overall SVG size.
 - Changed the name of fields in the area types as follows:
   - `en_name` -> `asciiName`
-  - `display_name` -> `displayName`
-  - `en_term` -> `enTerm`
+  - `displayName` -> `displayName`
+  - `enTerm` -> `enTerm`
 - Improved typing by providing explicit constant values for fields in each area.
 - Updated the documentation to account for the new changes.
 - Updated dev dependencies.

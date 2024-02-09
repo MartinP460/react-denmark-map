@@ -259,7 +259,7 @@ describe('Map', () => {
     describe('customTooltip', () => {
       it('should render the custom tooltip when hovering', () => {
         const customTooltip = (municipality: MunicipalityType) => (
-          <div>{municipality.display_name}</div>
+          <div>{municipality.displayName}</div>
         )
 
         const { container } = render(<Municipalities customTooltip={customTooltip} />)
@@ -296,7 +296,7 @@ describe('Map', () => {
             id: 'langeland',
             name: 'langeland',
             asciiName: 'langeland',
-            display_name: 'Langeland',
+            displayName: 'Langeland',
             code: '482'
           })
         )
@@ -332,7 +332,7 @@ describe('Map', () => {
             id: 'langeland',
             name: 'langeland',
             asciiName: 'langeland',
-            display_name: 'Langeland',
+            displayName: 'Langeland',
             code: '482'
           })
         )
@@ -378,7 +378,7 @@ describe('Map', () => {
             id: 'langeland',
             name: 'langeland',
             asciiName: 'langeland',
-            display_name: 'Langeland',
+            displayName: 'Langeland',
             code: '482'
           })
         )
@@ -402,7 +402,7 @@ describe('Map', () => {
             id: 'langeland',
             name: 'langeland',
             asciiName: 'langeland',
-            display_name: 'Langeland',
+            displayName: 'Langeland',
             code: '482'
           })
         )
