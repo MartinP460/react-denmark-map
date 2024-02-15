@@ -16,7 +16,7 @@ Finally, all map SVG's are now ~30% smaller which should improve load times and 
 2. **Viewbox**. All maps now have the same SVG viewbox dimensions of 1000 x 1215 so you should use these dimensions to customize the viewbox.
 3. **Renamed area fields**. Some keys in the area object have been renamed. These are specifically:
    - `en_name` -> `asciiName`
-   - `displayName` -> `displayName`
+   - `display_name` -> `displayName`
    - `enTerm` -> `enTerm`
 4. **Alt positions**. Removed all `altPosition-` props. These props rendered some islands closer to the mainland.
 
