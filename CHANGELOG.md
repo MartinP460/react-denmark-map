@@ -25,7 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed the name of fields in the area types as follows:
   - `en_name` -> `asciiName`
   - `display_name` -> `displayName`
-  - `enTerm` -> `enTerm`
+  - `en_term` -> `enTerm`
 - Improved typing by providing explicit constant values for fields in each area.
 - Updated the documentation to account for the new changes.
 - Updated dev dependencies.
