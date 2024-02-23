@@ -264,7 +264,7 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
       const shouldUseAltPosition =
         area.name === 'bornholm' || area.name === 'læsø' || area.name === 'norddjurs'
 
-      const draw = shouldUseAltPosition && area.altD ? area.altD : area.d
+      const draw = shouldUseAltPosition ? area.d : undefined
 
       return (
         <path
