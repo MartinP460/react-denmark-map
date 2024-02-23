@@ -14,7 +14,6 @@ export type Area = {
   en_term?: string
   region?: Omit<RegionType, 'd'>
   code?: string
-  altD?: string
 }
 
 export type AreaType<T extends readonly Area[]> = {
@@ -56,9 +55,6 @@ export interface MapProps<Type extends Area> {
   clickable?: boolean
   /** Controls whether "hoverable" styles should be applied to each area, namely the opacity. */
   hoverable?: boolean
-  bornholmAltPostition?: boolean
-  laesoeAltPosition?: boolean
-  anholtAltPosition?: boolean
   /** Controls whether the ability to zoom in and out should be enabled. */
   zoomable?: boolean
   /** Custom zoom control component for controlling zooming in and out.
@@ -201,9 +197,6 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
     style = {},
     color = '#ccc',
     showTooltip = true,
-    bornholmAltPostition,
-    laesoeAltPosition,
-    anholtAltPosition,
     clickable,
     hoverable = true,
     zoomable = true,
@@ -269,9 +262,7 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
       `
 
       const shouldUseAltPosition =
-        (area.name === 'bornholm' && bornholmAltPostition) ||
-        (area.name === 'læsø' && laesoeAltPosition) ||
-        (area.name === 'norddjurs' && anholtAltPosition)
+        area.name === 'bornholm' || area.name === 'læsø' || area.name === 'norddjurs'
 
       const draw = shouldUseAltPosition && area.altD ? area.altD : area.d
 
