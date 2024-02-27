@@ -47,7 +47,7 @@ const App = () => {
 
     return (
       <div>
-        <p>{municipality.display_name}</p>
+        <p>{municipality.displayName}</p>
         <p>{\`Population: \${result?.population ?? 'N/A'}\`}</p>
       </div>
     )
@@ -118,11 +118,11 @@ const App = () => {
 
 const App = () => {
   const handleClick = (municipality) => {
-    console.log(\`You clicked region \${municipality.display_name}.\`)
+    console.log(\`You clicked region \${municipality.displayName}.\`)
   }
 
   const handleHover = (municipality) => {
-    console.log(\`You hovered region \${municipality.display_name}.\`)
+    console.log(\`You hovered region \${municipality.displayName}.\`)
   }
 
   return (

@@ -9,9 +9,9 @@ export type Area = {
   id: string
   name: string
   asciiName: string
-  display_name: string
+  displayName: string
   d: string
-  en_term?: string
+  enTerm?: string
   region?: Omit<RegionType, 'd'>
   code?: string
   altD?: string
