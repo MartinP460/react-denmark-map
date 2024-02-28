@@ -1,4 +1,4 @@
-import { CSSProperties, ComponentType, MouseEvent, ReactNode, memo, useRef } from 'react'
+import { CSSProperties, MouseEvent, ReactNode, memo, useRef } from 'react'
 import Tooltip, { TooltipMethods } from './Tooltip'
 import Zoompane from './Zoompane'
 import { RegionType } from '../areas/regions'
@@ -79,26 +79,22 @@ export interface MapProps<Type extends Area> {
    * )
    * ```
    */
-  customZoomControls?: ComponentType<{ onZoomIn(): void; onZoomOut(): void }>
+  customZoomControls?: (props: { onZoomIn(): void; onZoomOut(): void }) => ReactNode
   /** Component for displaying a custom tooltip.
    *
    * @param area The area that the tooltip is being displayed for.
    * @example
    * ```jsx
-   * const App = () => {
-   *   const customTooltip = (area) => (
-   *    <div>
-   *      <p>{area.displayName}</p>
-   *    </div>
-   *   )
+   * const CustomTooltip = ({ area }) => (
+   *   <div>
+   *     <p>{area.displayName}</p>
+   *   </div>
+   * )
    *
-   *   return (
-   *    <Municipalities customTooltip={customTooltip} />
-   *   )
-   * }
+   * const App = () => <Municipalities customTooltip={CustomTooltip} />
    * ```
    */
-  customTooltip?: (area: Type) => ReactNode
+  customTooltip?: (props: { area: Type }) => ReactNode
   /** Custom event handler for handling clicks on a particular area.
    *
    * @param area The area that was clicked.
@@ -306,7 +302,7 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
       <Tooltip
         show={typeof showTooltip === 'undefined' ? true : showTooltip}
         areas={areas}
-        customTooltip={customTooltip as (area: Area) => ReactNode}
+        customTooltip={customTooltip as (props: { area: Area }) => ReactNode}
         ref={tooltip}
       />
       <Zoompane zoomable={zoomable as boolean} customZoomControls={customZoomControls}>

@@ -301,6 +301,25 @@ const MunicipalitiesInRegionsTemplate: StoryFn<typeof Municipalities> = (args) =
 
 export const WithHighlightedRegions = MunicipalitiesInRegionsTemplate.bind({})
 
+const CustomTooltip = ({ area }: { area: MunicipalityType }) => {
+  const result = mockMunicipalityData.find((item) => item.id === area.name)
+
+  return (
+    <div
+      style={{
+        color: 'white',
+        backgroundColor: '#101e2b',
+        borderRadius: '4px',
+        boxShadow: '0 0 8px rgba(0, 0, 0, 0.2)',
+        padding: '6px 12px'
+      }}
+    >
+      <p style={{ fontWeight: 'bold', margin: '0px' }}>{area.displayName}</p>
+      <p style={{ margin: '2px 0 0' }}>Average: {result?.average ? result.average : 'N/A'}</p>
+    </div>
+  )
+}
+
 export const WithCustomTooltip: Story = {
   args: {
     customizeAreas: (municipality) => {
@@ -314,24 +333,7 @@ export const WithCustomTooltip: Story = {
         }
       }
     },
-    customTooltip: (municipality) => {
-      const result = mockMunicipalityData.find((item) => item.id === municipality.name)
-
-      return (
-        <div
-          style={{
-            color: 'white',
-            backgroundColor: '#101e2b',
-            borderRadius: '4px',
-            boxShadow: '0 0 8px rgba(0, 0, 0, 0.2)',
-            padding: '6px 12px'
-          }}
-        >
-          <p style={{ fontWeight: 'bold', margin: '0px' }}>{municipality.displayName}</p>
-          <p style={{ margin: '2px 0 0' }}>Average: {result?.average ? result.average : 'N/A'}</p>
-        </div>
-      )
-    }
+    customTooltip: CustomTooltip
   }
 }
 

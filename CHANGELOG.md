@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Zoom functionality. Added the ability to zoom in and out of the map. Zoom buttons appear in the top-right hand corner by default.
-- Prop: `customZoomControls`. Pass a React component to render your own zoom-in and zoom-out buttons.
+- Prop: `customZoomControls`. Pass a functional React component to render your own zoom-in and zoom-out buttons.
 - Prop: `zoomable`. Whether to have the map be zoomable and subsequently if zoom controls should be rendered.
 - Added JSDoc comments to all props.
 - Added English terms for regions.
@@ -22,11 +22,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Changed path definitions for each area in all renditions of the map, resulting in a ~30% decrease in the overall SVG size.
+- Changed the definition of the `customTooltip` prop to allow passing a React component by having the first and only parameter by an object (props) containing `area`.
 - Changed the name of fields in the area types as follows:
   - `en_name` -> `asciiName`
   - `display_name` -> `displayName`
   - `en_term` -> `enTerm`
 - Improved typing by providing explicit constant values for fields in each area.
+- Removed several `data-` attributes from the individual path elements and replaced it with a single one called `data-area-id` which is the `id` property on the rendered area object.
 - Updated the documentation to account for the new changes.
 - Updated dev dependencies.
 - Started using Turborepo for seperation of packages and apps.

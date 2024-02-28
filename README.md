@@ -121,18 +121,16 @@ Instead of municipalities, these areas could also be each region or island, depe
 ```jsx
 import { Municipalities } from 'react-denmark-map'
 
-const App = () => {
-  const customTooltip = (municipality) => {
-    return (
-      <div className="tooltip">
-        <p>Name: {municipality.displayName}</p>
-        <p>Municipality code: {municipality.code}</p>
-      </div>
-    )
-  }
-
-  return <Municipalities customTooltip={customTooltip} />
+const CustomTooltip = ({ area }) => {
+  return (
+    <div className="tooltip">
+      <p>Name: {area.displayName}</p>
+      <p>Municipality code: {area.code}</p>
+    </div>
+  )
 }
+
+const App = () => <Municipalities customTooltip={CustomTooltip} />
 ```
 
 You can easily display external data about the area on the tooltip. In this example, `id` is the name of the municipality and `population` is data about the area, where we want to display data about the population of the area in the tooltip.
@@ -148,23 +146,21 @@ const data = [
   // ...
 ]
 
-const App = () => {
-  const customTooltip = (municipality) => {
-    const result = data.find((item) => item.id === municipality.name)
+const CustomTooltip = ({ area }) => {
+  const result = data.find((item) => item.id === area.name)
 
-    return (
-      <div>
-        <p>{municipality.displayName}</p>
-        <p>Population: {result?.population ? result.population : 'N/A'}</p>
-      </div>
-    )
-  }
-
-  return <Municipalities customTooltip={customTooltip} />
+  return (
+    <div>
+      <p>{area.displayName}</p>
+      <p>Population: {result?.population ? result.population : 'N/A'}</p>
+    </div>
+  )
 }
+
+const App = () => <Municipalities customTooltip={CustomTooltip} />
 ```
 
-The first parameter / the area parameter of the `customTooltip` function (here named `municipality`) contains several fields that can be used to identify the correct area. See "API" for full reference.
+The `area` prop of the `customTooltip` component contains several fields that can be used to identify the correct area. See "API" for full reference.
 
 Disable the tooltip by passing `showTooltip={false}` as a prop.
 
@@ -233,9 +229,7 @@ const CustomZoomControls = ({ onZoomIn, onZoomOut }) => (
   </div>
 )
 
-const App = () => {
-  return <Municipalities customZoomControls={CustomZoomControls} />
-}
+const App = () => <Municipalities customZoomControls={CustomZoomControls} />
 ```
 
 Pass the prop `zoomable={false}` to disable zooming (and thus not render zoom controls).
@@ -286,6 +280,10 @@ You may also want to apply types to function arguments i.e. when writing the fun
 ```jsx
 import { Municipalities, MunicipalityType } from 'react-denmark-map'
 
+const CustomTooltip = ({ area }: { area: MunicipalityType }) => (
+  // ...
+)
+
 const App = () => {
   const customizeMunicipalities = (municipality: MunicipalityType) => {
     // ...
@@ -295,7 +293,7 @@ const App = () => {
 }
 ```
 
-All props that accept a function as an argument have the same type in that component, so the same type can be applied to the parameter used in `customTooltip`, `onClick`, and `onHover`.
+All props that accept a function as an argument have the same type in that component, so the same type can be applied to the parameter used in `onClick`, `onHover`, as well as for the `area` prop in `customTooltip`.
 
 Different components have different types for the area parameter. The `Regions` component, for example, exports a `RegionsType` that can be used in the same way as shown above. See "API - Types" for the full reference of area types.
 
@@ -348,8 +346,8 @@ React Denmark Map exports several components, each being a map of Denmark with d
 | `laesoeAltPosition`   | Whether to render Læsø slightly closer to Jutland in the `Municipalities` component.                    | boolean                                                                       | false                                          |
 | `anholtAltPosition`   | Whether to render Anholt closer to Jutland in the `Municipalities` component.                           | boolean                                                                       | false                                          |
 | `zoomable`            | Whether you should be able to zoom on the map.                                                          | boolean                                                                       | true                                           |
-| `customZoomControls`  | A React component for custom zoom controls.                                                             | ComponentType<{ onZoomIn(): void; onZoomOut(): void }>                        |                                                |
-| `customTooltip`       | A function that returns a custom tooltip.                                                               | (area: AreaType<sup>\*\*\*</sup>) => ReactNode                                |                                                |
+| `customZoomControls`  | A functional component that returns custom zoom controls. Rendered top-right.                           | (props: { onZoomIn(): void; onZoomOut(): void }) => ReactNode                 |                                                |
+| `customTooltip`       | A functional component that returns a custom tooltip.                                                   | (props: { area: AreaType<sup>\*\*\*</sup> }) => ReactNode                     |                                                |
 | `customizeAreas`      | A function that is invoked for every area and returns an object to style the area.                      | (area: AreaType) => { className?: string, style? CSSProperties } \| undefined |                                                |
 | `filterAreas`         | A function that is invoked for every area that avoids rendering the area if the function returns false. | (area: AreaType) => boolean                                                   |                                                |
 | `onClick`             | A function that is invoked when an area is clicked.                                                     | (area: AreaType) => void                                                      |                                                |
