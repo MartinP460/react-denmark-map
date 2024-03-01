@@ -13,7 +13,7 @@ import { Area } from './Map'
 interface TooltipProps<Type> {
   show: boolean
   areas: readonly Type[]
-  customTooltip?: (area: Type) => ReactNode
+  customTooltip?: (props: { area: Type }) => ReactNode
 }
 
 export type TooltipMethods = {
@@ -83,7 +83,7 @@ function Tooltip<Type extends Area>(
     }))
   }
 
-  const defaultTooltip = (area: Area) => {
+  const defaultTooltip = ({ area }: { area: Area }) => {
     return (
       <div id="react-denmark-map-tooltip" className="react-denmark-map-tooltip">
         <p>{area.displayName}</p>
@@ -95,7 +95,7 @@ function Tooltip<Type extends Area>(
 
   return (
     <div role="tooltip" id="react-denmark-map-tooltip-wrapper" style={tooltipStyle}>
-      {hoveredArea && tooltip(hoveredArea)}
+      {hoveredArea && tooltip({ area: hoveredArea })}
     </div>
   )
 }

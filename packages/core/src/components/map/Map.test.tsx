@@ -258,11 +258,11 @@ describe('Map', () => {
 
     describe('customTooltip', () => {
       it('should render the custom tooltip when hovering', () => {
-        const customTooltip = (municipality: MunicipalityType) => (
-          <div>{municipality.displayName}</div>
+        const CustomTooltip = ({ area }: { area: MunicipalityType }) => (
+          <div>{area.displayName}</div>
         )
 
-        const { container } = render(<Municipalities customTooltip={customTooltip} />)
+        const { container } = render(<Municipalities customTooltip={CustomTooltip} />)
 
         const municipality = container.querySelector('[data-area-id="langeland"]')
         if (!municipality) throw new Error('Municipality not found')

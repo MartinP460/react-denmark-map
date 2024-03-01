@@ -87,5 +87,8 @@
   "type": "module",
   "dependencies": {
     "react-zoom-pan-pinch": "^3.3.0"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.12.0"
   }
 }
