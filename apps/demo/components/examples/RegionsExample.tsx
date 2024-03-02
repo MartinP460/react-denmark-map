@@ -2,11 +2,11 @@ import { RegionType, Regions } from 'react-denmark-map'
 
 export default function RegionsExample() {
   const handleClick = (municipality: RegionType) => {
-    console.log(`You clicked region ${municipality.display_name}.`)
+    console.log(`You clicked region ${municipality.displayName}.`)
   }
 
   const handleHover = (municipality: RegionType) => {
-    console.log(`You hovered region ${municipality.display_name}.`)
+    console.log(`You hovered region ${municipality.displayName}.`)
   }
 
   return (

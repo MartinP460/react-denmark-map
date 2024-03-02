@@ -1,5 +1,16 @@
 import { Municipalities, MunicipalityType } from 'react-denmark-map'
 
+const CustomTooltip = ({ area }: { area: MunicipalityType }) => {
+  const result = municipalityData.find((item) => item.id === area.name)
+
+  return (
+    <div className="bg-white rounded p-1 text-sm shadow-lg border">
+      <p className="font-bold">{area.displayName}</p>
+      <p>{`Population: ${result?.population ? result.population.toLocaleString('en') : 'N/A'}`}</p>
+    </div>
+  )
+}
+
 export default function MunicipalitiesExample() {
   const customizeMunicipalities = (municipality: MunicipalityType) => {
     const result = municipalityData.find((item) => item.id === municipality.name)
@@ -13,24 +24,11 @@ export default function MunicipalitiesExample() {
     }
   }
 
-  const customTooltip = (municipality: MunicipalityType) => {
-    const result = municipalityData.find((item) => item.id === municipality.name)
-
-    return (
-      <div className="bg-white rounded p-1 text-sm shadow-lg border">
-        <p className="font-bold">{municipality.display_name}</p>
-        <p>{`Population: ${
-          result?.population ? result.population.toLocaleString('en') : 'N/A'
-        }`}</p>
-      </div>
-    )
-  }
-
   return (
     <div className="max-w-2xl mx-auto">
       <Municipalities
         className="p-2 sm:p-8"
-        customTooltip={customTooltip}
+        customTooltip={CustomTooltip}
         customizeAreas={customizeMunicipalities}
       />
     </div>

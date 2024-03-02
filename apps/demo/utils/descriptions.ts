@@ -20,14 +20,25 @@ const App = () => {
 
   return (
     <Municipalities
-      customTooltip={customTooltip}
+      customTooltip={CustomTooltip}
       customizeAreas={customizeMunicipalities}
     />
   )
 }`,
       full: `import { Municipalities } from 'react-denmark-map'
-  
+
 const municipalityData = [{ ... }]
+  
+const CustomTooltip = ({ area }: { area: MunicipalityType }) => {
+  const result = municipalityData.find((item) => item.id === area.name)
+
+  return (
+    <div className="bg-white rounded p-1 text-sm shadow-lg border">
+      <p className="font-bold">{area.displayName}</p>
+      <p>{\`Population: \${result?.population ? result.population.toLocaleString('en') : 'N/A'}\`}</p>
+    </div>
+  )
+}
 
 const App = () => {
   const customizeMunicipalities = (municipality) => {
@@ -42,20 +53,9 @@ const App = () => {
     }
   }
 
-  const customTooltip = (municipality) => {
-    const result = municipalityData.find((item) => item.id === municipality.name)
-
-    return (
-      <div>
-        <p>{municipality.display_name}</p>
-        <p>{\`Population: \${result?.population ?? 'N/A'}\`}</p>
-      </div>
-    )
-  }
-
   return (
     <Municipalities
-      customTooltip={customTooltip}
+      customTooltip={CustomTooltip}
       customizeAreas={customizeMunicipalities}
     />
   )
@@ -118,11 +118,11 @@ const App = () => {
 
 const App = () => {
   const handleClick = (municipality) => {
-    console.log(\`You clicked region \${municipality.display_name}.\`)
+    console.log(\`You clicked region \${municipality.displayName}.\`)
   }
 
   const handleHover = (municipality) => {
-    console.log(\`You hovered region \${municipality.display_name}.\`)
+    console.log(\`You hovered region \${municipality.displayName}.\`)
   }
 
   return (
