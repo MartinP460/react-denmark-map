@@ -1,9 +1,9 @@
 import { CSSProperties, ComponentType, MouseEvent, ReactNode, memo, useRef } from 'react'
+import '../../styles.css'
+import { test } from '../../utils'
+import { RegionType } from '../areas/regions'
 import Tooltip, { TooltipMethods } from './Tooltip'
 import Zoompane from './Zoompane'
-import { RegionType } from '../areas/regions'
-import { test } from '../../utils'
-import '../../styles.css'
 
 export type Area = {
   id: string
@@ -260,18 +260,12 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
         ${isClickable ? 'react-denmark-map-clickable ' : ''}
         ${hoverable ? 'react-denmark-map-hoverable ' : ''}
       `
-
-      const shouldUseAltPosition =
-        area.name === 'bornholm' || area.name === 'læsø' || area.name === 'norddjurs'
-
-      const draw = shouldUseAltPosition ? area.d : undefined
-
       return (
         <path
           key={area.id}
           aria-describedby="react-denmark-map-tooltip-wrapper"
           data-area-id={area.id}
-          d={draw}
+          d={area.d}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           onClick={onClick && handleClick}
