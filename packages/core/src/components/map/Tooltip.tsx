@@ -8,7 +8,7 @@ import {
   useImperativeHandle,
   useState
 } from 'react'
-import { Area } from './Map'
+import { Area } from '@/components/map/Map'
 
 interface TooltipProps<Type> {
   show: boolean

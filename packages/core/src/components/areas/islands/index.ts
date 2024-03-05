@@ -1,2 +1,2 @@
-export { default } from './Islands'
-export { IslandType } from './data'
+export { default } from '@/components/areas/islands/Islands'
+export { IslandType } from '@/components/areas/islands/data'

@@ -1,4 +1,4 @@
-import { AreaType } from '../../map/Map'
+import { AreaType } from '@/components/map/Map'
 
 export type RegionType = AreaType<typeof regions>
 

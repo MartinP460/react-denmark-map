@@ -1,13 +1,13 @@
 import { useCallback, useMemo, useState } from 'react'
 import { fireEvent, render } from '@testing-library/react'
 // the municipalities component is used to test the generic map component
-import Constituencies from '../areas/constituencies/Constituencies'
-import Denmark from '../areas/denmark/Denmark'
-import Islands from '../areas/islands/Islands'
-import Municipalities from '../areas/municipalities/Municipalities'
-import Regions from '../areas/regions/Regions'
-import { MunicipalityType } from '../areas/municipalities'
-import { test } from '../../utils'
+import Constituencies from '@/components/areas/constituencies/Constituencies'
+import Denmark from '@/components/areas/denmark/Denmark'
+import Islands from '@/components/areas/islands/Islands'
+import Municipalities from '@/components/areas/municipalities/Municipalities'
+import Regions from '@/components/areas/regions/Regions'
+import { MunicipalityType } from '@/components/areas/municipalities'
+import { test } from '@/utils'
 
 describe('Map', () => {
   afterEach(() => jest.restoreAllMocks())

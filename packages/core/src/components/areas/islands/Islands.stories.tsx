@@ -1,7 +1,7 @@
-import { Meta, StoryObj } from '@storybook/react'
-import Islands from './Islands'
-import { MapProps } from '../../map/Map'
-import { IslandType } from './data'
+import type { Meta, StoryObj } from '@storybook/react'
+import type { IslandType } from '@/components/areas/islands/data'
+import { MapProps } from '@/components/map/Map'
+import Islands from '@/components/areas/islands/Islands'
 
 const Wrapper = (props: MapProps<IslandType>) => {
   return (

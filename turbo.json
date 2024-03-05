@@ -12,7 +12,9 @@
     "format": {
       "cache": false
     },
-    "lint": {},
+    "lint": {
+      "cache": false
+    },
     "test": {}
   }
 }

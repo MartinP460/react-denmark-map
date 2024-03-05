@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import ConstituenciesExample from '@/components/examples/ConstituenciesExample'
 import DenmarkExample from '@/components/examples/DenmarkExample'
 import IslandsExample from '@/components/examples/IslandsExample'
@@ -7,7 +8,6 @@ import MunicipalitiesExample from '@/components/examples/MunicipalitiesExample'
 import RegionsExample from '@/components/examples/RegionsExample'
 import Description from '@/components/ui/Description'
 import Tabs from '@/components/ui/Tabs'
-import { useState } from 'react'
 
 const TABS = ['Municipalities', 'Constituencies', 'Regions', 'Islands', 'Denmark']
 

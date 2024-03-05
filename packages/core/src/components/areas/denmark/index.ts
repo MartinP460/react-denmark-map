@@ -1,2 +1,2 @@
-export { default } from './Denmark'
-export { DenmarkType } from './data'
+export { default } from '@/components/areas/denmark/Denmark'
+export { DenmarkType } from '@/components/areas/denmark/data'

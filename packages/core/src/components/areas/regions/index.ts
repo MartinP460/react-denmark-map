@@ -1,2 +1,2 @@
-export { default } from './Regions'
-export { RegionType } from './data'
+export { default } from '@/components/areas/regions/Regions'
+export { RegionType } from '@/components/areas/regions/data'
