@@ -1,23 +1,15 @@
 'use client'
 
-import { useState } from 'react'
-import Tabs from '@/components/ui/Tabs'
-import Description from '@/components/ui/Description'
-import MunicipalitiesExample from '@/components/examples/MunicipalitiesExample'
 import ConstituenciesExample from '@/components/examples/ConstituenciesExample'
-import RegionsExample from '@/components/examples/RegionsExample'
-import IslandsExample from '@/components/examples/IslandsExample'
 import DenmarkExample from '@/components/examples/DenmarkExample'
-import MunicipalitiesRegionsExample from '@/components/examples/MunicipalitiesRegionsExample'
+import IslandsExample from '@/components/examples/IslandsExample'
+import MunicipalitiesExample from '@/components/examples/MunicipalitiesExample'
+import RegionsExample from '@/components/examples/RegionsExample'
+import Description from '@/components/ui/Description'
+import Tabs from '@/components/ui/Tabs'
+import { useState } from 'react'
 
-const TABS = [
-  'Municipalities',
-  'Constituencies',
-  'Regions',
-  'Islands',
-  'Denmark',
-  'Regions & Municipalities'
-]
+const TABS = ['Municipalities', 'Constituencies', 'Regions', 'Islands', 'Denmark']
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState(0)
@@ -34,8 +26,6 @@ export default function Home() {
         return <IslandsExample />
       case 4:
         return <DenmarkExample />
-      case 5:
-        return <MunicipalitiesRegionsExample />
     }
   }
 

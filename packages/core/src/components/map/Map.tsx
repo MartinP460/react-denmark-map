@@ -1,9 +1,9 @@
 import { CSSProperties, MouseEvent, ReactNode, memo, useRef } from 'react'
+import '../../styles.css'
+import { test } from '../../utils'
+import { RegionType } from '../areas/regions'
 import Tooltip, { TooltipMethods } from './Tooltip'
 import Zoompane from './Zoompane'
-import { RegionType } from '../areas/regions'
-import { test } from '../../utils'
-import '../../styles.css'
 
 export type Area = {
   id: string
@@ -14,7 +14,6 @@ export type Area = {
   enTerm?: string
   region?: Omit<RegionType, 'd'>
   code?: string
-  altD?: string
 }
 
 export type AreaType<T extends readonly Area[]> = {
@@ -56,9 +55,6 @@ export interface MapProps<Type extends Area> {
   clickable?: boolean
   /** Controls whether "hoverable" styles should be applied to each area, namely the opacity. */
   hoverable?: boolean
-  bornholmAltPostition?: boolean
-  laesoeAltPosition?: boolean
-  anholtAltPosition?: boolean
   /** Controls whether the ability to zoom in and out should be enabled. */
   zoomable?: boolean
   /** Custom zoom control component for controlling zooming in and out.
@@ -197,9 +193,6 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
     style = {},
     color = '#ccc',
     showTooltip = true,
-    bornholmAltPostition,
-    laesoeAltPosition,
-    anholtAltPosition,
     clickable,
     hoverable = true,
     zoomable = true,
@@ -263,20 +256,12 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
         ${isClickable ? 'react-denmark-map-clickable ' : ''}
         ${hoverable ? 'react-denmark-map-hoverable ' : ''}
       `
-
-      const shouldUseAltPosition =
-        (area.name === 'bornholm' && bornholmAltPostition) ||
-        (area.name === 'læsø' && laesoeAltPosition) ||
-        (area.name === 'norddjurs' && anholtAltPosition)
-
-      const draw = shouldUseAltPosition && area.altD ? area.altD : area.d
-
       return (
         <path
           key={area.id}
           aria-describedby="react-denmark-map-tooltip-wrapper"
           data-area-id={area.id}
-          d={draw}
+          d={area.d}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           onClick={onClick && handleClick}
