@@ -35,7 +35,19 @@ module.exports = {
         ignoreDeclarationSort: true
       }
     ],
-    '@next/next/no-html-link-for-pages': 'off'
+    '@next/next/no-html-link-for-pages': 'off',
+    'import/order': [
+      1,
+      {
+        groups: ['external', 'builtin', 'type', 'internal', 'sibling', 'parent', 'index']
+      }
+    ],
+    'no-restricted-imports': [
+      'error',
+      {
+        patterns: ['.*']
+      }
+    ]
   },
   settings: {
     react: {

@@ -1,2 +1,2 @@
-export { default } from './Constituencies'
-export { ConstituencyType } from './data'
+export { default } from '@/components/areas/constituencies/Constituencies'
+export { ConstituencyType } from '@/components/areas/constituencies/data'

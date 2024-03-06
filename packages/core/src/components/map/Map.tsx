@@ -1,9 +1,9 @@
 import { CSSProperties, MouseEvent, ReactNode, memo, useRef } from 'react'
-import '../../styles.css'
-import { test } from '../../utils'
-import { RegionType } from '../areas/regions'
-import Tooltip, { TooltipMethods } from './Tooltip'
-import Zoompane from './Zoompane'
+import { RegionType } from '@/components/areas/regions/data'
+import { test } from '@/utils'
+import Tooltip, { TooltipMethods } from '@/components/map/Tooltip'
+import Zoompane from '@/components/map/Zoompane'
+import '@/styles.css'
 
 export type Area = {
   id: string

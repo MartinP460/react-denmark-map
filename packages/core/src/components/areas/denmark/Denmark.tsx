@@ -1,5 +1,5 @@
-import Map, { MapProps } from '../../map/Map'
-import { DenmarkType, full } from './data'
+import { DenmarkType, full } from '@/components/areas/denmark/data'
+import Map, { MapProps } from '@/components/map/Map'
 
 /**
  * Component displaying a full map of Denmark without any subsequent areas.

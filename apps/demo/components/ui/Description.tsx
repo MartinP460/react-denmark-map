@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { CopyBlock, dracula } from 'react-code-blocks'
 import { IconMinus, IconPlus } from '@tabler/icons-react'
-import { descriptions } from '../../utils/descriptions'
+import { descriptions } from '@/utils/descriptions'
 import Button from '@/components/ui/Button'
 
 export default function Description({ activeTab }: { activeTab: number }) {
