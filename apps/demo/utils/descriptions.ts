@@ -28,14 +28,14 @@ const App = () => {
       full: `import { Municipalities } from 'react-denmark-map'
 
 const municipalityData = [{ ... }]
-  
-const CustomTooltip = ({ area }: { area: MunicipalityType }) => {
+
+const CustomTooltip = ({ area }) => {
   const result = municipalityData.find((item) => item.id === area.name)
 
   return (
-    <div className="bg-white rounded p-1 text-sm shadow-lg border">
-      <p className="font-bold">{area.displayName}</p>
-      <p>{\`Population: \${result?.population ? result.population.toLocaleString('en') : 'N/A'}\`}</p>
+    <div>
+      <p>{area.displayName}</p>
+      <p>{\`Population: \${result?.population ? result.population : 'N/A'}\`}</p>
     </div>
   )
 }
