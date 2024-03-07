@@ -1,4 +1,5 @@
 <p align="center">
+  <br />
   <img src="static/logo.svg" width="120px" align="center" alt="React Denmark Map logo" />
   <h1 align="center">react-denmark-map</h1>
   <p align="center">
