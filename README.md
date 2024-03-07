@@ -6,7 +6,7 @@
     Customizable plug-and-play map of Denmark for visual presentation 🗺️
     <br />
     <br/>
-    ✨ <a href="https://react-denmark-map.vercel.app/">Demo</a> ✨
+    ✨ <a href="https://react-denmark-map.vercel.app/demo">Demo</a> ✨
   </p>
 </p>
 
