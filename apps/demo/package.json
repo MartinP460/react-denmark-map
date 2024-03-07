@@ -1,0 +1,32 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "eslint . --fix"
+  },
+  "dependencies": {
+    "@tabler/icons-react": "^2.47.0",
+    "clsx": "^2.1.0",
+    "next": "^14.1.2",
+    "react": "^18",
+    "react-code-blocks": "^0.1.6",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.4.18",
+    "eslint": "^8",
+    "eslint-config-next": "^14.1.2",
+    "postcss": "^8",
+    "react-denmark-map": "*",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}

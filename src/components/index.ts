@@ -1,5 +1,0 @@
-export { default as Municipalities, MunicipalityType } from './areas/municipalities'
-export { default as Constituencies, ConstituencyType } from './areas/constituencies'
-export { default as Regions, RegionType } from './areas/regions'
-export { default as Islands, IslandType } from './areas/islands'
-export { default as Denmark, DenmarkType } from './areas/denmark'
