@@ -1,6 +1,6 @@
 {
   "name": "react-denmark-map",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Customizable plug-and-play map of Denmark for visual presentation.",
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
