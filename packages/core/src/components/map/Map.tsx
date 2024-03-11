@@ -281,7 +281,8 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
       style={{
         position: 'relative',
         maxWidth: '1180px',
-        margin: 0
+        margin: 0,
+        minHeight: 'fit-content'
       }}
     >
       <Tooltip
