@@ -150,7 +150,7 @@ const municipalityData: { id: string; population: number }[] = [
   },
   {
     id: 'egedal',
-    population: 43.696
+    population: 43696
   },
   {
     id: 'thisted',
