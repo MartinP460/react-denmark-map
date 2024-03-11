@@ -299,6 +299,7 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
             `${Math.round(viewBox?.width ?? DEFAULT_VIEWBOX_WIDTH)} ` +
             `${Math.round(viewBox?.height ?? DEFAULT_VIEWBOX_HEIGHT)}`
           }
+          width={viewBox?.width ?? DEFAULT_VIEWBOX_WIDTH}
           className={className}
           style={{
             fill: color,
