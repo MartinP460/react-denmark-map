@@ -19,7 +19,7 @@ export default function MunicipalitiesExample() {
 
     return {
       style: {
-        fill: `rgba(204, 0, 0, ${result.population / 150000})`
+        fill: `rgba(204, 0, 0, ${(result.population + 20000) / 150000})`
       }
     }
   }
