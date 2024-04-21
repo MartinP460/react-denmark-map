@@ -1,8 +1,4 @@
-type TabsProps = {
-  tabs: string[]
-  activeTab: number
-  onSelect: (i: number) => void
-}
+import { TabsProps } from '@/components/ui/tabs/tabs.types'
 
 export default function Tabs({ tabs, activeTab, onSelect }: TabsProps) {
   const handleClick = (i: number) => {

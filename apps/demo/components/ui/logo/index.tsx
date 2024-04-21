@@ -1,7 +1,4 @@
-type LogoProps = {
-  width: string
-  className?: string
-}
+import { LogoProps } from '@/components/ui/logo/logo.types'
 
 export default function Logo({ width, className }: LogoProps) {
   return (
