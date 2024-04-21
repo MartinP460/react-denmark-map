@@ -1,18 +1,6 @@
-import { MouseEventHandler, ReactNode } from 'react'
-import Link from 'next/link'
-import { TablerIconsProps } from '@tabler/icons-react'
 import clsx from 'clsx'
-
-type ButtonProps = {
-  variant: 'fill' | 'outline'
-  size?: 'sm' | 'md'
-  href?: string
-  externalLink?: boolean
-  className?: string
-  onClick?: MouseEventHandler<HTMLButtonElement>
-  Icon?: (props: TablerIconsProps) => JSX.Element
-  children: ReactNode
-}
+import Link from 'next/link'
+import { ButtonProps } from '@/components/ui/button/button.types'
 
 const variants = {
   fill: 'bg-black text-white hover:opacity-80 border-black active:opacity-70',
