@@ -1,9 +1,9 @@
 'use client'
 
-import { CopyBlock, dracula } from 'react-code-blocks'
 import { IconExternalLink, IconPhoto } from '@tabler/icons-react'
-import Button from '@/components/ui/Button'
-import Logo from '@/components/ui/Logo'
+import { CopyBlock, dracula } from 'react-code-blocks'
+import Button from '@/components/ui/button'
+import Logo from '@/components/ui/logo'
 
 export default function Home() {
   return (

@@ -1,10 +1,10 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
 import { IconExternalLink, IconPhoto } from '@tabler/icons-react'
 import clsx from 'clsx'
-import Button from '@/components/ui/Button'
-import Logo from '@/components/ui/Logo'
+import { usePathname } from 'next/navigation'
+import Logo from '@/components/ui/logo'
+import Button from '@/components/ui/button'
 
 export default function Navbar() {
   const pathname = usePathname()
