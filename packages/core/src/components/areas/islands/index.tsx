@@ -1,5 +1,6 @@
-import { IslandType, islands } from '@/components/areas/islands/data'
-import Map, { MapProps } from '@/components/map/Map'
+import { IslandType, islands } from '@/components/areas/islands/islands.data'
+import Map from '@/components/map'
+import { MapProps } from '@/components/map/map.types'
 
 /**
  * Component displaying a map of Denmark including the three main islands.

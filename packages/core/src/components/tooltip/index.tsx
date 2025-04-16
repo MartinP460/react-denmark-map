@@ -2,25 +2,13 @@ import {
   CSSProperties,
   MouseEvent,
   MouseEventHandler,
-  ReactNode,
   Ref,
   forwardRef,
   useImperativeHandle,
   useState
 } from 'react'
-import { Area } from '@/components/map/Map'
-
-interface TooltipProps<Type> {
-  show: boolean
-  areas: readonly Type[]
-  customTooltip?: (props: { area: Type }) => ReactNode
-}
-
-export type TooltipMethods = {
-  handleMouseEnter: (event: MouseEvent<SVGPathElement>) => void
-  handleMouseLeave: () => void
-  handleMouseMove: MouseEventHandler
-}
+import { Area } from '@/components/map/map.types'
+import { TooltipMethods, TooltipProps } from '@/components/tooltip/tooltip.types'
 
 function Tooltip<Type extends Area>(
   { show, areas, customTooltip }: TooltipProps<Type>,
@@ -47,10 +35,10 @@ function Tooltip<Type extends Area>(
     const scrollTop = document.documentElement.scrollTop
 
     /* this code calculates whether the tooltip is overflowing the window
-    without measuring the width of the tooltip, but instead using a fixed
-    width of 120px. Measuring the width causes major performance issues
-    due to excessive amounts of rerenders and this is therefore an intentional
-    feature. */
+      without measuring the width of the tooltip, but instead using a fixed
+      width of 120px. Measuring the width causes major performance issues
+      due to excessive amounts of rerenders and this is therefore an intentional
+      feature. */
     const isXOverflowing = event.pageX + 20 + 120 > window.innerWidth
 
     setTooltipStyle((prevState) => ({

@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { MapProps } from '@/components/map/Map'
-import { MunicipalityType } from '@/components/areas/municipalities/data'
-import Municipalities from '@/components/areas/municipalities/Municipalities'
+import { MapProps } from '@/components/map/map.types'
+import { MunicipalityType } from '@/components/areas/municipalities/municipalities.data'
+import Municipalities from '@/components/areas/municipalities'
 
 const mockMunicipalityData: { id: string; average: number }[] = [
   {

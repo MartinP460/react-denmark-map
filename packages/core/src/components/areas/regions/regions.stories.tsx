@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import type { RegionType } from '@/components/areas/regions/data'
-import { MapProps } from '@/components/map/Map'
-import Regions from '@/components/areas/regions/Regions'
+import type { RegionType } from '@/components/areas/regions/regions.data'
+import { MapProps } from '@/components/map/map.types'
+import Regions from '@/components/areas/regions'
 
 const Wrapper = (props: MapProps<RegionType>) => {
   return (

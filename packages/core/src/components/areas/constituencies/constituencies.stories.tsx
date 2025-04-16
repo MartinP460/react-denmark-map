@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import type { ConstituencyType } from '@/components/areas/constituencies/data'
-import Constituencies from '@/components/areas/constituencies/Constituencies'
-import { MapProps } from '@/components/map/Map'
+import type { ConstituencyType } from '@/components/areas/constituencies/constituencies.data'
+import Constituencies from '@/components/areas/constituencies'
+import { MapProps } from '@/components/map/map.types'
 
 const Wrapper = (props: MapProps<ConstituencyType>) => {
   return (
