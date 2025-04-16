@@ -1,6 +1,7 @@
 import { MouseEvent, ReactNode, memo, useRef } from 'react'
 import { Area, PrivateMapProps } from '@/components/map/map.types'
 import { test } from '@/utils'
+import { TOOLTIP_REF_INITIAL_VALUE } from '@/components/tooltip/tooltip.consts'
 import { TooltipMethods } from '@/components/tooltip/tooltip.types'
 import Tooltip from '@/components/tooltip'
 import Zoompane from '@/components/zoompane'
@@ -32,7 +33,7 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
     filterAreas
   } = props
 
-  const tooltip = useRef<TooltipMethods>()
+  const tooltip = useRef<TooltipMethods>(TOOLTIP_REF_INITIAL_VALUE)
 
   const handleClick = (event: MouseEvent<SVGPathElement>) => {
     if (!onClick) return
