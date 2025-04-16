@@ -1,6 +1,8 @@
 import { useCallback, useMemo, useState } from 'react'
 import { fireEvent, render } from '@testing-library/react'
+import '@testing-library/jest-dom'
 // the municipalities component is used to test the generic map component
+import ResizeObserver from 'resize-observer-polyfill'
 import Constituencies from '@/components/areas/constituencies'
 import Denmark from '@/components/areas/denmark'
 import Islands from '@/components/areas/islands'
@@ -8,6 +10,8 @@ import Municipalities from '@/components/areas/municipalities'
 import Regions from '@/components/areas/regions'
 import { MunicipalityType } from '@/components/areas/municipalities/municipalities.data'
 import { test } from '@/utils'
+
+global.ResizeObserver = ResizeObserver
 
 describe('Map', () => {
   afterEach(() => jest.restoreAllMocks())

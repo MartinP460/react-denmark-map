@@ -1,5 +1,4 @@
-import { TablerIconsProps } from '@tabler/icons-react'
-import { MouseEventHandler, ReactNode } from 'react'
+import { MouseEventHandler } from 'react'
 
 export type ButtonProps = {
   variant: 'fill' | 'outline'
@@ -8,6 +7,6 @@ export type ButtonProps = {
   externalLink?: boolean
   className?: string
   onClick?: MouseEventHandler<HTMLButtonElement>
-  Icon?: (props: TablerIconsProps) => JSX.Element
-  children: ReactNode
+  icon?: React.ReactNode
+  children: React.ReactNode
 }

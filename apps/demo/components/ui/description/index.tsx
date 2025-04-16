@@ -14,7 +14,7 @@ export default function Description({ activeTab }: { activeTab: number }) {
       <Button
         variant="outline"
         onClick={() => setCode(!code)}
-        className="inline w-fit text-sm self-end !px-2 !py-1"
+        className="inline w-fit text-sm self-end px-2! py-1!"
       >
         {code ? <IconMinus /> : <IconPlus />}
       </Button>

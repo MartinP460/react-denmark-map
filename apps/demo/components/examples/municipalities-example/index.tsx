@@ -4,7 +4,7 @@ const CustomTooltip = ({ area }: { area: MunicipalityType }) => {
   const result = municipalityData.find((item) => item.id === area.name)
 
   return (
-    <div className="bg-white rounded p-1 text-sm shadow-lg border">
+    <div className="bg-white rounded-sm p-1 text-sm shadow-lg border border-gray-100">
       <p className="font-bold">{area.displayName}</p>
       <p>{`Population: ${result?.population ? result.population.toLocaleString('en') : 'N/A'}`}</p>
     </div>

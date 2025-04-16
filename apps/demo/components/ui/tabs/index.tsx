@@ -12,7 +12,7 @@ export default function Tabs({ tabs, activeTab, onSelect }: TabsProps) {
         onClick={() => handleClick(i)}
         key={i}
         className={`
-  ${i === activeTab ? '!font-semibold bg-gray-100' : 'bg-white hover:bg-gray-50'}
+  ${i === activeTab ? 'font-semibold! bg-gray-100' : 'bg-white hover:bg-gray-50'}
   ${'py-4 px-4 md:px-6 inline-flex items-center justify-center text-center focus:bg-primary text-black md:hover:text-[17px] md:text-base font-light capitalize md:w-fit md:active:bg-gray-200 transition-all'}`}
       >
         {tab}

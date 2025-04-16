@@ -2,12 +2,11 @@ import { MouseEvent, ReactNode, memo, useRef } from 'react'
 import { Area, PrivateMapProps } from '@/components/map/map.types'
 import { test } from '@/utils'
 import { TooltipMethods } from '@/components/tooltip/tooltip.types'
+import { TOOLTIP_REF_INITIAL_VALUE } from '@/components/tooltip/tooltip.consts'
+import { DEFAULT_VIEWBOX_HEIGHT, DEFAULT_VIEWBOX_WIDTH } from '@/components/map/map.consts'
 import Tooltip from '@/components/tooltip'
 import Zoompane from '@/components/zoompane'
 import '@/styles.css'
-
-const DEFAULT_VIEWBOX_WIDTH = 1000
-const DEFAULT_VIEWBOX_HEIGHT = 1215
 
 const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
   test.rerenders()
@@ -32,20 +31,20 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
     filterAreas
   } = props
 
-  const tooltip = useRef<TooltipMethods>()
+  const tooltip = useRef<TooltipMethods>(TOOLTIP_REF_INITIAL_VALUE)
 
   const handleClick = (event: MouseEvent<SVGPathElement>) => {
     if (!onClick) return
 
     const area = areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
-    area && onClick(area)
+    if (area) onClick(area)
   }
 
   const handleHover = (event: MouseEvent<SVGPathElement>) => {
     if (!onHover) return
 
     const area = areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
-    area && onHover(area)
+    if (area) onHover(area)
   }
 
   const handleMouseEnter = (event: MouseEvent<SVGPathElement>) => {
@@ -54,7 +53,7 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
     if (!onMouseEnter) return
 
     const area = areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
-    area && onMouseEnter(area)
+    if (area) onMouseEnter(area)
   }
 
   const handleMouseLeave = (event: MouseEvent<SVGPathElement>) => {
@@ -63,7 +62,7 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
     if (!onMouseLeave) return
 
     const area = areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
-    area && onMouseLeave(area)
+    if (area) onMouseLeave(area)
   }
 
   const getAreas = () => {

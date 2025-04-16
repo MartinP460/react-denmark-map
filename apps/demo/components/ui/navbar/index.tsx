@@ -30,7 +30,7 @@ export default function Navbar() {
         <ul className="flex gap-4">
           {pathname !== '/demo' && (
             <li>
-              <Button variant="fill" size="sm" href="/demo" Icon={IconPhoto}>
+              <Button variant="fill" size="sm" href="/demo" icon={<IconPhoto size="20" />}>
                 Demo
               </Button>
             </li>
@@ -40,7 +40,7 @@ export default function Navbar() {
               variant="outline"
               size="sm"
               href="https://github.com/MartinP460/react-denmark-map"
-              Icon={IconExternalLink}
+              icon={<IconExternalLink size="20" />}
               externalLink
             >
               Docs
@@ -68,7 +68,7 @@ export default function Navbar() {
           </li>
         </ul>
       </nav>
-      <div className="h-1 rounded-full mx-12 bg-white md:bg-gradient-to-r from-gray-300 via-gray-100 to-gray-300" />
+      <div className="h-1 rounded-full mx-12 bg-white md:bg-linear-to-r from-gray-300 via-gray-100 to-gray-300" />
     </header>
   )
 }

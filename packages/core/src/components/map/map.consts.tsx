@@ -1,0 +1,2 @@
+export const DEFAULT_VIEWBOX_WIDTH = 1000
+export const DEFAULT_VIEWBOX_HEIGHT = 1215
