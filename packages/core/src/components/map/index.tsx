@@ -1,14 +1,12 @@
 import { MouseEvent, ReactNode, memo, useRef } from 'react'
 import { Area, PrivateMapProps } from '@/components/map/map.types'
 import { test } from '@/utils'
-import { TOOLTIP_REF_INITIAL_VALUE } from '@/components/tooltip/tooltip.consts'
 import { TooltipMethods } from '@/components/tooltip/tooltip.types'
+import { TOOLTIP_REF_INITIAL_VALUE } from '@/components/tooltip/tooltip.consts'
+import { DEFAULT_VIEWBOX_HEIGHT, DEFAULT_VIEWBOX_WIDTH } from '@/components/map/map.consts'
 import Tooltip from '@/components/tooltip'
 import Zoompane from '@/components/zoompane'
 import '@/styles.css'
-
-const DEFAULT_VIEWBOX_WIDTH = 1000
-const DEFAULT_VIEWBOX_HEIGHT = 1215
 
 const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
   test.rerenders()
