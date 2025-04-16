@@ -1,5 +1,9 @@
-import { ConstituencyType, constituencies } from '@/components/areas/constituencies/data'
-import Map, { MapProps } from '@/components/map/Map'
+import {
+  ConstituencyType,
+  constituencies
+} from '@/components/areas/constituencies/constituencies.data'
+import Map from '@/components/map'
+import { MapProps } from '@/components/map/map.types'
 
 /**
  * Component displaying a map of Denmark with the 10 constituencies (storkredse).

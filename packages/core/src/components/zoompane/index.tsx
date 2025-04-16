@@ -1,13 +1,5 @@
-import { ReactNode } from 'react'
 import { TransformComponent, TransformWrapper, useControls } from 'react-zoom-pan-pinch'
-
-type CustomZoomControls = (props: { onZoomIn(): void; onZoomOut(): void }) => ReactNode
-
-type ZoompaneProps = {
-  zoomable: boolean
-  customZoomControls?: CustomZoomControls
-  children: ReactNode
-}
+import { CustomZoomControls, ZoompaneProps } from '@/components/zoompane/zoompane.types'
 
 export default function Zoompane({ zoomable, customZoomControls, children }: ZoompaneProps) {
   return (

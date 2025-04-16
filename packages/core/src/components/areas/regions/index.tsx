@@ -1,5 +1,6 @@
-import { RegionType, regions } from '@/components/areas/regions/data'
-import Map, { MapProps } from '@/components/map/Map'
+import { RegionType, regions } from '@/components/areas/regions/regions.data'
+import Map from '@/components/map'
+import { MapProps } from '@/components/map/map.types'
 
 /**
  * Component displaying a map of Denmark with five regions.
