@@ -26,14 +26,14 @@ export default function Home() {
         />
       </div>
       <div className="flex gap-4 mt-8">
-        <Button variant="fill" href="/demo" className="shadow-lg" Icon={IconPhoto}>
+        <Button variant="fill" href="/demo" className="shadow-lg" icon={<IconPhoto size="20" />}>
           Demo
         </Button>
         <Button
           variant="outline"
           href="https://github.com/MartinP460/react-denmark-map"
           className="shadow-lg"
-          Icon={IconExternalLink}
+          icon={<IconExternalLink size="20" />}
           externalLink
         >
           Docs

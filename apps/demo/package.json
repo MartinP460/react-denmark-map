@@ -4,13 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "rm -rf ./node_modules && next build",
     "start": "next start",
     "lint": "next lint",
     "format": "eslint . --fix"
   },
   "dependencies": {
-    "@tabler/icons-react": "^2.47.0",
+    "@tabler/icons-react": "^3.31.0",
     "clsx": "^2.1.0",
     "next": "15.3.0",
     "react": "19.1.0",
@@ -18,11 +18,13 @@
     "react-dom": "19.1.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.24.0",
     "@tailwindcss/postcss": "^4.1.4",
-    "@types/node": "^20.11.24",
+    "@types/node": "^22.14.1",
     "@types/react": "19.1.2",
     "@types/react-dom": "19.1.2",
-    "eslint": "^8",
+    "eslint": "^9",
     "eslint-config-next": "15.3.0",
     "react-denmark-map": "*",
     "tailwindcss": "^4.1.4",

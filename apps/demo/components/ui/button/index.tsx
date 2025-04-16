@@ -14,7 +14,7 @@ export default function Button({
   href,
   externalLink,
   className,
-  Icon,
+  icon,
   onClick,
   children
 }: ButtonProps) {
@@ -36,7 +36,7 @@ export default function Button({
         rel={externalLink ? 'noopener noreferrer' : undefined}
       >
         {children}
-        {Icon && <Icon size={size === 'sm' ? 18 : 20} />}
+        {icon}
       </Link>
     )
   }

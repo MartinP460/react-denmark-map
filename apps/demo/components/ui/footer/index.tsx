@@ -15,7 +15,7 @@ export default function Footer() {
               className="py-3 px-4 hover:bg-gray-500 flex items-end gap-1 rounded-sm xl:rounded-l-lg hover:text-white transition-colors"
             >
               Request feature
-              <IconExternalLink size="12" className="mb-1" />
+              <IconExternalLink size="16" className="mb-1" />
             </a>
           </li>
           <li>
@@ -26,7 +26,7 @@ export default function Footer() {
               className="py-3 px-4 hover:bg-gray-500 flex items-end gap-1 rounded-sm hover:text-white transition-colors"
             >
               Report issue
-              <IconExternalLink size="12" className="mb-1" />
+              <IconExternalLink size="16" className="mb-1" />
             </a>
           </li>
           <li>
@@ -37,7 +37,7 @@ export default function Footer() {
               className="py-3 px-4 hover:bg-gray-500 flex items-end gap-1 rounded-sm xl:rounded-r-lg hover:text-white transition-colors"
             >
               Contributing
-              <IconExternalLink size="12" className="mb-1" />
+              <IconExternalLink size="16" className="mb-1" />
             </a>
           </li>
         </ul>
