@@ -35,6 +35,8 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
 
   const tooltip = useRef<TooltipMethods>(TOOLTIP_REF_INITIAL_VALUE)
 
+  console.log('Hello world')
+
   const handleClick = (event: MouseEvent<SVGPathElement>) => {
     if (!onClick) return
 

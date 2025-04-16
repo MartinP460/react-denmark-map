@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useState } from 'react'
 import { fireEvent, render } from '@testing-library/react'
+import '@testing-library/jest-dom'
 // the municipalities component is used to test the generic map component
 import Constituencies from '@/components/areas/constituencies'
 import Denmark from '@/components/areas/denmark'
