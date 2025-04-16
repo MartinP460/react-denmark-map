@@ -254,6 +254,14 @@ export const WithMouseEvents: Story = {
   }
 }
 
+export const WithClickEvent: Story = {
+  args: {
+    onClick: (municipality) => {
+      console.log('Clicked: ', municipality)
+    }
+  }
+}
+
 export const WithoutTooltip: Story = {
   args: {
     showTooltip: false
