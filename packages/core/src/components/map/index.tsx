@@ -35,20 +35,18 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
 
   const tooltip = useRef<TooltipMethods>(TOOLTIP_REF_INITIAL_VALUE)
 
-  console.log('Hello world')
-
   const handleClick = (event: MouseEvent<SVGPathElement>) => {
     if (!onClick) return
 
     const area = areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
-    area && onClick(area)
+    if (area) onClick(area)
   }
 
   const handleHover = (event: MouseEvent<SVGPathElement>) => {
     if (!onHover) return
 
     const area = areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
-    area && onHover(area)
+    if (area) onHover(area)
   }
 
   const handleMouseEnter = (event: MouseEvent<SVGPathElement>) => {
@@ -57,7 +55,7 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
     if (!onMouseEnter) return
 
     const area = areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
-    area && onMouseEnter(area)
+    if (area) onMouseEnter(area)
   }
 
   const handleMouseLeave = (event: MouseEvent<SVGPathElement>) => {
@@ -66,7 +64,7 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
     if (!onMouseLeave) return
 
     const area = areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
-    area && onMouseLeave(area)
+    if (area) onMouseLeave(area)
   }
 
   const getAreas = () => {
