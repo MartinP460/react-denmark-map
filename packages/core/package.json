@@ -1,6 +1,6 @@
 {
   "name": "react-denmark-map",
-  "version": "2.0.2",
+  "version": "2.0.4",
   "description": "Customizable plug-and-play map of Denmark for visual presentation.",
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
@@ -16,7 +16,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MartinP460/react-denmark-map"
+    "url": "git+https://github.com/MartinP460/react-denmark-map.git"
   },
   "homepage": "https://react-denmark-map.vercel.app/",
   "bugs": {
