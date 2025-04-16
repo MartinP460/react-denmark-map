@@ -2,7 +2,7 @@ import { MouseEvent, MouseEventHandler, ReactNode } from 'react'
 
 export interface TooltipProps<Type> {
   show: boolean
-  areas: readonly Type[]
+  areaMap: Map<string, Type>
   customTooltip?: (props: { area: Type }) => ReactNode
 }
 

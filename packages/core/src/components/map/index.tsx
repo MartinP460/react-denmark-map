@@ -1,4 +1,4 @@
-import { MouseEvent, ReactNode, memo, useRef } from 'react'
+import { MouseEvent, ReactNode, memo, useMemo, useRef } from 'react'
 import { Area, PrivateMapProps } from '@/components/map/map.types'
 import { test } from '@/utils'
 import { TooltipMethods } from '@/components/tooltip/tooltip.types'
@@ -8,7 +8,7 @@ import Tooltip from '@/components/tooltip'
 import Zoompane from '@/components/zoompane'
 import '@/styles.css'
 
-const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
+const MapComponent = <Type extends Area>(props: PrivateMapProps<Type>) => {
   test.rerenders()
 
   const {
@@ -31,19 +31,21 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
     filterAreas
   } = props
 
+  const areaMap = useMemo(() => new Map(areas.map((area) => [area.id, area])), [areas])
+
   const tooltip = useRef<TooltipMethods>(TOOLTIP_REF_INITIAL_VALUE)
 
   const handleClick = (event: MouseEvent<SVGPathElement>) => {
     if (!onClick) return
 
-    const area = areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
+    const area = areaMap.get(event.currentTarget.dataset['areaId'] ?? '')
     if (area) onClick(area)
   }
 
   const handleHover = (event: MouseEvent<SVGPathElement>) => {
     if (!onHover) return
 
-    const area = areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
+    const area = areaMap.get(event.currentTarget.dataset['areaId'] ?? '')
     if (area) onHover(area)
   }
 
@@ -52,7 +54,7 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
 
     if (!onMouseEnter) return
 
-    const area = areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
+    const area = areaMap.get(event.currentTarget.dataset['areaId'] ?? '')
     if (area) onMouseEnter(area)
   }
 
@@ -61,7 +63,7 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
 
     if (!onMouseLeave) return
 
-    const area = areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
+    const area = areaMap.get(event.currentTarget.dataset['areaId'] ?? '')
     if (area) onMouseLeave(area)
   }
 
@@ -110,7 +112,7 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
     >
       <Tooltip
         show={typeof showTooltip === 'undefined' ? true : showTooltip}
-        areas={areas}
+        areaMap={areaMap}
         customTooltip={customTooltip as (props: { area: Area }) => ReactNode}
         ref={tooltip}
       />
@@ -141,4 +143,4 @@ const Map = <Type extends Area>(props: PrivateMapProps<Type>) => {
   )
 }
 
-export default memo(Map) as typeof Map
+export default memo(MapComponent) as typeof MapComponent

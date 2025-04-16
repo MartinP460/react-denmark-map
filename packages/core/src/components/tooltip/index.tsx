@@ -11,7 +11,7 @@ import { Area } from '@/components/map/map.types'
 import { TooltipMethods, TooltipProps } from '@/components/tooltip/tooltip.types'
 
 function Tooltip<Type extends Area>(
-  { show, areas, customTooltip }: TooltipProps<Type>,
+  { show, areaMap, customTooltip }: TooltipProps<Type>,
   ref: Ref<TooltipMethods | undefined>
 ) {
   const [hoveredArea, setHoveredArea] = useState<Type | null>(null)
@@ -52,7 +52,7 @@ function Tooltip<Type extends Area>(
   const handleMouseEnter = (event: MouseEvent<SVGPathElement>) => {
     if (!show) return
 
-    const area = areas.find((area) => area.id === event.currentTarget.dataset['areaId'])
+    const area = areaMap.get(event.currentTarget.dataset['areaId'] ?? '')
 
     setHoveredArea(area || null)
     setTooltipStyle((prevState) => ({
