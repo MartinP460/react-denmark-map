@@ -1,4 +1,4 @@
-<p align="center"><b>As of August 2026, react-denmark-map is archived. You can use <a href="https://www.react-simple-maps.io/">React Simple Maps</a> as an alternative.<b/></p>
+<p align="center"><b>As of August 2026, react-denmark-map is archived. You can use <a href="https://www.react-simple-maps.io/">React Simple Maps</a> as an alternative.</b></p>
 
 <br />
 
