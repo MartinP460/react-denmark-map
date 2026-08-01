@@ -1,4 +1,4 @@
-<p align="center"><b>As of August 2026, react-denmark-map is archived. You can use <a href="https://www.react-simple-maps.io/">React Simple Maps</a> as an alternative.</b></p>
+<p align="center"><b>As of August 2026, react-denmark-map is archived. You can use the <a href="https://unovis.dev/docs/maps/TopoJSONMap">Unovis</a> library with TopoJSON geo-data as an alternative.</b></p>
 
 <br />
 
@@ -10,7 +10,6 @@
     Customizable plug-and-play map of Denmark for visual presentation 🗺️
     <br />
     <br/>
-    ✨ <a href="https://react-denmark-map.vercel.app/demo">Demo</a> ✨
   </p>
 </p>
 
