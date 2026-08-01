@@ -1,3 +1,7 @@
+<p align="center"><b>As of August 2026, react-denmark-map is archived. You can use <a href="https://www.react-simple-maps.io/">React Simple Maps</a> as an alternative.<b/></p>
+
+<br />
+
 <p align="center">
   <br />
   <img src="static/logo.svg" width="120px" align="center" alt="React Denmark Map logo" />
